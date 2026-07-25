@@ -1,0 +1,624 @@
+openapi: 3.1.0
+info:
+  title: API Reference accounts paymentCards API
+  version: 1.0.0
+servers:
+- url: https://host.com
+  description: Default
+tags:
+- name: paymentCards
+paths:
+  /v2/payment-cards/{payment_card_id}/transactions/:
+    get:
+      operationId: list-payment-card-transactions
+      summary: List Payment Card Transactions
+      description: ''
+      tags:
+      - paymentCards
+      parameters:
+      - name: payment_card_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Number of results to return per page.
+        required: false
+        schema:
+          type: integer
+      - name: offset
+        in: query
+        description: The initial index from which to return the results.
+        required: false
+        schema:
+          type: integer
+      - name: search
+        in: query
+        description: A search term.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment Cards_listPaymentCardTransactions_Response_200'
+  /v2/payment-cards/{payment_card_id}/transactions/{transaction_id}:
+    get:
+      operationId: retrieve-payment-card-transaction
+      summary: Retrieve Payment Card Transaction
+      description: ''
+      tags:
+      - paymentCards
+      parameters:
+      - name: payment_card_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: transaction_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: search
+        in: query
+        description: A search term.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment Cards_retrievePaymentCardTransaction_Response_200'
+  /v2/payment-cards/{payment_card_id}/emboss:
+    get:
+      operationId: get-payment-card-emboss
+      summary: Get Payment Card Emboss
+      description: ''
+      tags:
+      - paymentCards
+      parameters:
+      - name: payment_card_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Emboss'
+    post:
+      operationId: payment-card-emboss
+      summary: Payment Card Emboss
+      description: ''
+      tags:
+      - paymentCards
+      parameters:
+      - name: payment_card_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Emboss'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Emboss'
+  /v2/payment-cards/{payment_card_id}/:
+    get:
+      operationId: get-payment-card
+      summary: Get Payment Card
+      description: ''
+      tags:
+      - paymentCards
+      parameters:
+      - name: payment_card_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentCard'
+  /v2/payment-cards/{payment_card_id}/freeze:
+    post:
+      operationId: freeze-payment-card
+      summary: Freeze Payment Card
+      description: freeze/unfreeze a payment card
+      tags:
+      - paymentCards
+      parameters:
+      - name: payment_card_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FreezeUnfreezePaymentCardResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FreezePaymentCardRequest'
+  /v2/payment-cards/{payment_card_id}/unfreeze:
+    post:
+      operationId: unfreeze-card
+      summary: Unfreeze Card
+      description: unfreeze a payment card
+      tags:
+      - paymentCards
+      parameters:
+      - name: payment_card_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FreezeUnfreezePaymentCardResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /v2/payment-cards/{payment_card_id}/replace-lost-stolen:
+    post:
+      operationId: replace-lost-stolen-card-request
+      summary: Replace Lost Stolen Card Request
+      description: Replace a lost or stolen card
+      tags:
+      - paymentCards
+      parameters:
+      - name: payment_card_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LostStolenCardResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LostStolenCardRequest'
+  /v2/payment-cards/{payment_card_id}/reissue:
+    post:
+      operationId: trigger-reissue-card
+      summary: Trigger Reissue Card
+      description: Reissue a card, which means to send it to the embosser again
+      tags:
+      - paymentCards
+      parameters:
+      - name: payment_card_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReissueCardResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /v2/payment-cards/{payment_card_id}/close/:
+    post:
+      operationId: close-card-account
+      summary: Close Card Account
+      description: ''
+      tags:
+      - paymentCards
+      parameters:
+      - name: payment_card_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CloseAccountResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /v2/payment-cards/{payment_card_id}/autopay:
+    put:
+      operationId: set-autopay-status
+      summary: Set Autopay Status
+      description: ''
+      tags:
+      - paymentCards
+      parameters:
+      - name: payment_card_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetAutopayResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetAutopayRequest'
+components:
+  schemas:
+    CloseAccountResponse:
+      type: object
+      properties:
+        close_account_id:
+          type: string
+          format: uuid
+      required:
+      - close_account_id
+      title: CloseAccountResponse
+    SetAutopayRequest:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+      required:
+      - enabled
+      title: SetAutopayRequest
+    ReissueCardResponse:
+      type: object
+      properties:
+        card_status:
+          type: string
+      required:
+      - card_status
+      title: ReissueCardResponse
+    PaymentCardStatus:
+      type: string
+      enum:
+      - in_progress
+      - active
+      - frozen
+      - closed
+      - canceled
+      - in_default
+      title: PaymentCardStatus
+    Emboss:
+      type: object
+      properties:
+        operation:
+          $ref: '#/components/schemas/EmbossOperation'
+        shipping:
+          $ref: '#/components/schemas/EmbossShipping'
+        result:
+          type: boolean
+      required:
+      - operation
+      title: Emboss
+    Payment Cards_retrievePaymentCardTransaction_Response_200:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        status:
+          type: string
+        amount:
+          type: number
+          format: double
+        posted_at:
+          type: string
+          format: date-time
+        effective_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        direction:
+          type: string
+        mcc:
+          type: string
+        merchant_name:
+          type: string
+        merchant_id:
+          type: string
+        transaction_type:
+          type: string
+        related_transaction_id:
+          type: string
+          format: uuid
+      required:
+      - id
+      - status
+      - amount
+      - posted_at
+      - effective_at
+      - description
+      - direction
+      - mcc
+      - merchant_name
+      - merchant_id
+      - transaction_type
+      - related_transaction_id
+      title: Payment Cards_retrievePaymentCardTransaction_Response_200
+    EmbossOperation:
+      type: string
+      enum:
+      - hold
+      - unhold
+      title: EmbossOperation
+    PaymentCard:
+      type: object
+      properties:
+        id:
+          type: string
+        consumer_id:
+          type: string
+        card_config_id:
+          type: string
+        status:
+          $ref: '#/components/schemas/PaymentCardStatus'
+        emboss_hold:
+          type: boolean
+        available_balance:
+          type: string
+        account_number:
+          type: string
+        routing_number:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        autopay_enabled:
+          type: boolean
+        outstanding_balance:
+          type: string
+        pin_lock:
+          type: boolean
+        display_name:
+          type: string
+      title: PaymentCard
+    V2PaymentCardsPaymentCardIdTransactionsGetResponsesContentApplicationJsonSchemaResultsItems:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        status:
+          type: string
+        amount:
+          type: number
+          format: double
+        posted_at:
+          type: string
+          format: date-time
+        effective_at:
+          type: string
+          format: date-time
+        description:
+          type: string
+        direction:
+          type: string
+        mcc:
+          type: string
+        merchant_name:
+          type: string
+        merchant_id:
+          type: string
+        transaction_type:
+          type: string
+        related_transaction_id:
+          type: string
+          format: uuid
+      required:
+      - id
+      - status
+      - amount
+      - posted_at
+      - effective_at
+      - description
+      - direction
+      - mcc
+      - merchant_name
+      - merchant_id
+      - transaction_type
+      - related_transaction_id
+      title: V2PaymentCardsPaymentCardIdTransactionsGetResponsesContentApplicationJsonSchemaResultsItems
+    LostStolenCardResponse:
+      type: object
+      properties:
+        card_status:
+          type: string
+      required:
+      - card_status
+      title: LostStolenCardResponse
+    SetAutopayResponse:
+      type: object
+      properties:
+        autopay_enabled:
+          type: boolean
+      required:
+      - autopay_enabled
+      title: SetAutopayResponse
+    FreezePaymentCardRequest:
+      type: object
+      properties:
+        end_date:
+          type: string
+          format: date-time
+      required:
+      - end_date
+      title: FreezePaymentCardRequest
+    LostStolenCardRequest:
+      type: object
+      properties:
+        card_status:
+          type: string
+      required:
+      - card_status
+      title: LostStolenCardRequest
+    Payment Cards_listPaymentCardTransactions_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/V2PaymentCardsPaymentCardIdTransactionsGetResponsesContentApplicationJsonSchemaResultsItems'
+      required:
+      - count
+      - results
+      title: Payment Cards_listPaymentCardTransactions_Response_200
+    EmbossShipping:
+      type: string
+      enum:
+      - standard
+      - express
+      default: standard
+      title: EmbossShipping
+    FreezeUnfreezePaymentCardResponse:
+      type: object
+      properties:
+        account_status:
+          type: string
+      required:
+      - account_status
+      title: FreezeUnfreezePaymentCardResponse
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

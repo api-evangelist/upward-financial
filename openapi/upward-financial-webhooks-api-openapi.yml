@@ -1,0 +1,241 @@
+openapi: 3.1.0
+info:
+  title: API Reference accounts webhooks API
+  version: 1.0.0
+servers:
+- url: https://host.com
+  description: Default
+tags:
+- name: webhooks
+paths:
+  /v2/webhooks/registrations/:
+    get:
+      operationId: retrieve-webhook-registration
+      summary: Retrieve Webhook Registration
+      description: Register a new Webhook and Get all Registrations
+      tags:
+      - webhooks
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookRegistration'
+    post:
+      operationId: register-webhook-listener
+      summary: Register Webhook Listener
+      description: Register a new Webhook
+      tags:
+      - webhooks
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisterWebhook'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterWebhook'
+  /v2/webhooks/{id}/events/:
+    get:
+      operationId: retrieve-webhook-history
+      summary: Retrieve Webhook History
+      description: Webhook events handler
+      tags:
+      - webhooks
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this webhook history.
+        required: true
+        schema:
+          type: string
+      - name: start_date
+        in: query
+        description: Filter events on or after this date (inclusive). Format YYYY-MM-DD.
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookEvents'
+        '400':
+          description: Invalid start_date format.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetrieveWebhookHistoryRequestBadRequestError'
+  /v2/webhooks/{id}/:
+    put:
+      operationId: update-webhook-history
+      summary: Update Webhook History
+      description: Webhook events handler
+      tags:
+      - webhooks
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this webhook history.
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookEvents'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookEvents'
+    delete:
+      operationId: delete-webhook-registration
+      summary: Delete Webhook Registration
+      description: Webhook events handler
+      tags:
+      - webhooks
+      parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this webhook history.
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhooks_deleteWebhookRegistration_Response_204'
+components:
+  schemas:
+    RegisterWebhook:
+      type: object
+      properties:
+        webhook_name:
+          type: string
+        endpoint:
+          type: string
+      required:
+      - webhook_name
+      - endpoint
+      title: RegisterWebhook
+    Webhooks_deleteWebhookRegistration_Response_204:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: Webhooks_deleteWebhookRegistration_Response_204
+    V2WebhooksIdEventsGetResponsesContentApplicationJsonSchemaErrorsItems:
+      type: object
+      properties:
+        message:
+          type: string
+        detail:
+          type: string
+      title: V2WebhooksIdEventsGetResponsesContentApplicationJsonSchemaErrorsItems
+    WebhookRegistration:
+      type: object
+      properties:
+        id:
+          type: string
+        partner_id:
+          type: string
+        webhook_name:
+          type: string
+        endpoint:
+          type: string
+        status:
+          type: string
+        failures:
+          type: integer
+        last_failure:
+          type: string
+          format: date-time
+      required:
+      - id
+      - webhook_name
+      - endpoint
+      - status
+      - failures
+      - last_failure
+      title: WebhookRegistration
+    RetrieveWebhookHistoryRequestBadRequestError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/V2WebhooksIdEventsGetResponsesContentApplicationJsonSchemaErrorsItems'
+      title: RetrieveWebhookHistoryRequestBadRequestError
+    WebhookEvents:
+      type: object
+      properties:
+        id:
+          type: string
+        partner_id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        event_name:
+          type: string
+        resources:
+          type: string
+        last_attempted_at:
+          type: string
+          format: date-time
+      required:
+      - id
+      - created_at
+      - event_name
+      - last_attempted_at
+      title: WebhookEvents
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

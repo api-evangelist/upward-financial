@@ -1,0 +1,495 @@
+openapi: 3.1.0
+info:
+  title: API Reference accounts partners API
+  version: 1.0.0
+servers:
+- url: https://host.com
+  description: Default
+tags:
+- name: partners
+paths:
+  /v2/partners/:
+    get:
+      operationId: list-partner-details
+      summary: List Partner Details
+      description: Return partner details
+      tags:
+      - partners
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  description: Any type
+  /v2/partners/{partner_id}/accounts/:
+    get:
+      operationId: partner-get-partner-bank-accounts
+      summary: Partner Get Partner Bank Accounts
+      description: ''
+      tags:
+      - partners
+      parameters:
+      - name: partner_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerBankAccountBulkBulkV2'
+  /v2/partners/{partner_id}/accounts/{account_id}/:
+    get:
+      operationId: bank-account-details-partner-bank-accounts
+      summary: Bank Account Details Partner Bank Accounts
+      description: ''
+      tags:
+      - partners
+      parameters:
+      - name: partner_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: account_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnerBankAccountBulkV2'
+  /v2/partners/{partner_id}/accounts/{account_id}/subledgers/:
+    get:
+      operationId: list-sub-ledger-requests
+      summary: List Sub Ledger Requests
+      description: List the subledgers information
+      tags:
+      - partners
+      parameters:
+      - name: partner_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: account_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        schema:
+          type: integer
+      - name: search
+        in: query
+        description: A search term.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Partners_listSubLedgerRequests_Response_200'
+    post:
+      operationId: create-sub-ledger-request
+      summary: Create Sub Ledger Request
+      description: Create a Subledger Account from Partner FBO
+      tags:
+      - partners
+      parameters:
+      - name: partner_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: account_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubLedgerResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubLedgerRequest'
+  /v2/partners/{partner_id}/products/:
+    get:
+      operationId: list-partner-products
+      summary: List Partner Products
+      description: Get Partner Product List
+      tags:
+      - partners
+      parameters:
+      - name: partner_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        schema:
+          type: integer
+      - name: search
+        in: query
+        description: A search term.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Partners_listPartnerProducts_Response_200'
+components:
+  schemas:
+    PartnerProductDescriptionFeaturesItems:
+      type: object
+      properties:
+        header:
+          type: string
+        body:
+          type: string
+      required:
+      - header
+      - body
+      title: PartnerProductDescriptionFeaturesItems
+    Partners_listPartnerProducts_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartnerProduct'
+      required:
+      - count
+      - results
+      title: Partners_listPartnerProducts_Response_200
+    PartnerProductOptionsItems:
+      type: object
+      properties:
+        id:
+          type: integer
+        cost:
+          type: number
+          format: double
+        detail:
+          type:
+          - string
+          - 'null'
+        stripe_price_id:
+          type:
+          - string
+          - 'null'
+        stripe_session_token:
+          type:
+          - string
+          - 'null'
+      title: PartnerProductOptionsItems
+    PartnerProductProductType:
+      type: string
+      enum:
+      - product
+      - subscription
+      - service
+      title: PartnerProductProductType
+    Partners_listSubLedgerRequests_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubLedgerResponse'
+      required:
+      - count
+      - results
+      title: Partners_listSubLedgerRequests_Response_200
+    PartnerBankAccountBulkBulkV2:
+      type: object
+      properties:
+        id:
+          type: string
+        bank_name:
+          type:
+          - string
+          - 'null'
+        account_name:
+          type: string
+        account_type:
+          type: string
+        account_number:
+          type: string
+        account_routing_number:
+          type: string
+        is_primary:
+          type: boolean
+      required:
+      - bank_name
+      - account_name
+      - account_type
+      - is_primary
+      title: PartnerBankAccountBulkBulkV2
+    PartnerBankAccountBulkV2:
+      type: object
+      properties:
+        id:
+          type: string
+        bank_name:
+          type:
+          - string
+          - 'null'
+        available_balance:
+          type: string
+        current_balance:
+          type: string
+        account_name:
+          type: string
+        account_type:
+          type: string
+        account_number:
+          type: string
+        account_routing_number:
+          type: string
+        is_primary:
+          type: boolean
+        is_active:
+          type: boolean
+          default: true
+      required:
+      - bank_name
+      - account_name
+      - account_type
+      - is_primary
+      title: PartnerBankAccountBulkV2
+    PartnerProduct:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        key:
+          type: string
+        product_type:
+          $ref: '#/components/schemas/PartnerProductProductType'
+        image:
+          type:
+          - string
+          - 'null'
+          format: binary
+        buy_button_text:
+          type:
+          - string
+          - 'null'
+        buy_button_link:
+          type:
+          - string
+          - 'null'
+        locked:
+          type:
+          - boolean
+          - 'null'
+        featured:
+          type:
+          - boolean
+          - 'null'
+        category:
+          $ref: '#/components/schemas/PartnerProductCategory'
+        description:
+          oneOf:
+          - $ref: '#/components/schemas/PartnerProductDescription'
+          - type: 'null'
+        options:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerProductOptionsItems'
+        free_trial_enabled:
+          type:
+          - boolean
+          - 'null'
+        free_trial_duration:
+          type:
+          - integer
+          - 'null'
+          format: int64
+          description: Free trial duration In months
+      required:
+      - id
+      - key
+      - description
+      - options
+      title: PartnerProduct
+    SubLedgerResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        bank_name:
+          type:
+          - string
+          - 'null'
+        account_name:
+          type: string
+        account_type:
+          type: string
+        account_number:
+          type: string
+        account_routing_number:
+          type: string
+        is_primary:
+          type: boolean
+      required:
+      - id
+      - bank_name
+      - account_name
+      - account_type
+      - account_number
+      - account_routing_number
+      - is_primary
+      title: SubLedgerResponse
+    PartnerProductDescription:
+      type: object
+      properties:
+        full_name:
+          type: string
+        cost_description:
+          type:
+          - string
+          - 'null'
+        features:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerProductDescriptionFeaturesItems'
+      required:
+      - full_name
+      - features
+      title: PartnerProductDescription
+    PartnerProductCategory:
+      type: string
+      enum:
+      - credit_services
+      - coaching
+      - gift_cards
+      title: PartnerProductCategory
+    SubLedgerRequest:
+      type: object
+      properties:
+        account_name:
+          type: string
+      required:
+      - account_name
+      title: SubLedgerRequest
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

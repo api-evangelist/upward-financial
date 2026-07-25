@@ -1,0 +1,92 @@
+openapi: 3.1.0
+info:
+  title: API Reference accounts billSwitch API
+  version: 1.0.0
+servers:
+- url: https://host.com
+  description: Default
+tags:
+- name: billSwitch
+paths:
+  /v2/payment-cards/{payment_card_id}/bill-switch/token:
+    post:
+      operationId: get-bill-switch-token
+      summary: Get Bill Switch Token
+      description: ''
+      tags:
+      - billSwitch
+      parameters:
+      - name: payment_card_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillSwitchToken'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BillSwitchToken'
+  /v2/payment-cards/{payment_card_id}/deposit-switch/token:
+    post:
+      operationId: get-deposit-switch-token
+      summary: Get Deposit Switch Token
+      description: ''
+      tags:
+      - billSwitch
+      parameters:
+      - name: payment_card_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepositSwitchResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepositSwitchResponse'
+components:
+  schemas:
+    DepositSwitchResponse:
+      type: object
+      properties:
+        public_token:
+          type: string
+      title: DepositSwitchResponse
+    BillSwitchToken:
+      type: object
+      properties:
+        public_token:
+          type: string
+      title: BillSwitchToken
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

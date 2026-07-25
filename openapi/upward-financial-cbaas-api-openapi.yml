@@ -1,0 +1,199 @@
+openapi: 3.1.0
+info:
+  title: API Reference accounts cbaas API
+  version: 1.0.0
+servers:
+- url: https://host.com
+  description: Default
+tags:
+- name: cbaas
+paths:
+  /v2/credit-lines/{credit_line_id}/hold/:
+    post:
+      operationId: create-transaction-hold
+      summary: Create Transaction Hold
+      description: ''
+      tags:
+      - cbaas
+      parameters:
+      - name: credit_line_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /v2/credit-lines/{credit_line_id}/transactions/{transaction_id}/clear/:
+    post:
+      operationId: clear-transaction
+      summary: Clear Transaction
+      description: ''
+      tags:
+      - cbaas
+      parameters:
+      - name: credit_line_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: transaction_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /v2/credit-lines/{credit_line_id}/transactions/{transaction_id}/close/:
+    post:
+      operationId: close-transaction
+      summary: Close Transaction
+      description: ''
+      tags:
+      - cbaas
+      parameters:
+      - name: credit_line_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: transaction_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /v2/credit-lines/{credit_line_id}/transactions/{transaction_id}/cancel/:
+    post:
+      operationId: cancel-transaction
+      summary: Cancel Transaction
+      description: ''
+      tags:
+      - cbaas
+      parameters:
+      - name: credit_line_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: transaction_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /v2/credit-lines/{credit_line_id}/transactions/{transaction_id}/reverse/:
+    post:
+      operationId: reverse-transaction
+      summary: Reverse Transaction
+      description: ''
+      tags:
+      - cbaas
+      parameters:
+      - name: credit_line_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: transaction_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

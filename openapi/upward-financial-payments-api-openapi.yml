@@ -1,0 +1,1154 @@
+openapi: 3.1.0
+info:
+  title: API Reference accounts payments API
+  version: 1.0.0
+servers:
+- url: https://host.com
+  description: Default
+tags:
+- name: payments
+paths:
+  /v2/payments/ach/:
+    post:
+      operationId: create-create-ach-request
+      summary: Create Create ACH Request
+      description: Create an ACH request to move funds into or out of a DDA inside of CRB
+      tags:
+      - payments
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ACHResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateACHRequest'
+    get:
+      operationId: list-ach-responses
+      summary: List ACH Responses
+      description: Get the ach payment information
+      tags:
+      - payments
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        schema:
+          type: integer
+      - name: search
+        in: query
+        description: A search term.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payments_listACHResponses_Response_200'
+  /v2/payments/ach/{external_id}/:
+    get:
+      operationId: retrieve-ach-response
+      summary: Retrieve ACH Response
+      description: Get the ach payment information
+      tags:
+      - payments
+      parameters:
+      - name: external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ACHResponse'
+    delete:
+      operationId: cancel-ach-payment
+      summary: Cancel ACH Payment
+      description: Cancel the ACH payment.
+      tags:
+      - payments
+      parameters:
+      - name: external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payments_Cancel ACH Payment_Response_204'
+  /v2/payments/transfer/:
+    post:
+      operationId: create-transfer
+      summary: Create Transfer
+      description: Xpay transfer between CRB users
+      tags:
+      - payments
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateTransferResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTransferRequest'
+    get:
+      operationId: get-all-transfers
+      summary: Get All Transfers
+      description: Get transfer information
+      tags:
+      - payments
+      parameters:
+      - name: limit
+        in: query
+        description: Number of results to return per page.
+        required: false
+        schema:
+          type: integer
+      - name: offset
+        in: query
+        description: The initial index from which to return the results.
+        required: false
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payments_getAllTransfers_Response_200'
+  /v2/payments/transfer/{external_id}/:
+    get:
+      operationId: get-transfer
+      summary: Get Transfer
+      description: Get transfer information
+      tags:
+      - payments
+      parameters:
+      - name: external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: search
+        in: query
+        description: A search term.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTransferResponse'
+  /v2/payments/instant/:
+    post:
+      operationId: create-create-instant-payment-request
+      summary: Create Create Instant Payment Request
+      description: Create an Instant Payment request to move funds from an DDA to an external bank account
+      tags:
+      - payments
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetInstantPaymentResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateInstantPaymentRequest'
+    get:
+      operationId: list-get-instant-payment-responses
+      summary: List Get Instant Payment Responses
+      description: Get the instant payment information
+      tags:
+      - payments
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payments_listGetInstantPaymentResponses_Response_200'
+  /v2/payments/instant/{external_id}/:
+    get:
+      operationId: retrieve-get-instant-payment-response
+      summary: Retrieve Get Instant Payment Response
+      description: Get the instant payment information
+      tags:
+      - payments
+      parameters:
+      - name: external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetInstantPaymentResponse'
+  /v2/payments/aft/:
+    post:
+      operationId: create-aft-payment-request
+      summary: Create AFT Payment Request
+      description: Create an AFT (Account Funding Transaction) request to pull funds from a consumer's external payment card
+      tags:
+      - payments
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAFTResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAFTRequest'
+    get:
+      operationId: list-aft-payment-requests
+      summary: List AFT Payment Requests
+      description: Get a paginated list of AFT payment requests
+      tags:
+      - payments
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payments_listAFTPaymentRequests_Response_200'
+  /v2/payments/aft/{id}/:
+    get:
+      operationId: retrieve-aft-payment-request
+      summary: Retrieve AFT Payment Request
+      description: Get the AFT payment information
+      tags:
+      - payments
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAFTResponse'
+  /v2/payments/oct/:
+    post:
+      operationId: create-oct-payment-request
+      summary: Create OCT Payment Request
+      description: Create an OCT (Original Credit Transaction) request to push funds directly to a consumer's payment card
+      tags:
+      - payments
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetOCTResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOCTRequest'
+    get:
+      operationId: list-oct-payment-requests
+      summary: List OCT Payment Requests
+      description: Get a paginated list of OCT payment requests
+      tags:
+      - payments
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payments_listOCTPaymentRequests_Response_200'
+  /v2/payments/oct/{id}/:
+    get:
+      operationId: retrieve-oct-payment-request
+      summary: Retrieve OCT Payment Request
+      description: Get the OCT payment information
+      tags:
+      - payments
+      parameters:
+      - name: id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetOCTResponse'
+  /v2/payments/p2p/:
+    post:
+      operationId: create-peer-to-peer-payment-request
+      summary: Create Peer To Peer Payment Request
+      description: 'Initiate a peer-to-peer transfer between two consumers on the authenticated partner''s network. Both accounts must be active secured-card accounts. Returns `pending_review` instead of an error when the sender exceeds the daily velocity limit (2 transfers per 24 hours).
+
+        '
+      tags:
+      - payments
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Payment created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateP2PPaymentResponse'
+        '422':
+          description: Validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePeerToPeerPaymentRequestRequestUnprocessableEntityError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateP2PPaymentRequest'
+    get:
+      operationId: list-peer-to-peer-payment-responses
+      summary: List Peer To Peer Payment Responses
+      description: Returns a paginated list of all P2P payments across every consumer on the authenticated partner's network.
+      tags:
+      - payments
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        schema:
+          type: integer
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payments_listPeerToPeerPaymentResponses_Response_200'
+  /v2/payments/p2p/{id}/:
+    get:
+      operationId: retrieve-peer-to-peer-payment-response
+      summary: Retrieve Peer To Peer Payment Response
+      description: 'Retrieve a single P2P payment by its ID. Returns 404 for payments that do not belong to the authenticated partner.
+
+        '
+      tags:
+      - payments
+      parameters:
+      - name: id
+        in: path
+        description: The unique ID of the P2P payment (returned at creation time).
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetP2PPaymentResponse'
+        '404':
+          description: Payment not found or does not belong to this partner
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    Payments_listAFTPaymentRequests_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetAFTResponse'
+      required:
+      - count
+      - results
+      title: Payments_listAFTPaymentRequests_Response_200
+    GetP2PPaymentResponseStatus:
+      type: string
+      enum:
+      - pending
+      - posted
+      - pending_review
+      - error
+      - canceled
+      - returned
+      description: Current payment status.
+      title: GetP2PPaymentResponseStatus
+    CreateTransferRequestStatus:
+      type: string
+      enum:
+      - canceled
+      - error
+      - pending
+      - posted
+      - rejected
+      - returned
+      default: posted
+      title: CreateTransferRequestStatus
+    Payments_listPeerToPeerPaymentResponses_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetP2PPaymentResponse'
+      required:
+      - count
+      - results
+      title: Payments_listPeerToPeerPaymentResponses_Response_200
+    CreateP2PPaymentResponseStatus:
+      type: string
+      enum:
+      - pending
+      - posted
+      - pending_review
+      - error
+      description: 'Current payment status. `pending_review` means the payment is held for compliance review (velocity limit exceeded) and will be processed once approved.
+
+        '
+      title: CreateP2PPaymentResponseStatus
+    CreateTransferRequest:
+      type: object
+      properties:
+        originating_account_id:
+          type: string
+          format: uuid
+        receiving_account_id:
+          type: string
+          format: uuid
+        amount:
+          type: number
+          format: double
+        description:
+          type: string
+        status:
+          $ref: '#/components/schemas/CreateTransferRequestStatus'
+        memo:
+          type: string
+          default: card.fund_account | card.advance | card.advance.payback
+      required:
+      - originating_account_id
+      - receiving_account_id
+      - amount
+      - memo
+      title: CreateTransferRequest
+    GetP2PPaymentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for this P2P payment.
+        originating_account_id:
+          type: string
+          description: External ID of the sending account.
+        receiving_account_id:
+          type: string
+          description: External ID of the receiving account.
+        amount:
+          type: number
+          format: double
+          description: Transfer amount in USD.
+        status:
+          $ref: '#/components/schemas/GetP2PPaymentResponseStatus'
+          description: Current payment status.
+        description:
+          type: string
+          description: Memo provided at creation time.
+      required:
+      - id
+      - originating_account_id
+      - receiving_account_id
+      - amount
+      - status
+      description: P2P payment details returned by retrieve and list endpoints.
+      title: GetP2PPaymentResponse
+    CreateAFTRequest:
+      type: object
+      properties:
+        consumer_id:
+          type: string
+          description: Unique identifier of the consumer initiating the transfer.
+        external_payment_card_id:
+          type: string
+          format: uuid
+          description: External ID of the payment card to pull funds from.
+        amount:
+          type: number
+          format: double
+          description: Amount to pull in USD.
+        description:
+          type: string
+          description: Optional description for the transaction.
+      required:
+      - consumer_id
+      - external_payment_card_id
+      - amount
+      description: Request body for creating an AFT (Account Funding Transaction) — pulls funds from a consumer's external payment card.
+      title: CreateAFTRequest
+    CreatePeerToPeerPaymentRequestRequestUnprocessableEntityError:
+      type: object
+      properties:
+        error:
+          type: string
+        error_code:
+          $ref: '#/components/schemas/V2PaymentsP2PPostResponsesContentApplicationJsonSchemaErrorCode'
+        messages:
+          type: array
+          items:
+            type: string
+      title: CreatePeerToPeerPaymentRequestRequestUnprocessableEntityError
+    GetOCTResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for this payment.
+        consumer_id:
+          type: string
+          description: Identifier of the consumer associated with this payment.
+        external_payment_card_id:
+          type: string
+          format: uuid
+          description: External ID of the payment card that was credited.
+        amount:
+          type: number
+          format: double
+          description: Transfer amount in USD.
+        fee_amount:
+          type: number
+          format: double
+          description: Fee amount charged for this transaction.
+        direction:
+          type: string
+          description: Always `Push` for OCT transactions.
+        status:
+          type: string
+          description: Current payment status.
+      required:
+      - id
+      - amount
+      - direction
+      - status
+      description: OCT payment details.
+      title: GetOCTResponse
+    Payments_listOCTPaymentRequests_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetOCTResponse'
+      required:
+      - count
+      - results
+      title: Payments_listOCTPaymentRequests_Response_200
+    CreateP2PPaymentRequest:
+      type: object
+      properties:
+        originating_account_id:
+          type: string
+          format: uuid
+          description: External ID of the sending consumer's secured-card account.
+        receiving_account_id:
+          type: string
+          format: uuid
+          description: External ID of the receiving consumer's secured-card account.
+        amount:
+          type: number
+          format: double
+          description: Transfer amount in USD. Minimum 1.00. Maximum set by partner configuration.
+        description:
+          type: string
+          description: Optional memo visible in both consumers' transaction history.
+      required:
+      - originating_account_id
+      - receiving_account_id
+      - amount
+      description: Request body for creating a P2P payment between two consumers.
+      title: CreateP2PPaymentRequest
+    GetInstantPaymentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        consumer_id:
+          type: string
+        amount:
+          type: string
+          format: decimal
+        originating_account_id:
+          type: string
+        receiving_account_id:
+          type: string
+        instant_payment_direction:
+          type: string
+      required:
+      - id
+      - amount
+      - originating_account_id
+      - receiving_account_id
+      - instant_payment_direction
+      title: GetInstantPaymentResponse
+    CreateInstantPaymentRequest:
+      type: object
+      properties:
+        consumer_id:
+          type: string
+        originating_account_id:
+          type: string
+        receiving_account_id:
+          type: string
+        description:
+          type: string
+        amount:
+          type: string
+          format: decimal
+      required:
+      - consumer_id
+      - originating_account_id
+      - receiving_account_id
+      - amount
+      title: CreateInstantPaymentRequest
+    Payments_Cancel ACH Payment_Response_204:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: Payments_Cancel ACH Payment_Response_204
+    GetAFTResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for this payment.
+        consumer_id:
+          type: string
+          description: Identifier of the consumer associated with this payment.
+        external_payment_card_id:
+          type: string
+          format: uuid
+          description: External ID of the payment card that was debited.
+        amount:
+          type: number
+          format: double
+          description: Transfer amount in USD.
+        fee_amount:
+          type: number
+          format: double
+          description: Fee amount charged for this transaction.
+        direction:
+          type: string
+          description: Always `Pull` for AFT transactions.
+        status:
+          type: string
+          description: Current payment status.
+      required:
+      - id
+      - amount
+      - direction
+      - status
+      description: AFT payment details.
+      title: GetAFTResponse
+    GetTransferResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        amount:
+          type: number
+          format: double
+        originating_account_id:
+          type: string
+        receiving_account_id:
+          type: string
+        status:
+          type: string
+        description:
+          type: string
+      required:
+      - id
+      - amount
+      - originating_account_id
+      - receiving_account_id
+      - status
+      title: GetTransferResponse
+    CreateP2PPaymentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for this P2P payment. Use it to poll status or retrieve details.
+        originating_account_id:
+          type: string
+          description: External ID of the sending account.
+        receiving_account_id:
+          type: string
+          description: External ID of the receiving account.
+        amount:
+          type: number
+          format: double
+          description: Transfer amount in USD.
+        status:
+          $ref: '#/components/schemas/CreateP2PPaymentResponseStatus'
+          description: 'Current payment status. `pending_review` means the payment is held for compliance review (velocity limit exceeded) and will be processed once approved.
+
+            '
+        description:
+          type: string
+          description: Memo provided at creation time.
+      required:
+      - id
+      - originating_account_id
+      - receiving_account_id
+      - amount
+      - status
+      description: Response returned when a P2P payment is created.
+      title: CreateP2PPaymentResponse
+    Payments_getAllTransfers_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetTransferResponse'
+      required:
+      - count
+      - results
+      title: Payments_getAllTransfers_Response_200
+    Payments_listGetInstantPaymentResponses_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetInstantPaymentResponse'
+      required:
+      - count
+      - results
+      title: Payments_listGetInstantPaymentResponses_Response_200
+    ACHResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        consumer_id:
+          type: string
+        amount:
+          type: number
+          format: double
+        originating_account_id:
+          type: string
+        receiving_account_id:
+          type: string
+        ach_direction:
+          type: string
+        status:
+          type: string
+        description:
+          type: string
+        memo:
+          type: string
+      required:
+      - id
+      - amount
+      - originating_account_id
+      - receiving_account_id
+      - ach_direction
+      - status
+      title: ACHResponse
+    V2PaymentsP2PPostResponsesContentApplicationJsonSchemaErrorCode:
+      type: string
+      enum:
+      - feature_unavailable
+      - invalid_amount
+      - invalid_account_types
+      - invalid_account_pair
+      - not_found
+      - insufficient_funds
+      - invalid_account
+      title: V2PaymentsP2PPostResponsesContentApplicationJsonSchemaErrorCode
+    Payments_listACHResponses_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ACHResponse'
+      required:
+      - count
+      - results
+      title: Payments_listACHResponses_Response_200
+    CreateACHRequest:
+      type: object
+      properties:
+        consumer_id:
+          type: string
+        originating_account_id:
+          type: string
+        receiving_account_id:
+          type: string
+        description:
+          type: string
+        amount:
+          type: number
+          format: double
+      required:
+      - consumer_id
+      - originating_account_id
+      - receiving_account_id
+      - amount
+      title: CreateACHRequest
+    CreateTransferResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        amount:
+          type: number
+          format: double
+        originating_account_id:
+          type: string
+        receiving_account_id:
+          type: string
+        status:
+          type: string
+        description:
+          type: string
+      required:
+      - id
+      - amount
+      - originating_account_id
+      - receiving_account_id
+      - status
+      title: CreateTransferResponse
+    CreateOCTRequest:
+      type: object
+      properties:
+        consumer_id:
+          type: string
+          description: Unique identifier of the consumer receiving the transfer.
+        external_payment_card_id:
+          type: string
+          format: uuid
+          description: External ID of the payment card to credit funds to.
+        amount:
+          type: number
+          format: double
+          description: Amount to push in USD.
+        description:
+          type: string
+          description: Optional description for the transaction.
+      required:
+      - consumer_id
+      - external_payment_card_id
+      - amount
+      description: Request body for creating an OCT (Original Credit Transaction) — pushes funds to a consumer's external payment card.
+      title: CreateOCTRequest
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

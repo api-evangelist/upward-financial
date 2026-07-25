@@ -1,0 +1,115 @@
+openapi: 3.1.0
+info:
+  title: API Reference accounts creditInsights API
+  version: 1.0.0
+servers:
+- url: https://host.com
+  description: Default
+tags:
+- name: creditInsights
+paths:
+  /v2/credit-insights/{consumer_id}/summary/:
+    get:
+      operationId: retrieve-credit-insights-overview
+      summary: Retrieve Credit Insights Overview
+      description: Get credit insights overview
+      tags:
+      - creditInsights
+      parameters:
+      - name: consumer_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditInsightsOverviewV2'
+components:
+  schemas:
+    CreditInsightsOverviewV2:
+      type: object
+      properties:
+        credit_score_card:
+          $ref: '#/components/schemas/CreditInsightsOverviewV2CreditScoreCard'
+        credit_score_history:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditInsightsOverviewV2CreditScoreHistoryItems'
+      required:
+      - credit_score_card
+      - credit_score_history
+      title: CreditInsightsOverviewV2
+    CreditInsightsOverviewV2CreditScoreCardCreditReportStatus:
+      type: string
+      enum:
+      - NotOrdered
+      - Ordered
+      - Fulfilled
+      - Frozen
+      - Rejected
+      - Failed
+      - Error
+      - NoCredit
+      title: CreditInsightsOverviewV2CreditScoreCardCreditReportStatus
+    CreditInsightsOverviewV2CreditScoreHistoryItems:
+      type: object
+      properties:
+        month:
+          type: string
+        score:
+          type: integer
+      required:
+      - score
+      title: CreditInsightsOverviewV2CreditScoreHistoryItems
+    CreditInsightsOverviewV2CreditScoreCard:
+      type: object
+      properties:
+        score:
+          type: integer
+        change:
+          type: integer
+        credit_usage:
+          type: integer
+        total_tradelines:
+          type: integer
+        payment_history:
+          type: integer
+        credit_inquiries:
+          type: integer
+        credit_age:
+          type: integer
+        debt_collection_count:
+          type: integer
+        report_date:
+          type: string
+          format: date-time
+        late_payment_percentage:
+          type: integer
+        total_public_records:
+          type: integer
+        total_open_revolving_accounts:
+          type: integer
+        total_open_collection_accounts:
+          type: integer
+        total_bankruptcies:
+          type: integer
+        credit_report_status:
+          $ref: '#/components/schemas/CreditInsightsOverviewV2CreditScoreCardCreditReportStatus'
+      required:
+      - report_date
+      title: CreditInsightsOverviewV2CreditScoreCard
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,718 @@
+openapi: 3.1.0
+info:
+  title: API Reference accounts billReporting API
+  version: 1.0.0
+servers:
+- url: https://host.com
+  description: Default
+tags:
+- name: billReporting
+paths:
+  /v2/consumers/{consumer_id}/bill-reporting/:
+    get:
+      operationId: retrieve-bill-reporting-view-set
+      summary: Retrieve Bill Reporting View Set
+      description: '1) Validate the Request Token and get the Partner
+
+        2) Get the Bill Reporting for the consumer associated with the request
+
+        3) Return the Bill Reporting info'
+      tags:
+      - billReporting
+      parameters:
+      - name: consumer_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: search
+        in: query
+        description: A search term.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillReporting'
+  /v2/consumers/{consumer_id}/bill-reporting/bill-details/:
+    get:
+      operationId: retrieve-bill-details-view-set
+      summary: Retrieve Bill Details View Set
+      description: '1) Validate the Request Token and get the Partner
+
+        2) Get the Bill Details tradelines for the consumer associated with the request
+
+        3) Return the Bill Detailed TradeLines'
+      tags:
+      - billReporting
+      parameters:
+      - name: consumer_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: search
+        in: query
+        description: A search term.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillDetails'
+  /v2/consumers/{consumer_id}/bill-reporting/open-tradelines/:
+    get:
+      operationId: retrieve-open-tradelines-view-set
+      summary: Retrieve Open Tradelines View Set
+      description: '1) Validate the Request Token and get the Partner
+
+        2) Get the Open Tradelines for the consumer associated with the request with all transactions lists
+
+        3) Return TradeLines and its transactions'
+      tags:
+      - billReporting
+      parameters:
+      - name: consumer_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: search
+        in: query
+        description: A search term.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenTradelines'
+  /v2/consumers/{consumer_id}/bill-reporting/tradeline/{tradeline_id}/:
+    get:
+      operationId: retrieve-trade-line-view-set
+      summary: Retrieve Trade Line View Set
+      description: '1) Validate the Request Token and get the Partner
+
+        2) Get the tradeline for the consumer associated with the request
+
+        3) Return the TradeLine'
+      tags:
+      - billReporting
+      parameters:
+      - name: consumer_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: tradeline_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: search
+        in: query
+        description: A search term.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetailedTradeline'
+  /v2/bill-reporting/:
+    get:
+      operationId: get-all-bill-reportings
+      summary: Get All Bill Reportings
+      description: '1) Validate the Request Token, Get the Partner and Check if it''s scoped
+
+        2) Get the list of Bill Reportings available for that token
+
+        3) Paginate and return the response'
+      tags:
+      - billReporting
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        schema:
+          type: integer
+      - name: search
+        in: query
+        description: A search term.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bill Reporting_getAllBillReportings_Response_200'
+  /v2/bill-reporting/{external_id}/consumers/{consumer_id}/bill-reporting/:
+    get:
+      operationId: get-consumer-bill-reporting
+      summary: Get Consumer Bill Reporting
+      description: '1) Validate the Request Token and get the Partner
+
+        2) Get the Bill Reporting for the consumer associated with the request
+
+        3) Return the Bill Reporting info'
+      tags:
+      - billReporting
+      parameters:
+      - name: external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: consumer_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: search
+        in: query
+        description: A search term.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillReporting'
+  /v2/consumers/{consumer_id}/bill-reporting/close-tradeline/:
+    post:
+      operationId: create-close-tradeline-view-set
+      summary: Create Close Tradeline View Set
+      description: '0) Validate the Request input params
+
+        1) Validate the Request Token and get the Partner
+
+        2) Get tradeline by the id
+
+        3) Make some validation for the tradeline (eligible, already open, etc.)
+
+        4) Close an Opened tradeline for the consumer (CANNOT BE OPENED AGAIN)'
+      tags:
+      - billReporting
+      parameters:
+      - name: consumer_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CloseTradeline'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CloseTradeline'
+  /v2/consumers/{consumer_id}/bill-reporting/attestation/:
+    post:
+      operationId: create-attestation-view-set
+      summary: Create Attestation View Set
+      description: '0) Validate the Request input params
+
+        1) Validate the Request Token and get the Partner
+
+        2) Check that consumer is onboarded on Bloom Enablement
+
+        3) Get tradeline by the id
+
+        4) Make some validation for the tradeline (eligible, already open, etc.)
+
+        6) Check category to define the vars to send
+
+        7) Open a tradeline for the consumer'
+      tags:
+      - billReporting
+      parameters:
+      - name: consumer_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OpenTradelineInput'
+  /v2/bill-reporting/{external_id}/reported-bills/:
+    post:
+      operationId: create-reported-bill
+      summary: Create Reported Bill
+      description: Add a new bill to be reported for a consumer
+      tags:
+      - billReporting
+      parameters:
+      - name: external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportedBill'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportedBillCreate'
+components:
+  schemas:
+    BillReportingBillsReportedItemsCategory:
+      type: string
+      enum:
+      - rent
+      - utility
+      - telco
+      - other
+      title: BillReportingBillsReportedItemsCategory
+    ReportedBill:
+      type: object
+      properties:
+        external_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        category:
+          $ref: '#/components/schemas/ReportedBillCategory'
+        account:
+          type: string
+        primary_residence:
+          type: boolean
+        attestation_signed:
+          type: boolean
+        attestation_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      required:
+      - name
+      - category
+      title: ReportedBill
+    BillReporting:
+      type: object
+      properties:
+        external_id:
+          type: string
+          format: uuid
+        bills_reported:
+          type: array
+          items:
+            $ref: '#/components/schemas/BillReportingBillsReportedItems'
+      required:
+      - bills_reported
+      title: BillReporting
+    OpenTradelineInput:
+      type: object
+      properties:
+        tradeline_id:
+          type: string
+          format: uuid
+        is_primary_address:
+          type: boolean
+        lease_start_date:
+          type: string
+          format: date
+        has_other_mortgage_or_rent:
+          type: boolean
+        service_phone:
+          type:
+          - string
+          - 'null'
+        utility_types:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpenTradelineInputUtilityTypesItems'
+          description: List of utility types, e.g., ['ELECTRIC', 'WATER']
+      required:
+      - tradeline_id
+      title: OpenTradelineInput
+    DetailedTradelineTransactions:
+      type: object
+      properties: {}
+      description: List of transactions associated with the tradeline
+      title: DetailedTradelineTransactions
+    OpenTradelineInputUtilityTypesItems:
+      type: string
+      enum:
+      - WATER
+      - ELECTRIC
+      - GAS
+      - ADDITIONAL
+      title: OpenTradelineInputUtilityTypesItems
+    ReportedBillCategory:
+      type: string
+      enum:
+      - rent
+      - utility
+      - telco
+      - other
+      title: ReportedBillCategory
+    DetailedTradeline:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        merchant:
+          type: string
+        category:
+          type: string
+        status:
+          type: string
+        is_eligible:
+          type: boolean
+        payment_frequency:
+          type: string
+        transactions:
+          $ref: '#/components/schemas/DetailedTradelineTransactions'
+          description: List of transactions associated with the tradeline
+        service_address:
+          type: string
+        service_phone:
+          type: string
+        lease_start_date:
+          type: string
+        utility_types:
+          type: string
+        service_address_type:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        transaction_count:
+          type: integer
+        amount:
+          type: number
+          format: double
+      required:
+      - id
+      - merchant
+      - category
+      - status
+      - is_eligible
+      - payment_frequency
+      - transactions
+      - created_at
+      - updated_at
+      title: DetailedTradeline
+    OpenTradelines:
+      type: object
+      properties:
+        tradelines:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpenTradelinesTradelinesItems'
+      required:
+      - tradelines
+      title: OpenTradelines
+    BillDetailsTradelinesItems:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        merchant:
+          type: string
+        category:
+          type: string
+        status:
+          type: string
+        is_eligible:
+          type: boolean
+        payment_frequency:
+          type: string
+        service_address:
+          type: string
+        service_phone:
+          type: string
+        lease_start_date:
+          type: string
+        utility_types:
+          type: string
+        service_address_type:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        transaction_count:
+          type: integer
+        amount:
+          type: number
+          format: double
+      required:
+      - id
+      - merchant
+      - category
+      - status
+      - is_eligible
+      - payment_frequency
+      - created_at
+      - updated_at
+      title: BillDetailsTradelinesItems
+    CloseTradeline:
+      type: object
+      properties:
+        tradeline_id:
+          type: string
+          format: uuid
+      required:
+      - tradeline_id
+      title: CloseTradeline
+    ReportedBillCreateCategory:
+      type: string
+      enum:
+      - rent
+      - utility
+      - telco
+      - other
+      title: ReportedBillCreateCategory
+    BillReportingBillsReportedItems:
+      type: object
+      properties:
+        external_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        category:
+          $ref: '#/components/schemas/BillReportingBillsReportedItemsCategory'
+        account:
+          type: string
+        primary_residence:
+          type: boolean
+        attestation_signed:
+          type: boolean
+        attestation_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      required:
+      - name
+      - category
+      title: BillReportingBillsReportedItems
+    Bill Reporting_getAllBillReportings_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/BillReporting'
+      required:
+      - count
+      - results
+      title: Bill Reporting_getAllBillReportings_Response_200
+    ReportedBillCreate:
+      type: object
+      properties:
+        name:
+          type: string
+        category:
+          $ref: '#/components/schemas/ReportedBillCreateCategory'
+        account:
+          type: string
+        primary_residence:
+          type: boolean
+        attestation_signed:
+          type: boolean
+        attestation_date:
+          type: string
+          format: date-time
+      required:
+      - name
+      - category
+      - account
+      - primary_residence
+      - attestation_signed
+      - attestation_date
+      title: ReportedBillCreate
+    OpenTradelinesTradelinesItems:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        merchant:
+          type: string
+        category:
+          type: string
+        status:
+          type: string
+        is_eligible:
+          type: boolean
+        payment_frequency:
+          type: string
+        service_address:
+          type: string
+        service_phone:
+          type: string
+        lease_start_date:
+          type: string
+        utility_types:
+          type: string
+        service_address_type:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        transaction_count:
+          type: integer
+        amount:
+          type: number
+          format: double
+      required:
+      - id
+      - merchant
+      - category
+      - status
+      - is_eligible
+      - payment_frequency
+      - created_at
+      - updated_at
+      title: OpenTradelinesTradelinesItems
+    BillDetails:
+      type: object
+      properties:
+        tradelines:
+          type: array
+          items:
+            $ref: '#/components/schemas/BillDetailsTradelinesItems'
+      required:
+      - tradelines
+      title: BillDetails
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

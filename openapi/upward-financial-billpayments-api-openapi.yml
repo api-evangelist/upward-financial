@@ -1,0 +1,363 @@
+openapi: 3.1.0
+info:
+  title: API Reference accounts billPayments API
+  version: 1.0.0
+servers:
+- url: https://host.com
+  description: Default
+tags:
+- name: billPayments
+paths:
+  /v2/bill-pay/bills/{external_id}/:
+    get:
+      operationId: get-bill
+      summary: Get Bill
+      description: Get a specific Bill by ID.
+      tags:
+      - billPayments
+      parameters:
+      - name: external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bill'
+  /v2/bill-pay/bills/:
+    get:
+      operationId: list-bill-payments-view-sets
+      summary: List Bill Payments View Sets
+      description: List all bill payments for a specific bill
+      tags:
+      - billPayments
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        schema:
+          type: integer
+      - name: search
+        in: query
+        description: A search term.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bill Payments_listBillPaymentsViewSets_Response_200'
+    post:
+      operationId: create-bill
+      summary: Create Bill
+      description: Create a new Bill.
+      tags:
+      - billPayments
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateBill'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBill'
+  /v2/bill-pay/bills/{external_id}/payments/{bill_payment_id}/:
+    get:
+      operationId: get-bill-payment
+      summary: Get Bill Payment
+      description: Get a specific Bill Payment by ID.
+      tags:
+      - billPayments
+      parameters:
+      - name: external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: bill_payment_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillPaymentResponse'
+  /v2/bill-pay/bills/{external_id}/payments/:
+    get:
+      operationId: get-all-bill-payments
+      summary: Get All Bill Payments
+      description: List all bill payments for a specific bill
+      tags:
+      - billPayments
+      parameters:
+      - name: external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        schema:
+          type: integer
+      - name: search
+        in: query
+        description: A search term.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bill Payments_getAllBillPayments_Response_200'
+    post:
+      operationId: create-bill-payment
+      summary: Create Bill Payment
+      description: Create a new Bill Payment for a specific bill.
+      tags:
+      - billPayments
+      parameters:
+      - name: external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillPaymentResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BillPaymentRequest'
+components:
+  schemas:
+    Bill:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        consumer_id:
+          type: string
+          format: uuid
+        sending_account_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        receiver_name:
+          type: string
+        account_number:
+          type: string
+        account_routing_number:
+          type: string
+      required:
+      - id
+      - consumer_id
+      - sending_account_id
+      - name
+      - receiver_name
+      - account_number
+      - account_routing_number
+      title: Bill
+    CreateBill:
+      type: object
+      properties:
+        consumer_id:
+          type: string
+          format: uuid
+        sending_account_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        receiver_name:
+          type: string
+        account_number:
+          type: string
+        account_routing_number:
+          type: string
+      required:
+      - consumer_id
+      - sending_account_id
+      - name
+      - receiver_name
+      - account_number
+      - account_routing_number
+      title: CreateBill
+    BillPaymentRequest:
+      type: object
+      properties:
+        amount:
+          type: string
+          format: decimal
+        description:
+          type: string
+      required:
+      - amount
+      - description
+      title: BillPaymentRequest
+    Bill Payments_listBillPaymentsViewSets_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            description: Any type
+      required:
+      - count
+      - results
+      title: Bill Payments_listBillPaymentsViewSets_Response_200
+    BillPaymentResponseStatus:
+      type: string
+      enum:
+      - queued
+      - submitted
+      - completed
+      - errored
+      title: BillPaymentResponseStatus
+    BillPaymentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        amount:
+          type: string
+          format: decimal
+        description:
+          type:
+          - string
+          - 'null'
+        process_date:
+          type: string
+          format: date
+        payment_rail:
+          type:
+          - string
+          - 'null'
+        status:
+          $ref: '#/components/schemas/BillPaymentResponseStatus'
+      required:
+      - id
+      - amount
+      - process_date
+      title: BillPaymentResponse
+    Bill Payments_getAllBillPayments_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/BillPaymentResponse'
+      required:
+      - count
+      - results
+      title: Bill Payments_getAllBillPayments_Response_200
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,192 @@
+openapi: 3.1.0
+info:
+  title: API Reference accounts statements API
+  version: 1.0.0
+servers:
+- url: https://host.com
+  description: Default
+tags:
+- name: statements
+paths:
+  /v2/consumers/{consumer_id}/statements/{pdf_filename}/download/:
+    get:
+      operationId: retrieve-statement
+      summary: Retrieve Statement
+      description: Get a pdf in b64encode
+      tags:
+      - statements
+      parameters:
+      - name: consumer_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: pdf_filename
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatementResponseDownload'
+  /v2/consumers/{consumer_id}/statements/:
+    get:
+      operationId: list-statements
+      summary: List Statements
+      description: Get a list with all PDF Statements generated for a consumer
+      tags:
+      - statements
+      parameters:
+      - name: consumer_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        schema:
+          type: integer
+      - name: search
+        in: query
+        description: A search term.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Statements_listStatements_Response_200'
+  /v2/consumers/{consumer_id}/statements/{pdf_filename}/email/:
+    get:
+      operationId: email-statement
+      summary: Email Statement
+      description: Send a PDF statement by email
+      tags:
+      - statements
+      parameters:
+      - name: consumer_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: pdf_filename
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatementEmailResponse'
+components:
+  schemas:
+    Statement:
+      type: object
+      properties:
+        statement_name:
+          type: string
+        statement_month:
+          type: string
+        consumer_id:
+          type: string
+        file_name:
+          type: string
+        last_modified:
+          type: string
+          format: date-time
+        file_size:
+          type: integer
+      required:
+      - statement_name
+      - statement_month
+      - consumer_id
+      - file_name
+      - last_modified
+      - file_size
+      title: Statement
+    StatementResponseDownload:
+      type: object
+      properties:
+        file_name:
+          type: string
+        content:
+          type: string
+        content_type:
+          type: string
+          default: application/pdf
+      title: StatementResponseDownload
+    StatementEmailResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          default: The statement has been sent to your email.
+      title: StatementEmailResponse
+    Statements_listStatements_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Statement'
+      required:
+      - count
+      - results
+      title: Statements_listStatements_Response_200
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

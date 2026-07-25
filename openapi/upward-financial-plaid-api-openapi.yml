@@ -1,0 +1,113 @@
+openapi: 3.1.0
+info:
+  title: API Reference accounts plaid API
+  version: 1.0.0
+servers:
+- url: https://host.com
+  description: Default
+tags:
+- name: plaid
+paths:
+  /v2/consumers/{consumer_id}/accounts/plaid-link-token:
+    post:
+      operationId: create-consumer-plaid-link-token
+      summary: Create Consumer Plaid Link Token
+      description: 'Generate a Plaid Link Token for a consumer.
+
+        POST /v2/consumers/{consumer_id}/accounts/plaid-link-token'
+      tags:
+      - plaid
+      parameters:
+      - name: consumer_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plaid_createConsumerPlaidLinkToken_Response_200'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePlaidLinkToken'
+  /v2/accounts/{account_external_id}/verify/:
+    post:
+      operationId: verify-bank-account
+      summary: Verify Bank Account
+      description: Verify bank account using Plaid microdeposits
+      tags:
+      - plaid
+      parameters:
+      - name: account_external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LinkBankAccount'
+components:
+  schemas:
+    LinkBankAccount:
+      type: object
+      properties:
+        plaid_link_token:
+          type: string
+      required:
+      - plaid_link_token
+      title: LinkBankAccount
+    Plaid_createConsumerPlaidLinkToken_Response_200:
+      type: object
+      properties:
+        link_token:
+          type: string
+        expiration:
+          type: integer
+        hosted_link_url:
+          type: string
+          format: uri
+      required:
+      - link_token
+      - expiration
+      - hosted_link_url
+      title: Plaid_createConsumerPlaidLinkToken_Response_200
+    CreatePlaidLinkToken:
+      type: object
+      properties:
+        is_mobile_app:
+          type: boolean
+      required:
+      - is_mobile_app
+      title: CreatePlaidLinkToken
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

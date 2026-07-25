@@ -1,0 +1,139 @@
+openapi: 3.1.0
+info:
+  title: API Reference accounts auth API
+  version: 1.0.0
+servers:
+- url: https://host.com
+  description: Default
+tags:
+- name: auth
+paths:
+  /auth/token/:
+    post:
+      operationId: create-upwardli-token
+      summary: Create Upwardli Token
+      description: Upwardli Token View
+      tags:
+      - auth
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateUpwardliTokenResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUpwardliToken'
+  /auth/token/exchange/:
+    post:
+      operationId: create-upwardli-token-exchange
+      summary: Create Upwardli Token Exchange
+      description: Upwardli Token Exchange View
+      tags:
+      - auth
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateUpwardliTokenExchangeResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUpwardliTokenExchange'
+components:
+  schemas:
+    CreateUpwardliTokenExchangeResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        expires_in:
+          type: integer
+        token_type:
+          type: string
+        scope:
+          type: string
+      required:
+      - access_token
+      - expires_in
+      - token_type
+      - scope
+      title: CreateUpwardliTokenExchangeResponse
+    CreateUpwardliToken:
+      type: object
+      properties:
+        grant_type:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        scope:
+          type: string
+      required:
+      - grant_type
+      - client_id
+      - client_secret
+      - scope
+      title: CreateUpwardliToken
+    CreateUpwardliTokenExchange:
+      type: object
+      properties:
+        grant_type:
+          type: string
+        subject_token_type:
+          type: string
+        subject_token:
+          type: string
+        audience:
+          type: string
+        scope:
+          type: string
+      required:
+      - grant_type
+      - subject_token_type
+      - subject_token
+      - audience
+      - scope
+      title: CreateUpwardliTokenExchange
+    CreateUpwardliTokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        expires_in:
+          type: integer
+        token_type:
+          type: string
+        scope:
+          type: string
+      required:
+      - access_token
+      - expires_in
+      - token_type
+      - scope
+      title: CreateUpwardliTokenResponse
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

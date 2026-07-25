@@ -1,0 +1,235 @@
+openapi: 3.1.0
+info:
+  title: API Reference accounts API
+  version: 1.0.0
+servers:
+- url: https://host.com
+  description: Default
+tags:
+- name: accounts
+paths:
+  /v2/accounts/:
+    get:
+      operationId: get-all-bank-accounts
+      summary: Get All Bank Accounts
+      description: ''
+      tags:
+      - accounts
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        schema:
+          type: integer
+      - name: search
+        in: query
+        description: A search term.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Accounts_getAllBankAccounts_Response_200'
+    post:
+      operationId: create-consumer-bank-account
+      summary: Create Consumer Bank Account
+      description: Create Consumer Bank Account
+      tags:
+      - accounts
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankAccountV2'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BankAccountCreateV2'
+  /v2/accounts/{account_id}/:
+    get:
+      operationId: get-bank-account
+      summary: Get Bank Account
+      description: ''
+      tags:
+      - accounts
+      parameters:
+      - name: account_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankAccountV2'
+    put:
+      operationId: update-bank-account
+      summary: Update Bank Account
+      description: ''
+      tags:
+      - accounts
+      parameters:
+      - name: account_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankAccountUpdateV2'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BankAccountUpdateV2'
+components:
+  schemas:
+    BankAccountV2:
+      type: object
+      properties:
+        id:
+          type: string
+        consumer_id:
+          type: string
+        bank_name:
+          type:
+          - string
+          - 'null'
+        balance:
+          type: string
+        account_name:
+          type: string
+        account_type:
+          type: string
+        account_number:
+          type: string
+        account_routing_number:
+          type: string
+        is_primary:
+          type: boolean
+        is_active:
+          type: boolean
+          default: true
+      required:
+      - bank_name
+      - account_name
+      - account_type
+      - is_primary
+      title: BankAccountV2
+    BankAccountCreateV2:
+      type: object
+      properties:
+        consumer_id:
+          type: string
+        routing_number:
+          type: string
+        account_number:
+          type: string
+        bank_name:
+          type: string
+        account_name:
+          type: string
+        plaid_account_id:
+          type:
+          - string
+          - 'null'
+        plaid_access_token:
+          type:
+          - string
+          - 'null'
+      required:
+      - consumer_id
+      - routing_number
+      - account_number
+      - bank_name
+      - account_name
+      title: BankAccountCreateV2
+    BankAccountUpdateV2:
+      type: object
+      properties:
+        routing_number:
+          type: string
+        account_number:
+          type: string
+        bank_name:
+          type: string
+        account_name:
+          type: string
+        is_active:
+          type: boolean
+      title: BankAccountUpdateV2
+    Accounts_getAllBankAccounts_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/BankAccountV2'
+      required:
+      - count
+      - results
+      title: Accounts_getAllBankAccounts_Response_200
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

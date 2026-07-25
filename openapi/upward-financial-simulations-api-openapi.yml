@@ -1,0 +1,111 @@
+openapi: 3.1.0
+info:
+  title: API Reference accounts simulations API
+  version: 1.0.0
+servers:
+- url: https://host.com
+  description: Default
+tags:
+- name: simulations
+paths:
+  /v2/simulations/payment-cards/{payment_card_id}/create-simulated-card-auth:
+    post:
+      operationId: create-payment-card-sim-auth
+      summary: Create Payment Card Sim Auth
+      description: ''
+      tags:
+      - simulations
+      parameters:
+      - name: payment_card_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /v2/simulations/payment-cards/{payment_card_id}/create-simulated-fund-card:
+    post:
+      operationId: create-payment-card-sim-funding
+      summary: Create Payment Card Sim Funding
+      description: ''
+      tags:
+      - simulations
+      parameters:
+      - name: payment_card_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /v2/simulations/payment-cards/{payment_card_id}/create-simulated-card-settlement:
+    post:
+      operationId: create-payment-card-sim-settlement
+      summary: Create Payment Card Sim Settlement
+      description: ''
+      tags:
+      - simulations
+      parameters:
+      - name: payment_card_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

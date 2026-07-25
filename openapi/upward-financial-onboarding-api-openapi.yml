@@ -1,0 +1,813 @@
+openapi: 3.1.0
+info:
+  title: API Reference accounts onboarding API
+  version: 1.0.0
+servers:
+- url: https://host.com
+  description: Default
+tags:
+- name: onboarding
+paths:
+  /v2/onboarding/:
+    get:
+      operationId: get-all-onboardings
+      summary: Get All Onboardings
+      description: '1) Get Partner from request
+
+        2) Get Partner Onboardings and filter (pcid or external id) if needed
+
+        3) Return a list of onboardings with their id and consumer data'
+      tags:
+      - onboarding
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
+      - name: page_size
+        in: query
+        description: Number of results to return per page.
+        required: false
+        schema:
+          type: integer
+      - name: search
+        in: query
+        description: A search term.
+        required: false
+        schema:
+          type: string
+      - name: consumer_id
+        in: query
+        description: Consumer ID
+        required: true
+        schema:
+          type: string
+      - name: consumer_pcid
+        in: query
+        description: Consumer PCID
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Onboarding_getAllOnboardings_Response_200'
+    post:
+      operationId: create-onboarding
+      summary: Create Onboarding
+      description: '1) Validate the request and get the partner from it
+
+        2) Verify if consumer exists and if so, if there''s an onboarding flow
+
+        3) Create a new onboarding (and new consumer) if needed
+
+        4) Return the onboarding id and consumer data'
+      tags:
+      - onboarding
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnboardResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Onboarding'
+  /v2/onboarding/{external_id}/:
+    get:
+      operationId: get-onboarding
+      summary: Get Onboarding
+      description: '1) Get Partner from request
+
+        2) Get the Onboarding and check if it belongs to the partner
+
+        3) Return the onboarding id and consumer data'
+      tags:
+      - onboarding
+      parameters:
+      - name: external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnboardResponse'
+    delete:
+      operationId: cancel-onboarding
+      summary: Cancel Onboarding
+      description: 1) Set the Onboarding Process Status to cancelled
+      tags:
+      - onboarding
+      parameters:
+      - name: external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Onboarding_cancelOnboarding_Response_204'
+  /v2/onboarding/{external_id}/verify-identity/:
+    post:
+      operationId: verify-identity
+      summary: Verify Identity
+      description: View used to start the "Verify Identity" step on an existing Onboarding
+      tags:
+      - onboarding
+      parameters:
+      - name: external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnboardResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyIdentity'
+  /v2/onboarding/{external_id}/accept-terms/:
+    post:
+      operationId: accept-terms
+      summary: Accept Terms
+      description: View used to start the "Accept Terms" step on an existing Onboarding
+      tags:
+      - onboarding
+      parameters:
+      - name: external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnboardResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AcceptTerms'
+  /v2/onboarding/{external_id}/bloom-enablement/:
+    post:
+      operationId: bloom-enablement-request
+      summary: Bloom Enablement Request
+      description: View used to start the "Onboard a consumer on Bloom Enablement" step on an existing Onboarding
+      tags:
+      - onboarding
+      parameters:
+      - name: external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnboardResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BloomEnablementRequest'
+  /v2/onboarding/{external_id}/link-bank-account/:
+    post:
+      operationId: link-bank-account
+      summary: Link Bank Account
+      description: View used to start the "Link Bank Account" step on an existing Onboarding
+      tags:
+      - onboarding
+      parameters:
+      - name: external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnboardResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LinkBankAccount'
+  /v2/onboarding/{external_id}/bill-details/:
+    post:
+      operationId: add-bill-details
+      summary: Add Bill Details
+      description: View used to show Bill Details step on an existing Onboarding
+      tags:
+      - onboarding
+      parameters:
+      - name: external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnboardResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OnboardResponse'
+  /v2/onboarding/{external_id}/perform-underwriting/:
+    post:
+      operationId: perform-underwriting
+      summary: Perform Underwriting
+      description: View perform the Underwriting on an existing Onboarding
+      tags:
+      - onboarding
+      parameters:
+      - name: external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnboardResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PerformUnderwriting'
+  /v2/onboarding/{external_id}/select-product/:
+    post:
+      operationId: select-product
+      summary: Select Product
+      description: Select the Product for an existing Onboarding
+      tags:
+      - onboarding
+      parameters:
+      - name: external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnboardResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SelectProduct'
+  /v2/onboarding/{external_id}/submit-loan/:
+    post:
+      operationId: submit-loan-request
+      summary: Submit Loan Request
+      description: Submit a loan request for an existing Onboarding
+      tags:
+      - onboarding
+      parameters:
+      - name: external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnboardResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubmitLoanRequest'
+  /v2/onboarding/{external_id}/metadata/:
+    post:
+      operationId: add-onboarding-metadata
+      summary: Add Onboarding Metadata
+      description: '1) Validate the request and get the Metadata from it
+
+        2) Get the onboarding process
+
+        3) Create/Update the onboarding metadata
+
+        4) Return the onboarding data'
+      tags:
+      - onboarding
+      parameters:
+      - name: external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnboardResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OnboardingMetadata'
+    put:
+      operationId: update-onboarding-metadata
+      summary: Update Onboarding Metadata
+      description: '1) Validate the request and get the Metadata from it
+
+        2) Get the onboarding process
+
+        3) Create/Update the onboarding metadata
+
+        4) Return the onboarding data'
+      tags:
+      - onboarding
+      parameters:
+      - name: external_id
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Bearer authentication
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnboardResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OnboardingMetadata'
+components:
+  schemas:
+    OnboardResponseConsumer:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        pcid:
+          type: string
+        external_id:
+          type: string
+          format: uuid
+        mla_status:
+          type: boolean
+        first_name:
+          type:
+          - string
+          - 'null'
+        last_name:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+          format: email
+        is_active:
+          type: boolean
+        kyc_status:
+          type: string
+        phone_number:
+          type: string
+        date_of_birth:
+          type: string
+        tax_id_type:
+          type: string
+        tax_identifier:
+          type:
+          - string
+          - 'null'
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_city:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+        credit_lines:
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      - pcid
+      - mla_status
+      - phone_number
+      - date_of_birth
+      - tax_id_type
+      - address_line1
+      - address_line2
+      - address_city
+      - address_state
+      - address_zip
+      title: OnboardResponseConsumer
+    PerformUnderwriting:
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/PerformUnderwritingResult'
+        data:
+          type: string
+      required:
+      - result
+      - data
+      title: PerformUnderwriting
+    AcceptTerms:
+      type: object
+      properties:
+        agreement_accepted:
+          type: boolean
+      required:
+      - agreement_accepted
+      title: AcceptTerms
+    BloomEnablementRequest:
+      type: object
+      properties: {}
+      title: BloomEnablementRequest
+    OnboardingMetadata:
+      type: object
+      properties:
+        metadata:
+          oneOf:
+          - $ref: '#/components/schemas/OnboardingMetadataMetadata'
+          - type: 'null'
+      required:
+      - metadata
+      title: OnboardingMetadata
+    SubmitLoanRequest:
+      type: object
+      properties: {}
+      title: SubmitLoanRequest
+    LinkBankAccount:
+      type: object
+      properties:
+        plaid_link_token:
+          type: string
+      required:
+      - plaid_link_token
+      title: LinkBankAccount
+    PerformUnderwritingResult:
+      type: string
+      enum:
+      - pass
+      - fail
+      title: PerformUnderwritingResult
+    Onboarding:
+      type: object
+      properties:
+        pcid:
+          type: string
+        onboarding_template_id:
+          type: string
+      required:
+      - pcid
+      - onboarding_template_id
+      title: Onboarding
+    OnboardResponseKyc:
+      type: object
+      properties:
+        inquiry_ids:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        fallback_inquiry_id:
+          type: string
+        inquiry_template_id:
+          type: string
+      required:
+      - inquiry_ids
+      - fallback_inquiry_id
+      - inquiry_template_id
+      title: OnboardResponseKyc
+    OnboardResponseESign:
+      type: object
+      properties:
+        agreement_accepted:
+          type: boolean
+        agreement_accepted_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      required:
+      - agreement_accepted
+      - agreement_accepted_date
+      title: OnboardResponseESign
+    SelectProduct:
+      type: object
+      properties:
+        product_id:
+          type: string
+        product_configuration:
+          oneOf:
+          - $ref: '#/components/schemas/SelectProductProductConfiguration'
+          - type: 'null'
+      required:
+      - product_id
+      title: SelectProduct
+    SelectProductProductConfiguration:
+      type: object
+      properties: {}
+      title: SelectProductProductConfiguration
+    VerifyIdentity:
+      type: object
+      properties:
+        inquiry_id:
+          type:
+          - string
+          - 'null'
+          default: ''
+      title: VerifyIdentity
+    OnboardResponseUnderwriting:
+      type: object
+      properties:
+        result:
+          type: string
+        data:
+          type: string
+        errors:
+          type:
+          - array
+          - 'null'
+          items:
+            description: Any type
+      required:
+      - result
+      - data
+      - errors
+      title: OnboardResponseUnderwriting
+    Onboarding_cancelOnboarding_Response_204:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: Onboarding_cancelOnboarding_Response_204
+    OnboardResponseProduct:
+      type: object
+      properties:
+        product_id:
+          type: string
+        product_configuration:
+          oneOf:
+          - $ref: '#/components/schemas/OnboardResponseProductProductConfiguration'
+          - type: 'null'
+      required:
+      - product_id
+      - product_configuration
+      title: OnboardResponseProduct
+    OnboardResponseProductProductConfiguration:
+      type: object
+      properties: {}
+      title: OnboardResponseProductProductConfiguration
+    OnboardingMetadataMetadata:
+      type: object
+      properties: {}
+      title: OnboardingMetadataMetadata
+    OnboardResponseCurrentStepsItems:
+      type: object
+      properties:
+        slug:
+          type: string
+        url:
+          type: string
+      required:
+      - slug
+      - url
+      title: OnboardResponseCurrentStepsItems
+    Onboarding_getAllOnboardings_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/OnboardResponse'
+      required:
+      - count
+      - results
+      title: Onboarding_getAllOnboardings_Response_200
+    OnboardResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        status:
+          type: string
+        consumer:
+          $ref: '#/components/schemas/OnboardResponseConsumer'
+        kyc:
+          $ref: '#/components/schemas/OnboardResponseKyc'
+        e_sign:
+          $ref: '#/components/schemas/OnboardResponseESign'
+        underwriting:
+          $ref: '#/components/schemas/OnboardResponseUnderwriting'
+        product:
+          $ref: '#/components/schemas/OnboardResponseProduct'
+        previous_steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/OnboardResponsePreviousStepsItems'
+        current_steps:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/OnboardResponseCurrentStepsItems'
+        metadata:
+          oneOf:
+          - $ref: '#/components/schemas/OnboardResponseMetadata'
+          - type: 'null'
+      required:
+      - id
+      - status
+      - consumer
+      - kyc
+      - e_sign
+      - underwriting
+      - product
+      - previous_steps
+      - current_steps
+      - metadata
+      title: OnboardResponse
+    OnboardResponseMetadata:
+      type: object
+      properties: {}
+      title: OnboardResponseMetadata
+    OnboardResponsePreviousStepsItems:
+      type: object
+      properties:
+        slug:
+          type: string
+        url:
+          type: string
+      required:
+      - slug
+      - url
+      title: OnboardResponsePreviousStepsItems
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
