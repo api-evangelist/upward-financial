@@ -1,0 +1,26 @@
+generated: '2026-07-21'
+method: searched
+source: https://developers.upwardli.com/api-access/environments-and-base-ur-ls
+description: >-
+  Lifecycle posture of the Upward (Upwardli) Credit Suite API. The API is
+  versioned in the URI path (current v2) across separate sandbox and
+  production environments; a public status page runs at
+  status.upwardli.com (probed 200, "Upwardli Status", live uptime/operational
+  state). No public deprecation policy, Sunset/Deprecation header support,
+  SLA, or dated changelog is published on the developer portal, and the
+  OpenAPI marks no operations deprecated.
+versioning:
+  scheme: uri-path
+  current: v2
+  docs: https://developers.upwardli.com/api-access/environments-and-base-ur-ls
+environments:
+  - {name: sandbox, api: 'https://api-sandbox.upwardli.com/v2', auth: 'https://auth-sandbox.upwardli.com/'}
+  - {name: production, api: 'https://api.upwardli.com/v2', auth: 'https://auth.upwardli.com/'}
+status_page: https://status.upwardli.com/
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No published deprecation policy found on the developer portal.
+sla: null
+changelog: null
+deprecated_operations: []

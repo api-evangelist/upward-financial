@@ -1,0 +1,111 @@
+generated: '2026-07-21'
+method: searched
+source: https://developers.upwardli.com/concepts/webhooks/event-catalog
+type: Webhooks
+description: >-
+  Upward (Upwardli) publishes a documented webhook event surface but no
+  AsyncAPI specification, so this artifact captures the webhook catalog
+  verbatim from the developer portal. Webhooks are registered via the API
+  (POST /v2/webhooks/registrations, modeled in the OpenAPI) and secured with
+  an HMAC-SHA256 signature in the Upwardli-Signature header (t=<timestamp>,
+  v1=<hex digest> computed from the client_id secret over
+  "<timestamp>.<raw JSON body>"). Payloads deliberately carry resource URIs
+  rather than full objects — consumers follow the uri[s] in the body to fetch
+  the referenced object from the API.
+docs:
+  - https://developers.upwardli.com/concepts/webhooks/introduction
+  - https://developers.upwardli.com/concepts/webhooks/security
+  - https://developers.upwardli.com/concepts/webhooks/event-catalog
+  - https://developers.upwardli.com/concepts/webhooks/registration
+security:
+  mechanism: HMAC-SHA256 signature
+  header: Upwardli-Signature
+  format: "t=<unix_timestamp>,v1=<sha256 hex digest>"
+  signed_payload: "<timestamp>.<raw JSON request body>"
+registration:
+  api: openapi/upward-financial-openapi.json
+  operations:
+    - register-webhook-listener
+    - retrieve-webhook-registration
+    - retrieve-webhook-history
+    - update-webhook-history
+    - delete-webhook-registration
+envelope_fields: [id, created_at, event_name, partner_id, resources, last_attempted_at]
+events:
+  bank_account:
+    - {name: Consumer.BankAccount.Created, description: Sent once a new bank account is associated/added to their profile.}
+    - {name: Consumer.BankAccount.Deleted, description: Sent once a bank account is removed from their profile.}
+  consumer:
+    - {name: Consumer.Created, description: Sent once a consumer is created.}
+    - {name: Consumer.Updated, description: Sent any time a consumer object is updated.}
+    - {name: Consumer.Closed, description: Sent when a consumer account is closed.}
+  consumer_kyc:
+    - {name: Consumer.KYC.Approved, description: Sent once a Consumer is fully KYC approved.}
+    - {name: Consumer.KYC.Completed, description: Sent once a Consumer has completed filling out data in an interactive KYC session.}
+    - {name: Consumer.KYC.Failed, description: Sent when a Consumer fails KYC.}
+    - {name: Consumer.KYC.NeedsReview, description: Sent if a Consumer's KYC data needs further review.}
+    - {name: Consumer.KYC.Pending, description: Sent once a Consumer's KYC session is Pending.}
+    - {name: Consumer.KYC.Started, description: Sent once a Consumer has begun the KYC process.}
+  consumer_underwriting:
+    - {name: Consumer.Underwriting.Approved, description: Sent once a Consumer's Underwriting is approved.}
+    - {name: Consumer.Underwriting.Failed, description: Sent when a Consumer has failed Underwriting.}
+  credit_line:
+    - {name: CreditLine.Created, description: Sent once a new Credit Line is created.}
+    - {name: CreditLine.Updated, description: Sent once a Credit Line is updated.}
+    - {name: CreditLine.Closed, description: Sent once a Credit Line has been closed.}
+  credit_line_transaction:
+    - {name: CreditLine.Transaction.Created, description: Sent once a new transaction is created.}
+    - {name: CreditLine.Transaction.Cleared, description: Sent once a transaction is cleared.}
+    - {name: CreditLine.Transaction.Closed, description: Sent once a transaction has been closed.}
+    - {name: CreditLine.Transaction.Canceled, description: Sent once a transaction has been canceled.}
+  payment_ach:
+    - {name: Payment.ACH.Created, description: Sent once an ACH Payment is created.}
+    - {name: Payment.ACH.Completed, description: Sent when an ACH Payment is completed and funds have settled.}
+    - {name: Payment.ACH.Failed, description: Sent when an ACH Payment fails - usually due to insufficient balance or incorrect sender/receiver data.}
+    - {name: Payment.ACH.Canceled, description: Sent when an ACH Payment is canceled - usually via API or support action.}
+    - {name: Payment.Ach.Received, description: Sent when an ACH Payment is received.}
+  payment_aft:
+    - {name: Payment.Aft.Created, description: Sent once an AFT Payment is created.}
+    - {name: Payment.Aft.Sent, description: Sent once an AFT Payment is sent to the network.}
+    - {name: Payment.Aft.Completed, description: Sent once an AFT Payment has been completed.}
+    - {name: Payment.Aft.Failed, description: Sent once an AFT Payment fails.}
+    - {name: Payment.Aft.Canceled, description: Sent once an AFT Payment is canceled.}
+  payment_oct:
+    - {name: Payment.Oct.Created, description: Sent once an OCT Payment is created.}
+    - {name: Payment.Oct.Sent, description: Sent once an OCT Payment is sent to the network.}
+    - {name: Payment.Oct.Completed, description: Sent once an OCT Payment has been completed.}
+    - {name: Payment.Oct.Failed, description: Sent once an OCT Payment fails.}
+    - {name: Payment.Oct.Canceled, description: Sent once an OCT Payment is canceled.}
+  payment_instant:
+    - {name: Payment.Instant.Created, description: Sent once an Instant Payment is created.}
+    - {name: Payment.Instant.Sent, description: Sent once an Instant Payment is completed and funds have settled (interchangeable with Payment.Instant.Completed).}
+    - {name: Payment.Instant.Completed, description: Sent when an Instant Payment is completed and funds have settled.}
+    - {name: Payment.Instant.Failed, description: Sent when an Instant Payment fails - usually due to insufficient balance or incorrect sender/receiver data.}
+    - {name: Payment.Instant.Canceled, description: Sent when an Instant Payment is canceled - usually via API or support action.}
+  payment_p2p:
+    - {name: Payment.P2P.Created, description: Sent once a P2P payment is submitted and in process. Not sent for payments in pending_review status.}
+    - {name: Payment.P2P.Completed, description: Sent when a P2P payment is completed and funds have settled.}
+    - {name: Payment.P2P.Failed, description: Sent when a P2P payment fails - usually due to a core banking error.}
+    - {name: Payment.P2P.Canceled, description: Sent when a P2P payment is canceled.}
+  payment_transfer:
+    - {name: Payment.Transfer.Created, description: Sent once a Book Transfer is created.}
+    - {name: Payment.Transfer.Completed, description: Sent when a Book Transfer is completed and funds have settled.}
+    - {name: Payment.Transfer.Failed, description: Sent when a Book Transfer fails - usually due to insufficient balance or incorrect sender/receiver data.}
+    - {name: Payment.Transfer.Canceled, description: Sent when a Book Transfer is canceled - usually via API or support action.}
+  payment_card:
+    - {name: PaymentCard.Created, description: Sent once a Payment Card is created.}
+    - {name: PaymentCard.Updated, description: Sent once a Payment Card is updated.}
+    - {name: PaymentCard.Closed, description: Sent once a Payment Card is closed.}
+    - {name: PaymentCard.Frozen, description: Sent once a Payment Card is frozen.}
+    - {name: PaymentCard.Unfrozen, description: Sent once a Payment Card is unfrozen.}
+    - {name: PaymentCard.Replaced, description: Sent once a Payment Card is replaced.}
+    - {name: PaymentCard.Lost, description: Sent once a Payment Card is marked as lost.}
+    - {name: PaymentCard.Stolen, description: Sent once a Payment Card is marked as stolen.}
+    - {name: PaymentCard.PinReset, description: Sent once a Payment Card's PIN has been reset.}
+  payment_card_transaction:
+    - {name: PaymentCard.Transaction.Auth, description: Sent once a Payment Card Transaction is authorized.}
+    - {name: PaymentCard.Transaction.AuthExpired, description: Sent if a Payment Card Transaction's authorization expires.}
+    - {name: PaymentCard.Transaction.Settlement, description: Sent once a Payment Card Transaction has settled.}
+    - {name: PaymentCard.Transaction.Archived, description: Sent once a Payment Card Transaction is Archived.}
+    - {name: PaymentCard.Transaction.Adjustment, description: Sent once a Payment Card Transaction data has been adjusted.}
+    - {name: PaymentCard.atm.load, description: Sent once funds have been loaded via an ATM deposit.}

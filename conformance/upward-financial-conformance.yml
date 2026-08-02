@@ -1,0 +1,70 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://developers.upwardli.com docs (authentication, token exchange,
+  webhooks) plus derivation from openapi/upward-financial-openapi.json.
+description: >-
+  Standards conformance profile for the Upward (Upwardli) Credit Suite API,
+  asserted from documented behavior and the published OpenAPI 3.1. Compliance
+  program claims (SOC 2 etc.) were probed for but not found published, so no
+  certification is asserted here.
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      OAuth 2.0 client_credentials grant documented at
+      /concepts/authentication/o-auth-2-0; Bearer tokens declared in the
+      OpenAPI (http bearer securityScheme).
+  - id: oauth2-token-exchange-rfc8693
+    conforms: true
+    evidence: >-
+      Token exchange endpoint uses grant_type
+      urn:ietf:params:oauth:grant-type:token-exchange and
+      urn:ietf:params:oauth:token-type:access_token subject tokens
+      (/concepts/authentication/token-exchange).
+  - id: oidc
+    conforms: false
+    evidence: >-
+      No /.well-known/openid-configuration published on any Upwardli host
+      (probed 404 on developers/www; auth hosts unreachable from the public
+      internet); no OIDC claims in docs.
+  - id: openapi-3.1
+    conforms: true
+    evidence: Published spec at developers.upwardli.com/openapi.json declares openapi 3.1.0.
+  - id: api-catalog-rfc9727
+    conforms: true
+    evidence: >-
+      /.well-known/api-catalog on developers.upwardli.com returns an RFC 9727
+      linkset (HTTP 200) pointing at the API reference and OpenAPI.
+  - id: llms-txt
+    conforms: true
+    evidence: developers.upwardli.com/llms.txt published (HTTP 200).
+  - id: mcp
+    conforms: true
+    evidence: >-
+      Hosted docs MCP server at developers.upwardli.com/_mcp/server (streamable
+      HTTP, protocol 2025-03-26, probed live).
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Error responses use plain application/json with standard HTTP codes; no
+      application/problem+json media types in the OpenAPI or docs.
+  - id: pagination
+    conforms: true
+    evidence: >-
+      DRF-style page/page_size (plus limit/offset) parameters with
+      count/next/previous/results envelope on list endpoints.
+  - id: idempotency
+    conforms: false
+    evidence: No idempotency-key mechanism documented or declared in the OpenAPI.
+  - id: webhook-hmac-signatures
+    conforms: true
+    evidence: >-
+      Webhooks signed with HMAC-SHA256 in the Upwardli-Signature header
+      (t=<ts>,v1=<digest>) per /concepts/webhooks/security.
+  - id: fapi
+    conforms: false
+    evidence: No FAPI conformance claims published.
+  - id: psd2
+    conforms: false
+    evidence: US-market platform; no PSD2/open-banking claims published.

@@ -1,0 +1,15 @@
+generated: '2026-07-21'
+method: generated
+skills:
+  - file: upward-financial-onboard-consumer.md
+    name: Onboard a consumer onto an Upward credit product
+    api: openapi/upward-financial-openapi.json
+    operations: [create-upwardli-token, create-onboarding, get-onboarding, verify-identity, accept-terms, link-bank-account, add-bill-details, perform-underwriting, select-product, submit-loan-request]
+  - file: upward-financial-pay-and-report-bill.md
+    name: Pay a bill and report it to the credit bureaus
+    api: openapi/upward-financial-openapi.json
+    operations: [create-upwardli-token, create-bill, create-bill-payment, get-all-bill-payments, create-reported-bill, get-all-bill-reportings]
+  - file: upward-financial-manage-card-in-sandbox.md
+    name: Manage a credit builder card and simulate transactions in sandbox
+    api: openapi/upward-financial-openapi.json
+    operations: [create-upwardli-token, get-payment-card, freeze-payment-card, unfreeze-card, list-payment-card-transactions, create-payment-card-sim-auth, create-payment-card-sim-funding, create-payment-card-sim-settlement]

@@ -1,20 +1,293 @@
 aid: upward-financial
 name: Upward Financial
-description: Upward Financial is a company surfaced as a portfolio company of techstars and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Upward Financial (Upwardli) is a Techstars-backed embedded-finance platform
+  that lets banks, fintechs, and gig platforms launch credit products for
+  their customers without building the stack themselves. Its Credit Suite API
+  and embeddable UI components cover credit builder cards and credit lines,
+  bill payments and bureau bill reporting, direct payouts, money movement
+  (ACH, AFT/OCT, instant, P2P, book transfers), cashback rewards, statements,
+  and credit insights, with OAuth 2.0 machine-to-machine auth, RFC 8693
+  token exchange for consumer-scoped client tokens, an HMAC-signed webhook
+  event catalog, an isolated sandbox with reserved SSN test cases and
+  transaction simulators, a published OpenAPI 3.1, llms.txt, and a hosted
+  docs MCP server.
 url: https://raw.githubusercontent.com/api-evangelist/upward-financial/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://avatars.githubusercontent.com/u/87385560?v=4
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - techstars
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 21
+  pass: local-v1
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- FinTech
+- Credit
+- Credit Building
+- Payments
+- Cards
+- Embedded Finance
+- Bill Pay
+- Banking
+- KYC
+apis:
+- aid: upward-financial:upward-financial-accounts-api
+  name: Upward Financial accounts API
+  description: The accounts API from Upward Financial — 2 operation(s) for accounts.
+  humanURL: https://developers.upwardli.com/
+  baseURL: https://api.upwardli.com/v2
+  tags:
+  - accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/upward-financial-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.upwardli.com/get-started/introduction
+  - type: APIReference
+    url: https://developers.upwardli.com/api-access/reference
+- aid: upward-financial:upward-financial-auth-api
+  name: Upward Financial auth API
+  description: The auth API from Upward Financial — 2 operation(s) for auth.
+  humanURL: https://developers.upwardli.com/
+  baseURL: https://api.upwardli.com/v2
+  tags:
+  - auth
+  properties:
+  - type: OpenAPI
+    url: openapi/upward-financial-auth-api-openapi.yml
+  - type: Documentation
+    url: https://developers.upwardli.com/get-started/introduction
+  - type: APIReference
+    url: https://developers.upwardli.com/api-access/reference
+- aid: upward-financial:upward-financial-billpayments-api
+  name: Upward Financial billPayments API
+  description: The billPayments API from Upward Financial — 4 operation(s) for billpayments.
+  humanURL: https://developers.upwardli.com/
+  baseURL: https://api.upwardli.com/v2
+  tags:
+  - billPayments
+  properties:
+  - type: OpenAPI
+    url: openapi/upward-financial-billpayments-api-openapi.yml
+  - type: Documentation
+    url: https://developers.upwardli.com/get-started/introduction
+  - type: APIReference
+    url: https://developers.upwardli.com/api-access/reference
+- aid: upward-financial:upward-financial-billreporting-api
+  name: Upward Financial billReporting API
+  description: The billReporting API from Upward Financial — 9 operation(s) for billreporting.
+  humanURL: https://developers.upwardli.com/
+  baseURL: https://api.upwardli.com/v2
+  tags:
+  - billReporting
+  properties:
+  - type: OpenAPI
+    url: openapi/upward-financial-billreporting-api-openapi.yml
+  - type: Documentation
+    url: https://developers.upwardli.com/get-started/introduction
+  - type: APIReference
+    url: https://developers.upwardli.com/api-access/reference
+- aid: upward-financial:upward-financial-billswitch-api
+  name: Upward Financial billSwitch API
+  description: The billSwitch API from Upward Financial — 2 operation(s) for billswitch.
+  humanURL: https://developers.upwardli.com/
+  baseURL: https://api.upwardli.com/v2
+  tags:
+  - billSwitch
+  properties:
+  - type: OpenAPI
+    url: openapi/upward-financial-billswitch-api-openapi.yml
+  - type: Documentation
+    url: https://developers.upwardli.com/get-started/introduction
+  - type: APIReference
+    url: https://developers.upwardli.com/api-access/reference
+- aid: upward-financial:upward-financial-cbaas-api
+  name: Upward Financial cbaas API
+  description: The cbaas API from Upward Financial — 5 operation(s) for cbaas.
+  humanURL: https://developers.upwardli.com/
+  baseURL: https://api.upwardli.com/v2
+  tags:
+  - cbaas
+  properties:
+  - type: OpenAPI
+    url: openapi/upward-financial-cbaas-api-openapi.yml
+  - type: Documentation
+    url: https://developers.upwardli.com/get-started/introduction
+  - type: APIReference
+    url: https://developers.upwardli.com/api-access/reference
+- aid: upward-financial:upward-financial-consumers-api
+  name: Upward Financial consumers API
+  description: The consumers API from Upward Financial — 13 operation(s) for consumers.
+  humanURL: https://developers.upwardli.com/
+  baseURL: https://api.upwardli.com/v2
+  tags:
+  - consumers
+  properties:
+  - type: OpenAPI
+    url: openapi/upward-financial-consumers-api-openapi.yml
+  - type: Documentation
+    url: https://developers.upwardli.com/get-started/introduction
+  - type: APIReference
+    url: https://developers.upwardli.com/api-access/reference
+- aid: upward-financial:upward-financial-creditinsights-api
+  name: Upward Financial creditInsights API
+  description: The creditInsights API from Upward Financial — 1 operation(s) for creditinsights.
+  humanURL: https://developers.upwardli.com/
+  baseURL: https://api.upwardli.com/v2
+  tags:
+  - creditInsights
+  properties:
+  - type: OpenAPI
+    url: openapi/upward-financial-creditinsights-api-openapi.yml
+  - type: Documentation
+    url: https://developers.upwardli.com/get-started/introduction
+  - type: APIReference
+    url: https://developers.upwardli.com/api-access/reference
+- aid: upward-financial:upward-financial-onboarding-api
+  name: Upward Financial onboarding API
+  description: The onboarding API from Upward Financial — 11 operation(s) for onboarding.
+  humanURL: https://developers.upwardli.com/
+  baseURL: https://api.upwardli.com/v2
+  tags:
+  - onboarding
+  properties:
+  - type: OpenAPI
+    url: openapi/upward-financial-onboarding-api-openapi.yml
+  - type: Documentation
+    url: https://developers.upwardli.com/get-started/introduction
+  - type: APIReference
+    url: https://developers.upwardli.com/api-access/reference
+- aid: upward-financial:upward-financial-partners-api
+  name: Upward Financial partners API
+  description: The partners API from Upward Financial — 5 operation(s) for partners.
+  humanURL: https://developers.upwardli.com/
+  baseURL: https://api.upwardli.com/v2
+  tags:
+  - partners
+  properties:
+  - type: OpenAPI
+    url: openapi/upward-financial-partners-api-openapi.yml
+  - type: Documentation
+    url: https://developers.upwardli.com/get-started/introduction
+  - type: APIReference
+    url: https://developers.upwardli.com/api-access/reference
+- aid: upward-financial:upward-financial-paymentcards-api
+  name: Upward Financial paymentCards API
+  description: The paymentCards API from Upward Financial — 10 operation(s) for paymentcards.
+  humanURL: https://developers.upwardli.com/
+  baseURL: https://api.upwardli.com/v2
+  tags:
+  - paymentCards
+  properties:
+  - type: OpenAPI
+    url: openapi/upward-financial-paymentcards-api-openapi.yml
+  - type: Documentation
+    url: https://developers.upwardli.com/get-started/introduction
+  - type: APIReference
+    url: https://developers.upwardli.com/api-access/reference
+- aid: upward-financial:upward-financial-payments-api
+  name: Upward Financial payments API
+  description: The payments API from Upward Financial — 12 operation(s) for payments.
+  humanURL: https://developers.upwardli.com/
+  baseURL: https://api.upwardli.com/v2
+  tags:
+  - payments
+  properties:
+  - type: OpenAPI
+    url: openapi/upward-financial-payments-api-openapi.yml
+  - type: Documentation
+    url: https://developers.upwardli.com/get-started/introduction
+  - type: APIReference
+    url: https://developers.upwardli.com/api-access/reference
+- aid: upward-financial:upward-financial-plaid-api
+  name: Upward Financial plaid API
+  description: The plaid API from Upward Financial — 2 operation(s) for plaid.
+  humanURL: https://developers.upwardli.com/
+  baseURL: https://api.upwardli.com/v2
+  tags:
+  - plaid
+  properties:
+  - type: OpenAPI
+    url: openapi/upward-financial-plaid-api-openapi.yml
+  - type: Documentation
+    url: https://developers.upwardli.com/get-started/introduction
+  - type: APIReference
+    url: https://developers.upwardli.com/api-access/reference
+- aid: upward-financial:upward-financial-rewards-api
+  name: Upward Financial rewards API
+  description: The rewards API from Upward Financial — 4 operation(s) for rewards.
+  humanURL: https://developers.upwardli.com/
+  baseURL: https://api.upwardli.com/v2
+  tags:
+  - rewards
+  properties:
+  - type: OpenAPI
+    url: openapi/upward-financial-rewards-api-openapi.yml
+  - type: Documentation
+    url: https://developers.upwardli.com/get-started/introduction
+  - type: APIReference
+    url: https://developers.upwardli.com/api-access/reference
+- aid: upward-financial:upward-financial-simulations-api
+  name: Upward Financial simulations API
+  description: The simulations API from Upward Financial — 3 operation(s) for simulations.
+  humanURL: https://developers.upwardli.com/
+  baseURL: https://api.upwardli.com/v2
+  tags:
+  - simulations
+  properties:
+  - type: OpenAPI
+    url: openapi/upward-financial-simulations-api-openapi.yml
+  - type: Documentation
+    url: https://developers.upwardli.com/get-started/introduction
+  - type: APIReference
+    url: https://developers.upwardli.com/api-access/reference
+- aid: upward-financial:upward-financial-statements-api
+  name: Upward Financial statements API
+  description: The statements API from Upward Financial — 3 operation(s) for statements.
+  humanURL: https://developers.upwardli.com/
+  baseURL: https://api.upwardli.com/v2
+  tags:
+  - statements
+  properties:
+  - type: OpenAPI
+    url: openapi/upward-financial-statements-api-openapi.yml
+  - type: Documentation
+    url: https://developers.upwardli.com/get-started/introduction
+  - type: APIReference
+    url: https://developers.upwardli.com/api-access/reference
+- aid: upward-financial:upward-financial-webhooks-api
+  name: Upward Financial webhooks API
+  description: The webhooks API from Upward Financial — 3 operation(s) for webhooks.
+  humanURL: https://developers.upwardli.com/
+  baseURL: https://api.upwardli.com/v2
+  tags:
+  - webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/upward-financial-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://developers.upwardli.com/get-started/introduction
+  - type: APIReference
+    url: https://developers.upwardli.com/api-access/reference
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,3 +296,55 @@ maintainers:
 common:
 - type: Website
   url: https://upwardli.com/
+- type: DeveloperPortal
+  url: https://developers.upwardli.com/
+- type: Documentation
+  url: https://developers.upwardli.com/get-started/introduction
+- type: APIReference
+  url: https://developers.upwardli.com/api-access/reference
+- type: GettingStarted
+  url: https://developers.upwardli.com/api-access/getting-started
+- type: Support
+  url: https://support.upwardli.com/hc/en-us/requests/new
+- type: GitHubOrganization
+  url: https://github.com/upwardli
+- type: TermsOfService
+  url: https://www.upwardli.com/legal/terms
+- type: PrivacyPolicy
+  url: https://www.upwardli.com/legal/privacypolicy
+- type: StatusPage
+  url: https://status.upwardli.com/
+- type: Authentication
+  url: authentication/upward-financial-authentication.yml
+- type: OAuthScopes
+  url: scopes/upward-financial-scopes.yml
+- type: Webhooks
+  url: asyncapi/upward-financial-webhooks.yml
+- type: MCPServer
+  url: mcp/upward-financial-mcp.yml
+- type: LLMsTxt
+  url: llms/upward-financial-llms.txt
+- type: WellKnown
+  url: well-known/upward-financial-well-known.yml
+- type: APICatalog
+  url: well-known/upward-financial-api-catalog.json
+- type: Sandbox
+  url: sandbox/upward-financial-sandbox.yml
+- type: Components
+  url: components/upward-financial-components.yml
+- type: Conventions
+  url: conventions/upward-financial-conventions.yml
+- type: ErrorCatalog
+  url: errors/upward-financial-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/upward-financial-lifecycle.yml
+- type: Conformance
+  url: conformance/upward-financial-conformance.yml
+- type: DataModel
+  url: data-model/upward-financial-data-model.yml
+- type: Overlay
+  url: overlays/upward-financial-api-overlay.yaml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DomainSecurity
+  url: security/upward-financial-domain-security.yml

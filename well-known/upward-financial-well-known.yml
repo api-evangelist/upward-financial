@@ -1,0 +1,47 @@
+generated: '2026-07-21'
+method: searched
+description: >-
+  /.well-known/ discovery surface probed 2026-07-21 across the Upwardli hosts.
+  The developer portal (Fern-hosted) publishes an RFC 9727 api-catalog linkset
+  pointing at the API reference and OpenAPI. The production API and auth hosts
+  (api.upwardli.com, auth.upwardli.com) do not answer public HTTPS requests to
+  well-known paths (connection timeouts — recorded as status 0). No
+  security.txt is published on any reachable host.
+hosts:
+  - host: https://developers.upwardli.com
+    documents:
+      - path: /.well-known/api-catalog
+        status: 200
+        file: upward-financial-api-catalog.json
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://www.upwardli.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://api.upwardli.com
+    documents:
+      - {path: /.well-known/security.txt, status: 0, note: connection timeout - host not publicly reachable}
+      - {path: /.well-known/openid-configuration, status: 0, note: connection timeout - host not publicly reachable}
+  - host: https://auth.upwardli.com
+    documents:
+      - {path: /.well-known/security.txt, status: 0, note: connection timeout - host not publicly reachable}
+      - {path: /.well-known/openid-configuration, status: 0, note: connection timeout - host not publicly reachable}
+other_discovery:
+  - path: /llms.txt
+    host: https://developers.upwardli.com
+    status: 200
+    file: ../llms/upward-financial-llms.txt
+  - path: /openapi.json
+    host: https://developers.upwardli.com
+    status: 200
+    file: ../openapi/upward-financial-openapi.json
+  - path: /_mcp/server
+    host: https://developers.upwardli.com
+    status: 200
+    file: ../mcp/upward-financial-mcp.yml

@@ -1,0 +1,37 @@
+generated: '2026-07-21'
+method: searched
+source: https://developers.upwardli.com/ui-components/introduction
+description: >-
+  Upward (Upwardli) ships embeddable, consumer-facing UI components as a
+  first-class integration path alongside its REST API. The components are
+  cross-platform and designed to be hosted inside any embedded web view; all
+  of them use the Upward API layer for data. Client-side auth uses the
+  down-scoped token from the RFC 8693 token-exchange flow with the
+  ui:client-onboarding scope.
+docs:
+  - https://developers.upwardli.com/ui-components/introduction
+  - https://developers.upwardli.com/ui-components/component-messaging
+root_urls:
+  sandbox: https://component-embedded-sandbox.upwardli.com
+  production: https://component-embedded.upwardli.com
+families:
+  - name: Onboarding
+    docs: https://developers.upwardli.com/ui-components/onboarding
+    description: Consumer onboarding (KYC, terms, product selection) as an embeddable flow.
+  - name: Card Management
+    docs: https://developers.upwardli.com/ui-components/card-management
+    description: Consumer payment-card management surface.
+  - name: Credit Goals
+    docs: https://developers.upwardli.com/ui-components/credit-goals
+    description: Consumer credit-goal tracking surface.
+  - name: Profile
+    docs: https://developers.upwardli.com/ui-components/profile
+    description: Consumer profile management surface.
+  - name: Component Messaging
+    docs: https://developers.upwardli.com/ui-components/component-messaging
+    description: Cross-component messaging between host application and embedded components.
+auth:
+  mechanism: >-
+    Token-exchange (RFC 8693) consumer-scoped access token with
+    ui:client-onboarding scope, safe to pass to the browser/web view.
+  detail: authentication/upward-financial-authentication.yml

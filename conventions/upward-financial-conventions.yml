@@ -1,0 +1,69 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://developers.upwardli.com docs (authentication, webhooks, environments)
+  plus derivation from openapi/upward-financial-openapi.json (115 operations).
+description: >-
+  Cross-cutting request/response semantics of the Upward (Upwardli) Credit
+  Suite API — a REST API (Django-REST-framework style) split across a
+  dedicated Authorization service and the versioned API service. No
+  idempotency-key mechanism is documented in the docs or declared in the
+  OpenAPI (retry semantics rely on payment webhooks for reconciliation).
+base_urls:
+  authorization:
+    sandbox: https://auth-sandbox.upwardli.com/
+    production: https://auth.upwardli.com/
+  api:
+    sandbox: https://api-sandbox.upwardli.com/v2
+    production: https://api.upwardli.com/v2
+api_style: REST over HTTPS, JSON requests and responses
+authentication:
+  scheme: OAuth 2.0 Bearer token (client_credentials; RFC 8693 token exchange for consumer-scoped tokens)
+  header: "Authorization: Bearer <access_token>"
+  detail: authentication/upward-financial-authentication.yml
+  scopes: scopes/upward-financial-scopes.yml
+idempotency:
+  supported: false
+  notes: >-
+    No Idempotency-Key header or equivalent is documented or declared in the
+    OpenAPI (the only header parameter across all 115 operations is
+    Authorization). Payment lifecycle webhooks (Created/Completed/Failed/
+    Canceled) are the documented reconciliation signal.
+pagination:
+  style: page-number (DRF) with offset/limit on some list endpoints
+  request_params:
+    page: page number
+    page_size: results per page
+    limit: alternative page size on some endpoints
+    offset: alternative offset on some endpoints
+  response_fields:
+    count: total number of results
+    next: URL of the next page (null when exhausted)
+    previous: URL of the previous page (null on first page)
+    results: array of objects
+  evidence: >-
+    Query parameters page/page_size/limit/offset in the OpenAPI; the
+    count/next/previous/results envelope appears in documented webhook
+    registration/history responses.
+filtering:
+  request_params: [search, start_date, consumer_id, consumer_pcid, latitude, longitude, radius]
+versioning:
+  scheme: uri-path
+  current: v2
+  detail: lifecycle/upward-financial-lifecycle.yml
+error_envelope:
+  media_type: application/json
+  detail: errors/upward-financial-problem-types.yml
+  notes: >-
+    Standard HTTP status codes (200/400/401/403/404/500) documented in the
+    Core Concepts page; the OpenAPI documents mostly success responses plus
+    scattered 400/404/422 shapes.
+request_tracing:
+  documented: false
+rate_limits:
+  documented: false
+webhooks:
+  detail: asyncapi/upward-financial-webhooks.yml
+  signature_header: Upwardli-Signature (HMAC-SHA256, t=<ts>,v1=<digest>)
+environments:
+  detail: sandbox/upward-financial-sandbox.yml

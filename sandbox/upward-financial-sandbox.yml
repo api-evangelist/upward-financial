@@ -1,0 +1,47 @@
+generated: '2026-07-21'
+method: searched
+source: https://developers.upwardli.com/concepts/working-in-sandbox/sandbox-testing
+description: >-
+  Upward (Upwardli) operates a fully isolated sandbox environment with its own
+  authorization and API hosts — no live financial transactions occur there.
+  Sandbox access is provisioned after a signed contract; production keys are
+  issued after sandbox testing and submitted test plans. Consumer
+  creation/onboarding is tested with reserved SSN "area" prefixes that force
+  specific KYC/underwriting outcomes, and payment-card activity is simulated
+  through dedicated Simulations API endpoints (auth, funding, settlement)
+  modeled in the OpenAPI. Values below are captured verbatim from the docs.
+docs:
+  - https://developers.upwardli.com/concepts/working-in-sandbox/introduction
+  - https://developers.upwardli.com/concepts/working-in-sandbox/sandbox-testing
+  - https://developers.upwardli.com/api-access/environments-and-base-ur-ls
+  - https://developers.upwardli.com/guides/funding-simulating-transactions
+environments:
+  sandbox:
+    auth_base_url: https://auth-sandbox.upwardli.com/
+    api_base_url: https://api-sandbox.upwardli.com/v2
+    components_url: https://component-embedded-sandbox.upwardli.com
+    notes: >-
+      Fully isolated; will not perform any live financial transactions. Do not
+      store real consumer data. Access granted once a contract is signed.
+  production:
+    auth_base_url: https://auth.upwardli.com/
+    api_base_url: https://api.upwardli.com/v2
+    components_url: https://component-embedded.upwardli.com
+    notes: >-
+      Production access keys provisioned after sandbox testing and submitted
+      test plans, shared via a secure sharing mechanism. All transactions are
+      live financial activity.
+test_values:
+  ssn_area_cases:
+    - {ssn_format: 401-XX-XXXX, result: "Fail Underwriting: User has Age < 18"}
+    - {ssn_format: 406-XX-XXXX, result: "Fail Underwriting: User has score < 450 if more than 3 tradelines, or < 400 if less"}
+    - {ssn_format: 417-XX-XXXX, result: "Fail Underwriting: User is in active Bankruptcy"}
+    - {ssn_format: 422-XX-XXXX, result: "Fail KYC Database Check: Simulate email/text Fallback KYC Path"}
+    - {ssn_format: 423-XX-XXXX, result: "Fail Underwriting: Frozen Credit"}
+    - {ssn_format: 9XX-XX-XXXX, result: "No Credit Report: Users with ITIN will not have a credit report on file with the bureaus"}
+simulation_tooling:
+  api: openapi/upward-financial-openapi.json
+  operations:
+    - create-payment-card-sim-auth
+    - create-payment-card-sim-funding
+    - create-payment-card-sim-settlement

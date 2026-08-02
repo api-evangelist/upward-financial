@@ -1,0 +1,34 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/upward-financial-openapi.json
+docs: https://developers.upwardli.com/concepts/authentication/introduction
+format: http-status-json
+description: >-
+  Error catalog for the Upward (Upwardli) Credit Suite API, derived from the
+  published OpenAPI 3.1 4xx responses and the HTTP status-code reference in
+  the Core Concepts docs. Errors are plain application/json (not RFC 9457
+  problem+json). The spec documents success responses richly but only three
+  explicit error shapes; the docs define the platform-wide status-code
+  semantics captured under documented_status_codes.
+documented_status_codes:
+  - {status: 200, description: Success}
+  - {status: 400, description: There is something wrong with the data in your request, or the request cannot be processed}
+  - {status: 401, description: There is an issue with your API access token}
+  - {status: 403, description: "Your API access token is good, but you don't have permission to do what is being requested"}
+  - {status: 404, description: The resource specified does not exist}
+  - {status: 500, description: We are experiencing technical difficulties}
+problems:
+  - status: 422
+    title: Unprocessable P2P payment request
+    media_type: application/json
+    schema: CreatePeerToPeerPaymentRequestRequestUnprocessableEntityError
+    source_operation: openapi/upward-financial-openapi.json#create-peer-to-peer-payment-request
+  - status: 404
+    title: Peer-to-peer payment not found
+    media_type: application/json
+    source_operation: openapi/upward-financial-openapi.json#retrieve-peer-to-peer-payment-response
+  - status: 400
+    title: Bad webhook history request
+    media_type: application/json
+    schema: RetrieveWebhookHistoryRequestBadRequestError
+    source_operation: openapi/upward-financial-openapi.json#retrieve-webhook-history

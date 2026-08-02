@@ -1,0 +1,66 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/upward-financial-openapi.json
+description: >-
+  Entity-relationship graph of the Upward (Upwardli) Credit Suite API, derived
+  from the published OpenAPI 3.1 (166 component schemas, 54 with $ref links)
+  and its resource paths. The platform centers on the Consumer, who is
+  onboarded (KYC + underwriting), holds bank accounts, payment cards, credit
+  lines/tradelines, bills, payments (ACH/AFT/OCT/instant/P2P/book transfer),
+  statements, rewards enrollments, and credit insights; Partners operate the
+  tenant, its products, and sub-ledger requests.
+entities:
+  - name: Consumer
+    description: End user of a partner's credit product; root of most resource paths (/v2/consumers/{consumer_id}/...).
+  - name: Onboarding
+    description: OnboardResponse — KYC, e-sign, underwriting, product selection state machine for a consumer.
+  - name: BankAccount
+    description: BankAccountV2 — consumer- or partner-owned bank account, optionally linked via Plaid.
+  - name: PaymentCard
+    description: Consumer payment card with lifecycle status (frozen, replaced, closed) and emboss data.
+  - name: PaymentCardTransaction
+    description: Card transaction (auth, settlement, adjustment) on a payment card.
+  - name: CreditLine
+    description: Tradeline / credit line whose activity is reported to the bureaus.
+  - name: Bill
+    description: Bill-pay bill belonging to a consumer, with payments made against it.
+  - name: BillPayment
+    description: Payment against a bill (BillPaymentResponse).
+  - name: BillReporting
+    description: Bill-reporting record with reported bills and open tradelines.
+  - name: Payment
+    description: "Money movement request/response family: ACH, AFT, OCT, instant, P2P, book transfer."
+  - name: Statement
+    description: Periodic statement for a consumer account.
+  - name: CreditInsights
+    description: CreditInsightsOverviewV2 — credit score card and score history for a consumer.
+  - name: RewardsEnrollment
+    description: Cashback rewards enrollment of a payment card, with configurations and Kard offers.
+  - name: Partner
+    description: The B2B tenant — partner details, bank accounts, products, sub-ledger requests.
+  - name: WebhookRegistration
+    description: Registered webhook listener with delivery history.
+  - name: Dispute
+    description: ConsumerDispute — dispute raised on card/transaction activity.
+relationships:
+  - {from: Consumer, to: Onboarding, kind: has_one, via: "/v2/onboarding (consumer_id)"}
+  - {from: Consumer, to: BankAccount, kind: has_many, via: "/v2/consumers/{consumer_id}/accounts/"}
+  - {from: Consumer, to: PaymentCard, kind: has_many, via: "/v2/consumers/{consumer_id} payment cards"}
+  - {from: PaymentCard, to: PaymentCardTransaction, kind: has_many, via: "/v2/payment-cards/{payment_card_id}/transactions/"}
+  - {from: PaymentCard, to: RewardsEnrollment, kind: has_one, via: "rewards enrollment (card)"}
+  - {from: Consumer, to: CreditLine, kind: has_many, via: "tradelines / credit line webhooks"}
+  - {from: CreditLine, to: PaymentCardTransaction, kind: has_many, via: "CreditLine.Transaction.* events"}
+  - {from: Consumer, to: Bill, kind: has_many, via: "/v2/bill-pay/bills/"}
+  - {from: Bill, to: BillPayment, kind: has_many, via: "/v2/bill-pay/bills/{external_id}/payments/"}
+  - {from: Consumer, to: BillReporting, kind: has_one, via: "/v2/bill-reporting (consumer)"}
+  - {from: BillReporting, to: CreditLine, kind: has_many, via: "open tradelines (BillReportingBillsReportedItems)"}
+  - {from: Consumer, to: Payment, kind: has_many, via: "/v2/payments/* (consumer_id)"}
+  - {from: Consumer, to: Statement, kind: has_many, via: "/v2/statements/"}
+  - {from: Consumer, to: CreditInsights, kind: has_one, via: "/v2/credit-insights overview"}
+  - {from: Consumer, to: Dispute, kind: has_many, via: "/v2/consumers/{consumer_id}/dispute/list/"}
+  - {from: Partner, to: Consumer, kind: has_many, via: "partner_id on consumer and webhook payloads"}
+  - {from: Partner, to: BankAccount, kind: has_many, via: "partner bank accounts endpoints"}
+  - {from: Partner, to: WebhookRegistration, kind: has_many, via: "/v2/webhooks/registrations"}
+  - {from: Onboarding, to: BankAccount, kind: has_one, via: "link-bank-account step"}
+id_conventions:
+  style: UUID v4 identifiers (e.g. consumer ids in webhook resource URIs); bills addressed by partner-supplied external_id.

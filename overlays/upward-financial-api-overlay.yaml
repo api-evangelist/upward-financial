@@ -1,0 +1,69 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Upward (Upwardli) Credit Suite API
+  version: 1.0.0
+x-generated: '2026-07-21'
+x-method: generated
+extends: openapi/upward-financial-openapi.json
+actions:
+  - target: $.info
+    description: >-
+      Give the spec a provider-identified title and description (the published
+      spec is titled only "API Reference"), plus API Evangelist extensions.
+    update:
+      title: Upward (Upwardli) Credit Suite API
+      description: >-
+        REST API for embedding credit products - credit builder cards and
+        credit lines, bill payments, bill reporting to the bureaus, direct
+        payouts, money movement (ACH, AFT/OCT, instant, P2P, book transfers),
+        rewards, statements, and credit insights - into consumer fintech
+        applications. OAuth 2.0 client-credentials authentication with RFC
+        8693 token exchange for consumer-scoped client tokens.
+      contact:
+        name: Upward Financial developer support
+        url: https://support.upwardli.com/hc/en-us/requests/new
+      x-apievangelist:
+        provider: upward-financial
+        portal: https://developers.upwardli.com/
+        llms-txt: https://developers.upwardli.com/llms.txt
+        mcp-server: https://developers.upwardli.com/_mcp/server
+  - target: $.servers
+    description: >-
+      Replace the placeholder servers entry (https://host.com) with the real
+      documented environments from
+      https://developers.upwardli.com/api-access/environments-and-base-ur-ls.
+      Auth operations (/auth/token/, /auth/token/exchange/) are served from the
+      separate Authorization hosts.
+    update:
+      - url: https://api.upwardli.com
+        description: Production API (endpoints are rooted at /v2)
+      - url: https://api-sandbox.upwardli.com
+        description: Sandbox API (endpoints are rooted at /v2)
+      - url: https://auth.upwardli.com
+        description: Production Authorization service (auth operations only)
+      - url: https://auth-sandbox.upwardli.com
+        description: Sandbox Authorization service (auth operations only)
+  - target: $.components.securitySchemes
+    description: >-
+      Document the OAuth 2.0 client-credentials flow behind the bare bearer
+      scheme, with the documented scope catalog.
+    update:
+      oauth2ClientCredentials:
+        type: oauth2
+        description: >-
+          Documented at
+          https://developers.upwardli.com/concepts/authentication/o-auth-2-0.
+          Token request is a JSON POST; consumer-scoped tokens are minted via
+          RFC 8693 token exchange at /auth/token/exchange/.
+        flows:
+          clientCredentials:
+            tokenUrl: https://auth.upwardli.com/auth/token/
+            scopes:
+              api:read: Read-only M2M operations
+              api:write: Full CRUD M2M operations
+              ui:client-onboarding: Onboarding UI component access
+              api:credit-insights:read: Read Credit Insights data
+              api:profile:read: Read Profile data
+              api:trade-line:read: Read Credit Line data
+              api:rewards:read: Read rewards configurations, enrollments, offers
+              api:rewards:write: Enroll a card in Cashback Rewards
