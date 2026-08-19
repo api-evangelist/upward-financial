@@ -1,0 +1,743 @@
+{
+  "item": [
+    {
+      "id": "40c28f5f-c573-4fc0-85b3-7f99ccff024a",
+      "name": "partners",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "59224f0d-abb6-44e9-8ce1-62eb84ab2937",
+          "name": "List Partner Details",
+          "request": {
+            "name": "List Partner Details",
+            "description": {
+              "content": "Return partner details",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partners",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9e12e3e0-4903-486c-a554-b07fad28b414",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partners",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3329a65-d726-438c-a70d-c4382acbd879",
+          "name": "Partner Get Partner Bank Accounts",
+          "request": {
+            "name": "Partner Get Partner Bank Accounts",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partners",
+                ":partner_id",
+                "accounts",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partner_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "181553d4-cc2d-464a-9f74-c52c84805cbe",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partners",
+                    ":partner_id",
+                    "accounts",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partner_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bank_name\": \"string\",\n  \"account_name\": \"string\",\n  \"account_type\": \"string\",\n  \"is_primary\": true,\n  \"id\": \"string\",\n  \"account_number\": \"string\",\n  \"account_routing_number\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eeff06e1-7ddd-4307-9351-2995d6dc4de8",
+          "name": "Bank Account Details Partner Bank Accounts",
+          "request": {
+            "name": "Bank Account Details Partner Bank Accounts",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partners",
+                ":partner_id",
+                "accounts",
+                ":account_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partner_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "83339526-7ea5-4ef0-b65e-79f8f44c0252",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partners",
+                    ":partner_id",
+                    "accounts",
+                    ":account_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partner_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bank_name\": \"string\",\n  \"account_name\": \"string\",\n  \"account_type\": \"string\",\n  \"is_primary\": false,\n  \"id\": \"string\",\n  \"available_balance\": \"string\",\n  \"current_balance\": \"string\",\n  \"account_number\": \"string\",\n  \"account_routing_number\": \"string\",\n  \"is_active\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "421d01de-24bf-41e3-98fe-dc901ecb500b",
+          "name": "List Sub Ledger Requests",
+          "request": {
+            "name": "List Sub Ledger Requests",
+            "description": {
+              "content": "List the subledgers information",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partners",
+                ":partner_id",
+                "accounts",
+                ":account_id",
+                "subledgers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "A search term."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partner_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f3c0f50d-9022-4bf2-b6a3-08733d8d269d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partners",
+                    ":partner_id",
+                    "accounts",
+                    ":account_id",
+                    "subledgers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partner_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 9043,\n  \"results\": [\n    {\n      \"id\": \"b10b1467-525b-a649-4b68-27b265f8bf4b\",\n      \"bank_name\": \"string\",\n      \"account_name\": \"string\",\n      \"account_type\": \"string\",\n      \"account_number\": \"string\",\n      \"account_routing_number\": \"string\",\n      \"is_primary\": false\n    },\n    {\n      \"id\": \"c9628585-f308-08eb-5384-3ab166957ea4\",\n      \"bank_name\": \"string\",\n      \"account_name\": \"string\",\n      \"account_type\": \"string\",\n      \"account_number\": \"string\",\n      \"account_routing_number\": \"string\",\n      \"is_primary\": true\n    }\n  ],\n  \"next\": \"http://OYgblVTQWmzQFyHcOsbmtVNIdlMJtenF.gvoyX9.ZF6Kw4z4Ckl.ojVkijifRxDh6MAW7YJEOUfNMynaqLGM\",\n  \"previous\": \"http://bxnur.gdkhCxVsYIO+tW0b9UU-H71oUx6rMryqSlkOU4HY9HMv3fI3R\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4aae4a45-d261-4fde-ba81-96319ea682fd",
+          "name": "Create Sub Ledger Request",
+          "request": {
+            "name": "Create Sub Ledger Request",
+            "description": {
+              "content": "Create a Subledger Account from Partner FBO",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partners",
+                ":partner_id",
+                "accounts",
+                ":account_id",
+                "subledgers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partner_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"account_name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "27b1ea00-9fcd-4c67-a111-61be906f787f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partners",
+                    ":partner_id",
+                    "accounts",
+                    ":account_id",
+                    "subledgers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partner_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account_name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"58708191-ec86-0109-7609-1faa09a5bbfc\",\n  \"bank_name\": \"string\",\n  \"account_name\": \"string\",\n  \"account_type\": \"string\",\n  \"account_number\": \"string\",\n  \"account_routing_number\": \"string\",\n  \"is_primary\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "858ccf14-3fa3-467f-bd16-73bc36119144",
+          "name": "List Partner Products",
+          "request": {
+            "name": "List Partner Products",
+            "description": {
+              "content": "Get Partner Product List",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partners",
+                ":partner_id",
+                "products",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "A search term."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partner_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e255c653-63d7-495d-9d5d-0170f139a0d9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partners",
+                    ":partner_id",
+                    "products",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partner_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 414,\n  \"results\": [\n    {\n      \"id\": \"e62ea014-5c1b-47df-f594-db6f1fec5e70\",\n      \"key\": \"string\",\n      \"description\": {\n        \"full_name\": \"string\",\n        \"features\": [\n          {\n            \"header\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"body\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"header\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"body\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"cost_description\": \"string\"\n      },\n      \"options\": [\n        {\n          \"id\": 4707,\n          \"cost\": 8760.916721760856,\n          \"detail\": \"string\",\n          \"stripe_price_id\": \"string\",\n          \"stripe_session_token\": \"string\"\n        },\n        {\n          \"id\": 9405,\n          \"cost\": 1266.683144349141,\n          \"detail\": \"string\",\n          \"stripe_price_id\": \"string\",\n          \"stripe_session_token\": \"string\"\n        }\n      ],\n      \"product_type\": \"product\",\n      \"image\": \"string\",\n      \"buy_button_text\": \"string\",\n      \"buy_button_link\": \"string\",\n      \"locked\": false,\n      \"featured\": true,\n      \"category\": \"credit_services\",\n      \"free_trial_enabled\": true,\n      \"free_trial_duration\": 4712\n    },\n    {\n      \"id\": \"e45dab73-bf37-050d-c134-09030e0b2a0b\",\n      \"key\": \"string\",\n      \"description\": {\n        \"full_name\": \"string\",\n        \"features\": [\n          {\n            \"header\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"body\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"header\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"body\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"cost_description\": \"string\"\n      },\n      \"options\": [\n        {\n          \"id\": 2350,\n          \"cost\": 7861.289649763663,\n          \"detail\": \"string\",\n          \"stripe_price_id\": \"string\",\n          \"stripe_session_token\": \"string\"\n        },\n        {\n          \"id\": 7052,\n          \"cost\": 4737.746252432923,\n          \"detail\": \"string\",\n          \"stripe_price_id\": \"string\",\n          \"stripe_session_token\": \"string\"\n        }\n      ],\n      \"product_type\": \"service\",\n      \"image\": \"string\",\n      \"buy_button_text\": \"string\",\n      \"buy_button_link\": \"string\",\n      \"locked\": false,\n      \"featured\": true,\n      \"category\": \"credit_services\",\n      \"free_trial_enabled\": false,\n      \"free_trial_duration\": 8132\n    }\n  ],\n  \"next\": \"http://NmPuDkIshkrgoqaYqnqHjmamMe.wats\",\n  \"previous\": \"https://NeujT.dumKFafEB9nMi96ODXyZsuzG8rlNVa1zaOTNejX0XoXILAvDy-JzwFIbgTlQR7mHifLMkQuBYQFaXb\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://host.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6fabe151-ff0e-44a1-9c79-6b4e94cab75f",
+    "name": "API Reference accounts partners API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

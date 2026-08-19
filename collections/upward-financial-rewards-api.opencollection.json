@@ -1,0 +1,208 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference accounts rewards API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "rewards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Rewards Configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/payment-cards/:payment_card_id/rewards/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "payment_card_id",
+                "value": "",
+                "type": "path",
+                "description": "External ID of the payment card."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "Returns the cashback rewards configurations available for the given payment card. Each configuration whose `is_active` is `true` can be enrolled in. Use `is_enrolled` to tell whether the cardholder is already enrolled in that configuration."
+        },
+        {
+          "info": {
+            "name": "List Rewards Enrollments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/payment-cards/:payment_card_id/rewards/enrollments/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "payment_card_id",
+                "value": "",
+                "type": "path",
+                "description": "External ID of the payment card."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              }
+            ]
+          },
+          "docs": "Returns the cashback rewards enrollments for the given payment card. An enrollment with `is_active: true` means the cardholder is currently earning rewards; use its `program_id` to fetch the available offers."
+        },
+        {
+          "info": {
+            "name": "Create Rewards Enrollment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/payment-cards/:payment_card_id/rewards/:rewards_configuration_id/enrollments/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "payment_card_id",
+                "value": "",
+                "type": "path",
+                "description": "External ID of the payment card."
+              },
+              {
+                "name": "rewards_configuration_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the rewards configuration to enroll in."
+              }
+            ]
+          },
+          "docs": "Enrolls the payment card in the given rewards configuration. The configuration must be active (see List Rewards Configurations). No request body is required. Returns the created enrollment."
+        },
+        {
+          "info": {
+            "name": "List Rewards Offers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/payment-cards/:payment_card_id/rewards/:program_id/offers/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "payment_card_id",
+                "value": "",
+                "type": "path",
+                "description": "External ID of the payment card."
+              },
+              {
+                "name": "program_id",
+                "value": "",
+                "type": "path",
+                "description": "Rewards program ID from the card's active enrollment."
+              },
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "query",
+                "description": "Latitude used to surface nearby in-store offers."
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "query",
+                "description": "Longitude used to surface nearby in-store offers."
+              },
+              {
+                "name": "radius",
+                "value": "",
+                "type": "query",
+                "description": "Search radius, in miles, around the provided coordinates."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "Returns the cashback offers available to an enrolled payment card for the given rewards program. Pass the `program_id` from the card's active enrollment. Optionally provide `latitude`/`longitude` (and `radius`) to surface location-based in-store offers."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

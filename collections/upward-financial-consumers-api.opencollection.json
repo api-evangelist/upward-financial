@@ -1,0 +1,649 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference accounts consumers API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "consumers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Consumer Disputes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/consumers/:consumer_id/dispute/list/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consumer_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              }
+            ]
+          },
+          "docs": "List Consumer Disputes"
+        },
+        {
+          "info": {
+            "name": "Get Consumer Bank Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/consumers/:consumer_id/accounts/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consumer_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              }
+            ]
+          },
+          "docs": "Get Consumer Bank Accounts"
+        },
+        {
+          "info": {
+            "name": "List Consumer Payment Cards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/consumers/:consumer_id/payment-cards/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consumer_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              }
+            ]
+          },
+          "docs": "List Consumer Payment Cards"
+        },
+        {
+          "info": {
+            "name": "List Consumers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/consumers/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              }
+            ]
+          },
+          "docs": "Get all consumers"
+        },
+        {
+          "info": {
+            "name": "Create New Consumer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/consumers/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Consumer if one does not exist for the given partner and pc_id"
+        },
+        {
+          "info": {
+            "name": "Retrieve Consumer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/consumers/:consumer_id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consumer_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the consumer data from the consumer_id provided by the partner"
+        },
+        {
+          "info": {
+            "name": "Update Consumer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://host.com/v2/consumers/:consumer_id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consumer_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "PUT method to update consumer's data"
+        },
+        {
+          "info": {
+            "name": "Get Consumers By PCID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/consumers/pcid/:consumer_pc_id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consumer_pc_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Consumer by PCID"
+        },
+        {
+          "info": {
+            "name": "List Consumer Addresses V 2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/consumers/:consumer_id/addresses/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consumer_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of addresses for the consumer."
+        },
+        {
+          "info": {
+            "name": "Create Address V 2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/consumers/:consumer_id/addresses/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consumer_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new address for the consumer. Billing addresses cannot be created manually."
+        },
+        {
+          "info": {
+            "name": "Retrieve Address V 2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/consumers/:consumer_id/addresses/:address_id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consumer_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "address_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves an address."
+        },
+        {
+          "info": {
+            "name": "Update Address V 2",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://host.com/v2/consumers/:consumer_id/addresses/:address_id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consumer_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "address_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing address. Billing addresses cannot be edited or transformed into billing."
+        },
+        {
+          "info": {
+            "name": "Delete Address V 2",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://host.com/v2/consumers/:consumer_id/addresses/:address_id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consumer_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "address_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an address. Billing addresses cannot be deleted."
+        },
+        {
+          "info": {
+            "name": "List Consumer Invites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/consumers/:consumer_id/invites/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consumer_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              }
+            ]
+          },
+          "docs": "List Consumer Invites"
+        },
+        {
+          "info": {
+            "name": "Create Consumer Invites",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/consumers/:consumer_id/invites/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consumer_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Consumer Invites"
+        },
+        {
+          "info": {
+            "name": "Create Consumer Dispute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/consumers/:consumer_id/dispute/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consumer_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Consumer Dispute"
+        },
+        {
+          "info": {
+            "name": "Create Account Cancellation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/consumers/:consumer_id/cancel-account/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consumer_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Account Cancellation"
+        },
+        {
+          "info": {
+            "name": "List Consumer ACH Payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/consumers/:consumer_id/payments/ach",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consumer_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              }
+            ]
+          },
+          "docs": "List Consumer ACH Payments"
+        },
+        {
+          "info": {
+            "name": "List Transfer Responses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/consumers/:consumer_id/payments/transfer",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consumer_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              }
+            ]
+          },
+          "docs": "Get User Book Transfer History"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

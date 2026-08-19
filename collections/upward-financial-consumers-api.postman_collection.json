@@ -1,0 +1,2322 @@
+{
+  "item": [
+    {
+      "id": "b5ecbc2c-97ab-479c-ac12-8fb9d767b2a0",
+      "name": "consumers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "86c554c4-8fce-45f6-8ae3-8facbce807cf",
+          "name": "List Consumer Disputes",
+          "request": {
+            "name": "List Consumer Disputes",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "consumers",
+                ":consumer_id",
+                "dispute",
+                "list",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "A search term."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consumer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7a1d70b8-ab83-4257-995a-5542ad25e2c8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "consumers",
+                    ":consumer_id",
+                    "dispute",
+                    "list",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consumer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 6977,\n  \"results\": [\n    {\n      \"reason\": \"string\",\n      \"pk\": 7479,\n      \"details\": \"string\",\n      \"status\": \"closed\",\n      \"created_at\": \"1986-03-12T09:52:29.198Z\"\n    },\n    {\n      \"reason\": \"string\",\n      \"pk\": 5466,\n      \"details\": \"string\",\n      \"status\": \"submitted\",\n      \"created_at\": \"1989-01-30T15:31:58.796Z\"\n    }\n  ],\n  \"next\": \"https://nOBHfqPvdnGKOjFo.fxkApHtKlTP2+DYUNwpFf0waDauIRc-NKQAnT2BMce\",\n  \"previous\": \"http://RPJmNxGwovKMrCaCabbgvYVRM.bzB4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca1c2729-90c7-4fa0-a21f-1a288ddbf900",
+          "name": "Get Consumer Bank Accounts",
+          "request": {
+            "name": "Get Consumer Bank Accounts",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "consumers",
+                ":consumer_id",
+                "accounts",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "A search term."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consumer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a6b6f912-a7b6-44e8-af5a-cdabcfc3e264",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "consumers",
+                    ":consumer_id",
+                    "accounts",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consumer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 1954,\n  \"results\": [\n    {\n      \"bank_name\": \"string\",\n      \"account_name\": \"string\",\n      \"account_type\": \"string\",\n      \"is_primary\": false,\n      \"id\": \"string\",\n      \"consumer_id\": \"string\",\n      \"balance\": \"string\",\n      \"account_number\": \"string\",\n      \"account_routing_number\": \"string\",\n      \"is_active\": true\n    },\n    {\n      \"bank_name\": \"string\",\n      \"account_name\": \"string\",\n      \"account_type\": \"string\",\n      \"is_primary\": false,\n      \"id\": \"string\",\n      \"consumer_id\": \"string\",\n      \"balance\": \"string\",\n      \"account_number\": \"string\",\n      \"account_routing_number\": \"string\",\n      \"is_active\": true\n    }\n  ],\n  \"next\": \"http://bgAkNqpQFuyGDfAVJiXtdy.kpveic\",\n  \"previous\": \"http://WPc.ryxSxkZdDn5OsWuwH7bIx4L+oDDBzB0PlqfBVR+YzV\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "331608aa-7a1e-4fc2-b759-df84a17307ff",
+          "name": "List Consumer Payment Cards",
+          "request": {
+            "name": "List Consumer Payment Cards",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "consumers",
+                ":consumer_id",
+                "payment-cards",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "A search term."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consumer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3fd2daf4-bded-48da-bac5-ca75cd34a871",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "consumers",
+                    ":consumer_id",
+                    "payment-cards",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consumer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 9932,\n  \"results\": [],\n  \"next\": \"https://RYrIHItTYdMiwlqfUhIJFeWqcHVdA.ybhESaxve6ZXaS.wUca5ENNeBsxrjZmjSUZgN1Yasgt-Tc.6q,7v66yfZ2qJ++\",\n  \"previous\": \"https://MHcxAtmEFJYeYiIniuLfkiDVvgNJX.urqqYYUPMKABXFBrK8BAFcDUjxZXfUwdndyo5S,CxtndMNjr5,EfA5qQ3yS1x\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3cac1a1d-0774-4a30-ac67-8ceeb9727db5",
+          "name": "List Consumers",
+          "request": {
+            "name": "List Consumers",
+            "description": {
+              "content": "Get all consumers",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "consumers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "A search term."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a63328c5-d64e-44d0-9ff5-46ce11ef26b5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "consumers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 10,\n  \"results\": [],\n  \"next\": \"http://Q.cqhExfi10Jc.huzmFgtDqkWCRbGJVZZ4aZnLXjmh02qzZMAt5HvBKJiCskqRyUW\",\n  \"previous\": \"http://JBDiHvDiNtvKzLR.xjwtDjDTNwrRxRkCcKqLPySZMV0j3pdooZHi8\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d9eefcdf-d692-4f05-b53b-37551f9ad7d9",
+          "name": "Create New Consumer",
+          "request": {
+            "name": "Create New Consumer",
+            "description": {
+              "content": "Create a new Consumer if one does not exist for the given partner and pc_id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "consumers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pcid\": \"<string>\",\n  \"email\": \"<email>\",\n  \"external_id\": \"<uuid>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"date_of_birth\": \"<date>\",\n  \"tax_identifier\": \"<string>\",\n  \"address_line1\": \"<string>\",\n  \"address_line2\": \"<string>\",\n  \"address_city\": \"<string>\",\n  \"address_state\": \"<string>\",\n  \"address_zip\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a9e8eed1-2f16-4596-a705-40c83f313443",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "consumers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pcid\": \"<string>\",\n  \"email\": \"<email>\",\n  \"external_id\": \"<uuid>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"date_of_birth\": \"<date>\",\n  \"tax_identifier\": \"<string>\",\n  \"address_line1\": \"<string>\",\n  \"address_line2\": \"<string>\",\n  \"address_city\": \"<string>\",\n  \"address_state\": \"<string>\",\n  \"address_zip\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pcid\": \"string\",\n  \"email\": \"7DHclNnlT@qGvQkpSkJGlAyMgnFdIEnMehiaTPE.awum\",\n  \"external_id\": \"ee874293-87bb-ace9-e9c0-6fed2f5208bb\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"phone_number\": \"string\",\n  \"date_of_birth\": \"2000-05-09\",\n  \"tax_identifier\": \"string\",\n  \"address_line1\": \"string\",\n  \"address_line2\": \"string\",\n  \"address_city\": \"string\",\n  \"address_state\": \"string\",\n  \"address_zip\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "54192f2f-7824-45a6-9bab-1c4e2000fa0c",
+          "name": "Retrieve Consumer",
+          "request": {
+            "name": "Retrieve Consumer",
+            "description": {
+              "content": "Get the consumer data from the consumer_id provided by the partner",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "consumers",
+                ":consumer_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consumer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "27e84501-7ef1-4ca5-9a7e-aa8771c25941",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "consumers",
+                    ":consumer_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consumer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"0e27ca1e-c9f0-3309-c38f-de3c8e4af13b\",\n  \"pcid\": \"string\",\n  \"mla_status\": true,\n  \"phone_number\": \"string\",\n  \"date_of_birth\": \"string\",\n  \"tax_id_type\": \"string\",\n  \"address_line1\": \"string\",\n  \"address_line2\": \"string\",\n  \"address_city\": \"string\",\n  \"address_state\": \"string\",\n  \"address_zip\": \"string\",\n  \"external_id\": \"8def50a6-fcfb-def0-fd19-5256cf06ddb4\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"UJn1cA@hzjnPofmAjjmLjRnCzXsGeMxlNcULJ.eagb\",\n  \"is_active\": true,\n  \"kyc_status\": \"string\",\n  \"tax_identifier\": \"string\",\n  \"credit_lines\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f344f6a5-e127-41f1-927d-5eb837240665",
+          "name": "Update Consumer",
+          "request": {
+            "name": "Update Consumer",
+            "description": {
+              "content": "PUT method to update consumer's data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "consumers",
+                ":consumer_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consumer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pcid\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone_number\": \"<string>\",\n  \"date_of_birth\": \"<date>\",\n  \"address_line1\": \"<string>\",\n  \"address_line2\": \"<string>\",\n  \"address_city\": \"<string>\",\n  \"address_state\": \"<string>\",\n  \"address_zip\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dcf89385-b22d-41ca-b543-77f1a6368b70",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "consumers",
+                    ":consumer_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consumer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pcid\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone_number\": \"<string>\",\n  \"date_of_birth\": \"<date>\",\n  \"address_line1\": \"<string>\",\n  \"address_line2\": \"<string>\",\n  \"address_city\": \"<string>\",\n  \"address_state\": \"<string>\",\n  \"address_zip\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pcid\": \"string\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"vip4fqtM@GSWVT.gzdk\",\n  \"phone_number\": \"string\",\n  \"date_of_birth\": \"1954-10-07\",\n  \"address_line1\": \"string\",\n  \"address_line2\": \"string\",\n  \"address_city\": \"string\",\n  \"address_state\": \"string\",\n  \"address_zip\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b600ef00-20a6-4b3e-a462-a9cea2b6d7be",
+          "name": "Get Consumers By PCID",
+          "request": {
+            "name": "Get Consumers By PCID",
+            "description": {
+              "content": "Get Consumer by PCID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "consumers",
+                "pcid",
+                ":consumer_pc_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consumer_pc_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "412d3f0c-7f79-4c45-81e9-d7eee390b24d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "consumers",
+                    "pcid",
+                    ":consumer_pc_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consumer_pc_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"0e27ca1e-c9f0-3309-c38f-de3c8e4af13b\",\n  \"pcid\": \"string\",\n  \"mla_status\": true,\n  \"phone_number\": \"string\",\n  \"date_of_birth\": \"string\",\n  \"tax_id_type\": \"string\",\n  \"address_line1\": \"string\",\n  \"address_line2\": \"string\",\n  \"address_city\": \"string\",\n  \"address_state\": \"string\",\n  \"address_zip\": \"string\",\n  \"external_id\": \"8def50a6-fcfb-def0-fd19-5256cf06ddb4\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"UJn1cA@hzjnPofmAjjmLjRnCzXsGeMxlNcULJ.eagb\",\n  \"is_active\": true,\n  \"kyc_status\": \"string\",\n  \"tax_identifier\": \"string\",\n  \"credit_lines\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f230b0f4-146f-41cf-b853-1da1b60ac22d",
+          "name": "List Consumer Addresses V 2",
+          "request": {
+            "name": "List Consumer Addresses V 2",
+            "description": {
+              "content": "Retrieves a list of addresses for the consumer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "consumers",
+                ":consumer_id",
+                "addresses",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "A search term."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consumer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3f296d66-45c4-49b9-86be-2b34b3d70550",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "consumers",
+                    ":consumer_id",
+                    "addresses",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consumer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 8101,\n  \"results\": [\n    {\n      \"id\": 6330,\n      \"consumer\": 5913,\n      \"type\": \"SHIPPING\",\n      \"address_line1\": \"string\",\n      \"address_line2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"MS\",\n      \"country\": \"PN\",\n      \"zip\": \"string\",\n      \"lat\": 8869.045728862086,\n      \"lng\": 1711.435658502397\n    },\n    {\n      \"id\": 7510,\n      \"consumer\": 6058,\n      \"type\": \"SHIPPING\",\n      \"address_line1\": \"string\",\n      \"address_line2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"MA\",\n      \"country\": \"NZ\",\n      \"zip\": \"string\",\n      \"lat\": 962.9154793239836,\n      \"lng\": 7792.5897573710035\n    }\n  ],\n  \"next\": \"http://HrIvnpqybNxbRUIv.dscpd.QRzatPnnwIt\",\n  \"previous\": \"http://XaHmZSJmhx.fcQSfcDpxJdw43zWoKptugD,OsJ-DgsI2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4edec1cd-c29e-4a9f-8373-a3f7bf8a0fe9",
+          "name": "Create Address V 2",
+          "request": {
+            "name": "Create Address V 2",
+            "description": {
+              "content": "Create a new address for the consumer. Billing addresses cannot be created manually.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "consumers",
+                ":consumer_id",
+                "addresses",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consumer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"consumer\": \"<integer,null>\",\n  \"type\": \"<string>\",\n  \"address_line1\": \"<string,null>\",\n  \"address_line2\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"state\": \"<string>\",\n  \"country\": \"<string>\",\n  \"zip\": \"<string,null>\",\n  \"lat\": \"<number,null-double>\",\n  \"lng\": \"<number,null-double>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f58d801a-9969-496c-868d-abe7cd569d3d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "consumers",
+                    ":consumer_id",
+                    "addresses",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consumer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<integer>\",\n  \"consumer\": \"<integer,null>\",\n  \"type\": \"SHIPPING\",\n  \"address_line1\": \"<string,null>\",\n  \"address_line2\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"state\": \"SC\",\n  \"country\": \"AE\",\n  \"zip\": \"<string,null>\",\n  \"lat\": \"<number,null-double>\",\n  \"lng\": \"<number,null-double>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 3640,\n  \"consumer\": 2800,\n  \"type\": \"SHIPPING\",\n  \"address_line1\": \"string\",\n  \"address_line2\": \"string\",\n  \"city\": \"string\",\n  \"state\": \"OH\",\n  \"country\": \"JP\",\n  \"zip\": \"string\",\n  \"lat\": 4628.388282984474,\n  \"lng\": 2296.711111348546\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aca24d4b-bd91-4feb-b451-6ad96767b34d",
+          "name": "Retrieve Address V 2",
+          "request": {
+            "name": "Retrieve Address V 2",
+            "description": {
+              "content": "Retrieves an address.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "consumers",
+                ":consumer_id",
+                "addresses",
+                ":address_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consumer_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "218cb135-ca15-459e-9089-c34890fbaf9c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "consumers",
+                    ":consumer_id",
+                    "addresses",
+                    ":address_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consumer_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 3640,\n  \"consumer\": 2800,\n  \"type\": \"SHIPPING\",\n  \"address_line1\": \"string\",\n  \"address_line2\": \"string\",\n  \"city\": \"string\",\n  \"state\": \"OH\",\n  \"country\": \"JP\",\n  \"zip\": \"string\",\n  \"lat\": 4628.388282984474,\n  \"lng\": 2296.711111348546\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02b2cf43-f00e-4ea3-a45b-5d50ee81d3db",
+          "name": "Update Address V 2",
+          "request": {
+            "name": "Update Address V 2",
+            "description": {
+              "content": "Update an existing address. Billing addresses cannot be edited or transformed into billing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "consumers",
+                ":consumer_id",
+                "addresses",
+                ":address_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consumer_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"consumer\": \"<integer,null>\",\n  \"type\": \"<string>\",\n  \"address_line1\": \"<string,null>\",\n  \"address_line2\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"state\": \"<string>\",\n  \"country\": \"<string>\",\n  \"zip\": \"<string,null>\",\n  \"lat\": \"<number,null-double>\",\n  \"lng\": \"<number,null-double>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f28e5156-4614-4658-a35d-fdcb66f1973e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "consumers",
+                    ":consumer_id",
+                    "addresses",
+                    ":address_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consumer_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<integer>\",\n  \"consumer\": \"<integer,null>\",\n  \"type\": \"SHIPPING\",\n  \"address_line1\": \"<string,null>\",\n  \"address_line2\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"state\": \"SC\",\n  \"country\": \"AE\",\n  \"zip\": \"<string,null>\",\n  \"lat\": \"<number,null-double>\",\n  \"lng\": \"<number,null-double>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 3640,\n  \"consumer\": 2800,\n  \"type\": \"SHIPPING\",\n  \"address_line1\": \"string\",\n  \"address_line2\": \"string\",\n  \"city\": \"string\",\n  \"state\": \"OH\",\n  \"country\": \"JP\",\n  \"zip\": \"string\",\n  \"lat\": 4628.388282984474,\n  \"lng\": 2296.711111348546\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8463f170-4a6d-408d-a959-8a65290f27fc",
+          "name": "Delete Address V 2",
+          "request": {
+            "name": "Delete Address V 2",
+            "description": {
+              "content": "Delete an address. Billing addresses cannot be deleted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "consumers",
+                ":consumer_id",
+                "addresses",
+                ":address_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consumer_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c14897a8-7e09-4ac0-9d0b-2a63547216ea",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "consumers",
+                    ":consumer_id",
+                    "addresses",
+                    ":address_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consumer_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2117efb-83ab-4a2a-b36b-a37ae5d9237d",
+          "name": "List Consumer Invites",
+          "request": {
+            "name": "List Consumer Invites",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "consumers",
+                ":consumer_id",
+                "invites",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "A search term."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consumer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "87b714d6-c3f5-417c-97a4-325ba63b91a8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "consumers",
+                    ":consumer_id",
+                    "invites",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consumer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 1001,\n  \"results\": [\n    {\n      \"id\": \"9819d313-c2bb-e701-6088-f2be754f0365\",\n      \"consumer_id\": \"1ffafe7a-a5b7-8474-d23a-0ae05a7529d3\",\n      \"invite_code\": \"string\",\n      \"claimed\": false,\n      \"claimed_date\": \"1953-06-11T20:06:11.095Z\",\n      \"expiration_date\": \"1996-08-25T17:38:42.594Z\"\n    },\n    {\n      \"id\": \"8d47a319-3e74-3558-03b2-b94545d8449d\",\n      \"consumer_id\": \"2f73ed59-ff1f-607e-d888-952525670c9f\",\n      \"invite_code\": \"string\",\n      \"claimed\": true,\n      \"claimed_date\": \"1948-04-01T04:13:50.127Z\",\n      \"expiration_date\": \"2003-01-10T12:21:54.684Z\"\n    }\n  ],\n  \"next\": \"https://wrRnvJpUylcXffkNwUTudY.lpqWYxcLW6YX7b11mN,ORzUTATvQphl+RCEKVfOeer\",\n  \"previous\": \"https://mnPiWQnmYhPJaHnxszSPjaXNF.eitfifLqHocrLYBVexZAyhKfEQUmo2Y.vDnXMrkI\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5f8a439e-c7f3-4ccc-b9bc-2f65229bdc4b",
+          "name": "Create Consumer Invites",
+          "request": {
+            "name": "Create Consumer Invites",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "consumers",
+                ":consumer_id",
+                "invites",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consumer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expiration_date\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "079a903b-235a-4e3a-9832-cf73f3bc6ef7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "consumers",
+                    ":consumer_id",
+                    "invites",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consumer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"expiration_date\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"f0593882-a89d-551c-3469-cf2dc75808f5\",\n  \"consumer_id\": \"0d554710-93de-b099-7b87-eb22299066ce\",\n  \"invite_code\": \"string\",\n  \"claimed\": true,\n  \"claimed_date\": \"1971-07-17T06:44:58.887Z\",\n  \"expiration_date\": \"1961-04-08T00:19:55.698Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e63c9fbc-c175-44f1-8b96-1a07f0b6a95a",
+          "name": "Create Consumer Dispute",
+          "request": {
+            "name": "Create Consumer Dispute",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "consumers",
+                ":consumer_id",
+                "dispute",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consumer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"details\": \"<string,null>\",\n  \"status\": \"<string>\",\n  \"created_at\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "331a3cf0-9166-49b5-ade3-6da03d0dadc7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "consumers",
+                    ":consumer_id",
+                    "dispute",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consumer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"details\": \"<string,null>\",\n  \"status\": \"submitted\",\n  \"created_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reason\": \"string\",\n  \"pk\": 9223,\n  \"details\": \"string\",\n  \"status\": \"in_review\",\n  \"created_at\": \"1993-04-30T02:55:36.378Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae800928-c9ff-493e-83d3-51216c28cac5",
+          "name": "Create Account Cancellation",
+          "request": {
+            "name": "Create Account Cancellation",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "consumers",
+                ":consumer_id",
+                "cancel-account",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consumer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cancellation_reason\": \"<string,null>\",\n  \"details\": \"<string,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c845f5a4-8ec2-402c-a739-3bdb23830be0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "consumers",
+                    ":consumer_id",
+                    "cancel-account",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consumer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cancellation_reason\": \"<string,null>\",\n  \"details\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cancellation_reason\": \"string\",\n  \"details\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae2548b1-df63-4969-a8f2-bd2f8539886b",
+          "name": "List Consumer ACH Payments",
+          "request": {
+            "name": "List Consumer ACH Payments",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "consumers",
+                ":consumer_id",
+                "payments",
+                "ach"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "A search term."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consumer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac215d7d-020f-4f78-8119-857aecd8957f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "consumers",
+                    ":consumer_id",
+                    "payments",
+                    "ach"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consumer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 139,\n  \"results\": [],\n  \"next\": \"http://iilETWzhapPBbnDUv.xirn+8uExM8DQM\",\n  \"previous\": \"http://SRrxOh.dpoyfGjT.MBJUQ\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce80b267-d9db-43b2-b1fe-6680e599171d",
+          "name": "List Transfer Responses",
+          "request": {
+            "name": "List Transfer Responses",
+            "description": {
+              "content": "Get User Book Transfer History",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "consumers",
+                ":consumer_id",
+                "payments",
+                "transfer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "A search term."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consumer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cfcf063f-91d1-455b-a039-7eb1ac5cb9f1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "consumers",
+                    ":consumer_id",
+                    "payments",
+                    "transfer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consumer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 4343,\n  \"results\": [\n    {\n      \"id\": \"f45db2aa-2019-3403-787b-5c16e61237ff\",\n      \"amount\": 8358.569926433545,\n      \"originating_account_id\": \"string\",\n      \"receiving_account_id\": \"string\",\n      \"status\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"id\": \"a09991df-7892-47d6-e9bd-98727fa4f5fd\",\n      \"amount\": 8453.28533865281,\n      \"originating_account_id\": \"string\",\n      \"receiving_account_id\": \"string\",\n      \"status\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"next\": \"https://ObqpRiluskxasxDHv.ledpjESDmKOl89Bq+m4dtNrY,GhANlfxDTrfz9hOd9MRLgKprQwu3JAWhRRtMP8JhRmFLbD.\",\n  \"previous\": \"http://NJWOBMYEoQWszehohoop.swylyHxhY5ShqFRcnnVNd19Mig996NaWg\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://host.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8a6c97bf-9d4b-4373-a45b-a01d26ce828b",
+    "name": "API Reference accounts consumers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

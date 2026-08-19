@@ -2,14 +2,11 @@ generated: '2026-07-21'
 method: searched
 status: published
 source: https://developers.upwardli.com/llms.txt
-description: >-
-  Upward (Upwardli) publishes an official hosted MCP server for its developer
-  documentation, advertised in the portal's llms.txt ("For AI client
-  integration (Claude Code, Cursor, etc.), connect to the MCP server at
-  https://developers.upwardli.com/_mcp/server"). Probed live 2026-07-21: the
-  server speaks streamable HTTP (protocol 2025-03-26), identifies itself as
-  fern-docs-mcp-server 1.0.0, and exposes one read-only docs-search tool. It
-  is a documentation MCP server, not an API-execution server.
+description: 'Upward (Upwardli) publishes an official hosted MCP server for its developer documentation,
+  advertised in the portal''s llms.txt ("For AI client integration (Claude Code, Cursor, etc.), connect
+  to the MCP server at https://developers.upwardli.com/_mcp/server"). Probed live 2026-07-21: the server
+  speaks streamable HTTP (protocol 2025-03-26), identifies itself as fern-docs-mcp-server 1.0.0, and exposes
+  one read-only docs-search tool. It is a documentation MCP server, not an API-execution server.'
 server:
   name: fern-docs-mcp-server
   version: 1.0.0
@@ -18,8 +15,15 @@ server:
   auth: none
   protocol_version: '2025-03-26'
 tools:
-  - name: searchDocs
-    description: >-
-      Search the documentation at https://developers.upwardli.com. Returns
-      relevant doc passages with source URLs.
-    read_only: true
+- name: searchDocs
+  description: Search the documentation at https://developers.upwardli.com. Returns relevant doc passages
+    with source URLs.
+  read_only: true
+deployment:
+  mode: remote
+  endpoint: https://developers.upwardli.com/_mcp/server
+  verified: probed
+  probe: live
+  tools: 1
+  checked: '2026-08-12'
+  source: catalog MCP census

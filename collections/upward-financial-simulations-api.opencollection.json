@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference accounts simulations API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "simulations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Payment Card Sim Auth",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/simulations/payment-cards/:payment_card_id/create-simulated-card-auth",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "payment_card_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Payment Card Sim Auth"
+        },
+        {
+          "info": {
+            "name": "Create Payment Card Sim Funding",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/simulations/payment-cards/:payment_card_id/create-simulated-fund-card",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "payment_card_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Payment Card Sim Funding"
+        },
+        {
+          "info": {
+            "name": "Create Payment Card Sim Settlement",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/simulations/payment-cards/:payment_card_id/create-simulated-card-settlement",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "payment_card_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Payment Card Sim Settlement"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,339 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference accounts paymentCards API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "paymentCards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Payment Card Transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/payment-cards/:payment_card_id/transactions/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "payment_card_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              }
+            ]
+          },
+          "docs": "List Payment Card Transactions"
+        },
+        {
+          "info": {
+            "name": "Retrieve Payment Card Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/payment-cards/:payment_card_id/transactions/:transaction_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "payment_card_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "transaction_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              }
+            ]
+          },
+          "docs": "Retrieve Payment Card Transaction"
+        },
+        {
+          "info": {
+            "name": "Get Payment Card Emboss",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/payment-cards/:payment_card_id/emboss",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "payment_card_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Payment Card Emboss"
+        },
+        {
+          "info": {
+            "name": "Payment Card Emboss",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/payment-cards/:payment_card_id/emboss",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "payment_card_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Payment Card Emboss"
+        },
+        {
+          "info": {
+            "name": "Get Payment Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/payment-cards/:payment_card_id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "payment_card_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Payment Card"
+        },
+        {
+          "info": {
+            "name": "Freeze Payment Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/payment-cards/:payment_card_id/freeze",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "payment_card_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "freeze/unfreeze a payment card"
+        },
+        {
+          "info": {
+            "name": "Unfreeze Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/payment-cards/:payment_card_id/unfreeze",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "payment_card_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "unfreeze a payment card"
+        },
+        {
+          "info": {
+            "name": "Replace Lost Stolen Card Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/payment-cards/:payment_card_id/replace-lost-stolen",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "payment_card_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replace a lost or stolen card"
+        },
+        {
+          "info": {
+            "name": "Trigger Reissue Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/payment-cards/:payment_card_id/reissue",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "payment_card_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reissue a card, which means to send it to the embosser again"
+        },
+        {
+          "info": {
+            "name": "Close Card Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/payment-cards/:payment_card_id/close/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "payment_card_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Close Card Account"
+        },
+        {
+          "info": {
+            "name": "Set Autopay Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://host.com/v2/payment-cards/:payment_card_id/autopay",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "payment_card_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set Autopay Status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

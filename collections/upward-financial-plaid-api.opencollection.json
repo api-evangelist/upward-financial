@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference accounts plaid API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "plaid",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Consumer Plaid Link Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/consumers/:consumer_id/accounts/plaid-link-token",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consumer_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a Plaid Link Token for a consumer.\nPOST /v2/consumers/{consumer_id}/accounts/plaid-link-token"
+        },
+        {
+          "info": {
+            "name": "Verify Bank Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/accounts/:account_external_id/verify/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_external_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verify bank account using Plaid microdeposits"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

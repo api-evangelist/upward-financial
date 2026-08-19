@@ -1,0 +1,199 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference accounts billPayments API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "billPayments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Bill",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/bill-pay/bills/:external_id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "external_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a specific Bill by ID."
+        },
+        {
+          "info": {
+            "name": "List Bill Payments View Sets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/bill-pay/bills/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              }
+            ]
+          },
+          "docs": "List all bill payments for a specific bill"
+        },
+        {
+          "info": {
+            "name": "Create Bill",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/bill-pay/bills/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Bill."
+        },
+        {
+          "info": {
+            "name": "Get Bill Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/bill-pay/bills/:external_id/payments/:bill_payment_id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "external_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "bill_payment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a specific Bill Payment by ID."
+        },
+        {
+          "info": {
+            "name": "Get All Bill Payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/bill-pay/bills/:external_id/payments/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "external_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              }
+            ]
+          },
+          "docs": "List all bill payments for a specific bill"
+        },
+        {
+          "info": {
+            "name": "Create Bill Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/bill-pay/bills/:external_id/payments/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "external_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Bill Payment for a specific bill."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

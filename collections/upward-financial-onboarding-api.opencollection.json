@@ -1,0 +1,416 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference accounts onboarding API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "onboarding",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Onboardings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/onboarding/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              },
+              {
+                "name": "consumer_id",
+                "value": "",
+                "type": "query",
+                "description": "Consumer ID"
+              },
+              {
+                "name": "consumer_pcid",
+                "value": "",
+                "type": "query",
+                "description": "Consumer PCID"
+              }
+            ]
+          },
+          "docs": "1) Get Partner from request\n2) Get Partner Onboardings and filter (pcid or external id) if needed\n3) Return a list of onboardings with their id and consumer data"
+        },
+        {
+          "info": {
+            "name": "Create Onboarding",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/onboarding/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "1) Validate the request and get the partner from it\n2) Verify if consumer exists and if so, if there's an onboarding flow\n3) Create a new onboarding (and new consumer) if needed\n4) Return the onboarding id and consumer data"
+        },
+        {
+          "info": {
+            "name": "Get Onboarding",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/onboarding/:external_id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "external_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "1) Get Partner from request\n2) Get the Onboarding and check if it belongs to the partner\n3) Return the onboarding id and consumer data"
+        },
+        {
+          "info": {
+            "name": "Cancel Onboarding",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://host.com/v2/onboarding/:external_id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "external_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "1) Set the Onboarding Process Status to cancelled"
+        },
+        {
+          "info": {
+            "name": "Verify Identity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/onboarding/:external_id/verify-identity/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "external_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "View used to start the \"Verify Identity\" step on an existing Onboarding"
+        },
+        {
+          "info": {
+            "name": "Accept Terms",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/onboarding/:external_id/accept-terms/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "external_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "View used to start the \"Accept Terms\" step on an existing Onboarding"
+        },
+        {
+          "info": {
+            "name": "Bloom Enablement Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/onboarding/:external_id/bloom-enablement/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "external_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "View used to start the \"Onboard a consumer on Bloom Enablement\" step on an existing Onboarding"
+        },
+        {
+          "info": {
+            "name": "Link Bank Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/onboarding/:external_id/link-bank-account/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "external_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "View used to start the \"Link Bank Account\" step on an existing Onboarding"
+        },
+        {
+          "info": {
+            "name": "Add Bill Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/onboarding/:external_id/bill-details/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "external_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "View used to show Bill Details step on an existing Onboarding"
+        },
+        {
+          "info": {
+            "name": "Perform Underwriting",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/onboarding/:external_id/perform-underwriting/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "external_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "View perform the Underwriting on an existing Onboarding"
+        },
+        {
+          "info": {
+            "name": "Select Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/onboarding/:external_id/select-product/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "external_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Select the Product for an existing Onboarding"
+        },
+        {
+          "info": {
+            "name": "Submit Loan Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/onboarding/:external_id/submit-loan/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "external_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a loan request for an existing Onboarding"
+        },
+        {
+          "info": {
+            "name": "Add Onboarding Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/v2/onboarding/:external_id/metadata/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "external_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "1) Validate the request and get the Metadata from it\n2) Get the onboarding process\n3) Create/Update the onboarding metadata\n4) Return the onboarding data"
+        },
+        {
+          "info": {
+            "name": "Update Onboarding Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://host.com/v2/onboarding/:external_id/metadata/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "external_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "1) Validate the request and get the Metadata from it\n2) Get the onboarding process\n3) Create/Update the onboarding metadata\n4) Return the onboarding data"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

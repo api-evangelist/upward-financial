@@ -1,0 +1,718 @@
+{
+  "item": [
+    {
+      "id": "e70ffc88-92d2-492c-8a15-814abe0857e7",
+      "name": "billPayments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0ce67755-f6a2-4ffd-9836-296676fa53d4",
+          "name": "Get Bill",
+          "request": {
+            "name": "Get Bill",
+            "description": {
+              "content": "Get a specific Bill by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "bill-pay",
+                "bills",
+                ":external_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af0dbe30-c23d-4217-8c3b-3d0b326d463d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bill-pay",
+                    "bills",
+                    ":external_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ccac9eb3-2014-e3a5-8e53-05ac19d2a0ab\",\n  \"consumer_id\": \"bf88b4c6-7073-86a6-16b6-9a032374b8a1\",\n  \"sending_account_id\": \"780b7119-9197-956c-4f23-3c335af7f849\",\n  \"name\": \"string\",\n  \"receiver_name\": \"string\",\n  \"account_number\": \"string\",\n  \"account_routing_number\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32f5faa2-3e03-4896-9a41-f73ed78167a6",
+          "name": "List Bill Payments View Sets",
+          "request": {
+            "name": "List Bill Payments View Sets",
+            "description": {
+              "content": "List all bill payments for a specific bill",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "bill-pay",
+                "bills",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "A search term."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8045753d-bdee-475e-b6d3-4552fc39812a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bill-pay",
+                    "bills",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 477,\n  \"results\": [],\n  \"next\": \"http://sbQxjPeuY.rbjxXNFPjfLPjhcMoYImgQejD,EJcN+3p1,mdvaWtcHR7aI7lmLE6BckxeOAjX6kAR\",\n  \"previous\": \"https://sxVchiAuNDJzNvcVvpyitgKzrKPKCJ.uojDC,FQpBS92,on53URq5w6cGIMzybJk1ogToqSrDdh\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c70baad7-2166-4fc3-8d2f-739059f4d2de",
+          "name": "Create Bill",
+          "request": {
+            "name": "Create Bill",
+            "description": {
+              "content": "Create a new Bill.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "bill-pay",
+                "bills",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"consumer_id\": \"<uuid>\",\n  \"sending_account_id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"receiver_name\": \"<string>\",\n  \"account_number\": \"<string>\",\n  \"account_routing_number\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "045b07ad-6d32-4372-a921-585192a85286",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bill-pay",
+                    "bills",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"consumer_id\": \"<uuid>\",\n  \"sending_account_id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"receiver_name\": \"<string>\",\n  \"account_number\": \"<string>\",\n  \"account_routing_number\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"consumer_id\": \"173bc427-c705-f87a-9797-cca9e2a35629\",\n  \"sending_account_id\": \"ddf98750-dc4d-7645-8db8-2dba46e6c723\",\n  \"name\": \"string\",\n  \"receiver_name\": \"string\",\n  \"account_number\": \"string\",\n  \"account_routing_number\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "54fe2e3b-4099-41b2-949d-6ad6aa29bb46",
+          "name": "Get Bill Payment",
+          "request": {
+            "name": "Get Bill Payment",
+            "description": {
+              "content": "Get a specific Bill Payment by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "bill-pay",
+                "bills",
+                ":external_id",
+                "payments",
+                ":bill_payment_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bill_payment_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae2b6ef3-ee7a-4c4f-bdea-e6f299367309",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bill-pay",
+                    "bills",
+                    ":external_id",
+                    "payments",
+                    ":bill_payment_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bill_payment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"80a91471-b9d1-1c33-696e-787bc4e206b5\",\n  \"amount\": \"string\",\n  \"process_date\": \"1948-03-01\",\n  \"description\": \"string\",\n  \"payment_rail\": \"string\",\n  \"status\": \"completed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf7e9653-b4d2-453b-b506-b3541411dad5",
+          "name": "Get All Bill Payments",
+          "request": {
+            "name": "Get All Bill Payments",
+            "description": {
+              "content": "List all bill payments for a specific bill",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "bill-pay",
+                "bills",
+                ":external_id",
+                "payments",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "A search term."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "692f6913-c872-495c-a6e3-7fe67abdbdf9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bill-pay",
+                    "bills",
+                    ":external_id",
+                    "payments",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 3802,\n  \"results\": [\n    {\n      \"id\": \"3a980b82-34ed-d3dd-ac2e-96a7c63d6221\",\n      \"amount\": \"string\",\n      \"process_date\": \"2026-07-18\",\n      \"description\": \"string\",\n      \"payment_rail\": \"string\",\n      \"status\": \"submitted\"\n    },\n    {\n      \"id\": \"0e601350-c1a3-29af-dc09-965e612f36ed\",\n      \"amount\": \"string\",\n      \"process_date\": \"2008-06-26\",\n      \"description\": \"string\",\n      \"payment_rail\": \"string\",\n      \"status\": \"queued\"\n    }\n  ],\n  \"next\": \"https://OBCRWMPmCdLmWkWZSrkttraGwwuX.pxyCd4GHWwid,K-N+SsC+Cqj6+1drItm7.cMD9WONvgQX1\",\n  \"previous\": \"http://FjNuMBzFPKLFPu.gwggXb\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff2d5cb7-ba69-472a-9e4a-850484f7c595",
+          "name": "Create Bill Payment",
+          "request": {
+            "name": "Create Bill Payment",
+            "description": {
+              "content": "Create a new Bill Payment for a specific bill.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "bill-pay",
+                "bills",
+                ":external_id",
+                "payments",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<decimal>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "42d68d94-aadd-4465-98c5-25833f643c8b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bill-pay",
+                    "bills",
+                    ":external_id",
+                    "payments",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<decimal>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"80a91471-b9d1-1c33-696e-787bc4e206b5\",\n  \"amount\": \"string\",\n  \"process_date\": \"1948-03-01\",\n  \"description\": \"string\",\n  \"payment_rail\": \"string\",\n  \"status\": \"completed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://host.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ce46c21d-a8b7-43bf-a6cf-f64f35e85e06",
+    "name": "API Reference accounts billPayments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

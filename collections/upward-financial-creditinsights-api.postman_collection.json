@@ -1,0 +1,131 @@
+{
+  "item": [
+    {
+      "id": "ad85d5f8-c11b-4eeb-853f-49722d1cc888",
+      "name": "creditInsights",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fee3d855-65f5-4d5d-864a-3d93a0523765",
+          "name": "Retrieve Credit Insights Overview",
+          "request": {
+            "name": "Retrieve Credit Insights Overview",
+            "description": {
+              "content": "Get credit insights overview",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "credit-insights",
+                ":consumer_id",
+                "summary",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consumer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "12b74c41-0b17-4f88-a4cc-b62540c2cc22",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "credit-insights",
+                    ":consumer_id",
+                    "summary",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consumer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"credit_score_card\": {\n    \"report_date\": \"1974-03-25T08:31:16.769Z\",\n    \"score\": 7201,\n    \"change\": 2903,\n    \"credit_usage\": 3293,\n    \"total_tradelines\": 9707,\n    \"payment_history\": 3765,\n    \"credit_inquiries\": 2804,\n    \"credit_age\": 6413,\n    \"debt_collection_count\": 4425,\n    \"late_payment_percentage\": 261,\n    \"total_public_records\": 4459,\n    \"total_open_revolving_accounts\": 5282,\n    \"total_open_collection_accounts\": 1833,\n    \"total_bankruptcies\": 9606,\n    \"credit_report_status\": \"Ordered\"\n  },\n  \"credit_score_history\": [\n    {\n      \"score\": 1763,\n      \"month\": \"string\"\n    },\n    {\n      \"score\": 5796,\n      \"month\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://host.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3ee22620-c5c1-430c-b263-29c657405f39",
+    "name": "API Reference accounts creditInsights API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

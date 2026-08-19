@@ -1,0 +1,1657 @@
+{
+  "item": [
+    {
+      "id": "57c839eb-a749-43a7-8a67-79e8b4f59ceb",
+      "name": "onboarding",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "871f42a1-ed70-4117-9b7b-8a9999554a9a",
+          "name": "Get All Onboardings",
+          "request": {
+            "name": "Get All Onboardings",
+            "description": {
+              "content": "1) Get Partner from request\n2) Get Partner Onboardings and filter (pcid or external id) if needed\n3) Return a list of onboardings with their id and consumer data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "onboarding",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "A search term."
+                },
+                {
+                  "disabled": false,
+                  "key": "consumer_id",
+                  "value": "<string>",
+                  "description": "(Required) Consumer ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "consumer_pcid",
+                  "value": "<string>",
+                  "description": "(Required) Consumer PCID"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc2b723f-bb62-4287-a313-bd14b3b1b161",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "onboarding",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "consumer_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "consumer_pcid",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 4786,\n  \"results\": [\n    {\n      \"id\": \"d01c3694-fe68-6468-92f5-13dadc6ecb89\",\n      \"status\": \"string\",\n      \"consumer\": {\n        \"id\": \"65bbf575-bfba-19d1-227e-bd9cb0ce31d7\",\n        \"pcid\": \"string\",\n        \"mla_status\": true,\n        \"phone_number\": \"string\",\n        \"date_of_birth\": \"string\",\n        \"tax_id_type\": \"string\",\n        \"address_line1\": \"string\",\n        \"address_line2\": \"string\",\n        \"address_city\": \"string\",\n        \"address_state\": \"string\",\n        \"address_zip\": \"string\",\n        \"external_id\": \"db1c1535-a58f-5f38-8ceb-302f51f4610c\",\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"email\": \"nlbNbvoHaYaIjj@LIAqDKeRGckNjZvIiygRBlcwDpotz.ecjz\",\n        \"is_active\": false,\n        \"kyc_status\": \"string\",\n        \"tax_identifier\": \"string\",\n        \"credit_lines\": \"string\"\n      },\n      \"kyc\": {\n        \"inquiry_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"fallback_inquiry_id\": \"string\",\n        \"inquiry_template_id\": \"string\"\n      },\n      \"e_sign\": {\n        \"agreement_accepted\": true,\n        \"agreement_accepted_date\": \"2015-05-31T02:40:36.774Z\"\n      },\n      \"underwriting\": {\n        \"result\": \"string\",\n        \"data\": \"string\"\n      },\n      \"product\": {\n        \"product_id\": \"string\",\n        \"product_configuration\": {}\n      },\n      \"previous_steps\": [\n        {\n          \"slug\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"slug\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"current_steps\": [\n        {\n          \"slug\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"slug\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"metadata\": {}\n    },\n    {\n      \"id\": \"eaf59aec-1a74-f218-6807-1aa74e8a6621\",\n      \"status\": \"string\",\n      \"consumer\": {\n        \"id\": \"9581af68-d047-1992-2b31-e6f198f8bcbf\",\n        \"pcid\": \"string\",\n        \"mla_status\": true,\n        \"phone_number\": \"string\",\n        \"date_of_birth\": \"string\",\n        \"tax_id_type\": \"string\",\n        \"address_line1\": \"string\",\n        \"address_line2\": \"string\",\n        \"address_city\": \"string\",\n        \"address_state\": \"string\",\n        \"address_zip\": \"string\",\n        \"external_id\": \"ee537311-a273-c567-60af-f87046b4c209\",\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"email\": \"JGc9wJLjQGn2@QjRDKoeZMGl.njt\",\n        \"is_active\": true,\n        \"kyc_status\": \"string\",\n        \"tax_identifier\": \"string\",\n        \"credit_lines\": \"string\"\n      },\n      \"kyc\": {\n        \"inquiry_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"fallback_inquiry_id\": \"string\",\n        \"inquiry_template_id\": \"string\"\n      },\n      \"e_sign\": {\n        \"agreement_accepted\": false,\n        \"agreement_accepted_date\": \"1982-11-16T14:30:26.571Z\"\n      },\n      \"underwriting\": {\n        \"result\": \"string\",\n        \"data\": \"string\"\n      },\n      \"product\": {\n        \"product_id\": \"string\",\n        \"product_configuration\": {}\n      },\n      \"previous_steps\": [\n        {\n          \"slug\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"slug\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"current_steps\": [\n        {\n          \"slug\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"slug\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"metadata\": {}\n    }\n  ],\n  \"next\": \"https://GCFLOsAiosOVB.ebteZ5ALslYFgIP70\",\n  \"previous\": \"https://AcSgqNHPGidXEm.aweTBTaCByMw38QNuy\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7f3b564-cd08-48e9-b69c-aab46597ef64",
+          "name": "Create Onboarding",
+          "request": {
+            "name": "Create Onboarding",
+            "description": {
+              "content": "1) Validate the request and get the partner from it\n2) Verify if consumer exists and if so, if there's an onboarding flow\n3) Create a new onboarding (and new consumer) if needed\n4) Return the onboarding id and consumer data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "onboarding",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pcid\": \"<string>\",\n  \"onboarding_template_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b2fb1ed2-cd80-44ee-b73d-700dc667af8f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "onboarding",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"pcid\": \"<string>\",\n  \"onboarding_template_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"cce60cdd-fa82-9c0a-1794-5a759d50703b\",\n  \"status\": \"string\",\n  \"consumer\": {\n    \"id\": \"733a37cd-3029-ccff-823a-7cfad5a87a18\",\n    \"pcid\": \"string\",\n    \"mla_status\": true,\n    \"phone_number\": \"string\",\n    \"date_of_birth\": \"string\",\n    \"tax_id_type\": \"string\",\n    \"address_line1\": \"string\",\n    \"address_line2\": \"string\",\n    \"address_city\": \"string\",\n    \"address_state\": \"string\",\n    \"address_zip\": \"string\",\n    \"external_id\": \"66ca961a-2b04-d301-218e-b054395f4b37\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"KiZR@OpX.ejyt\",\n    \"is_active\": false,\n    \"kyc_status\": \"string\",\n    \"tax_identifier\": \"string\",\n    \"credit_lines\": \"string\"\n  },\n  \"kyc\": {\n    \"inquiry_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"fallback_inquiry_id\": \"string\",\n    \"inquiry_template_id\": \"string\"\n  },\n  \"e_sign\": {\n    \"agreement_accepted\": true,\n    \"agreement_accepted_date\": \"1999-05-17T18:40:46.444Z\"\n  },\n  \"underwriting\": {\n    \"result\": \"string\",\n    \"data\": \"string\"\n  },\n  \"product\": {\n    \"product_id\": \"string\",\n    \"product_configuration\": {}\n  },\n  \"previous_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"current_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"metadata\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8795de83-51d3-404e-877b-054014488394",
+          "name": "Get Onboarding",
+          "request": {
+            "name": "Get Onboarding",
+            "description": {
+              "content": "1) Get Partner from request\n2) Get the Onboarding and check if it belongs to the partner\n3) Return the onboarding id and consumer data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "onboarding",
+                ":external_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "888752fb-2e99-4d48-a3a6-2ae9641cb2be",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "onboarding",
+                    ":external_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"cce60cdd-fa82-9c0a-1794-5a759d50703b\",\n  \"status\": \"string\",\n  \"consumer\": {\n    \"id\": \"733a37cd-3029-ccff-823a-7cfad5a87a18\",\n    \"pcid\": \"string\",\n    \"mla_status\": true,\n    \"phone_number\": \"string\",\n    \"date_of_birth\": \"string\",\n    \"tax_id_type\": \"string\",\n    \"address_line1\": \"string\",\n    \"address_line2\": \"string\",\n    \"address_city\": \"string\",\n    \"address_state\": \"string\",\n    \"address_zip\": \"string\",\n    \"external_id\": \"66ca961a-2b04-d301-218e-b054395f4b37\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"KiZR@OpX.ejyt\",\n    \"is_active\": false,\n    \"kyc_status\": \"string\",\n    \"tax_identifier\": \"string\",\n    \"credit_lines\": \"string\"\n  },\n  \"kyc\": {\n    \"inquiry_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"fallback_inquiry_id\": \"string\",\n    \"inquiry_template_id\": \"string\"\n  },\n  \"e_sign\": {\n    \"agreement_accepted\": true,\n    \"agreement_accepted_date\": \"1999-05-17T18:40:46.444Z\"\n  },\n  \"underwriting\": {\n    \"result\": \"string\",\n    \"data\": \"string\"\n  },\n  \"product\": {\n    \"product_id\": \"string\",\n    \"product_configuration\": {}\n  },\n  \"previous_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"current_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"metadata\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "570a8622-a056-494a-84a8-a210b1847a2c",
+          "name": "Cancel Onboarding",
+          "request": {
+            "name": "Cancel Onboarding",
+            "description": {
+              "content": "1) Set the Onboarding Process Status to cancelled",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "onboarding",
+                ":external_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6be65c14-0930-4df9-8f2b-7e8d834d59a2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "onboarding",
+                    ":external_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f639ec6-e18b-4415-afeb-3ecb580c4715",
+          "name": "Verify Identity",
+          "request": {
+            "name": "Verify Identity",
+            "description": {
+              "content": "View used to start the \"Verify Identity\" step on an existing Onboarding",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "onboarding",
+                ":external_id",
+                "verify-identity",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"inquiry_id\": \"\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c1741a28-a8c8-4737-9619-a33232c4a9e4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "onboarding",
+                    ":external_id",
+                    "verify-identity",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inquiry_id\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"cce60cdd-fa82-9c0a-1794-5a759d50703b\",\n  \"status\": \"string\",\n  \"consumer\": {\n    \"id\": \"733a37cd-3029-ccff-823a-7cfad5a87a18\",\n    \"pcid\": \"string\",\n    \"mla_status\": true,\n    \"phone_number\": \"string\",\n    \"date_of_birth\": \"string\",\n    \"tax_id_type\": \"string\",\n    \"address_line1\": \"string\",\n    \"address_line2\": \"string\",\n    \"address_city\": \"string\",\n    \"address_state\": \"string\",\n    \"address_zip\": \"string\",\n    \"external_id\": \"66ca961a-2b04-d301-218e-b054395f4b37\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"KiZR@OpX.ejyt\",\n    \"is_active\": false,\n    \"kyc_status\": \"string\",\n    \"tax_identifier\": \"string\",\n    \"credit_lines\": \"string\"\n  },\n  \"kyc\": {\n    \"inquiry_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"fallback_inquiry_id\": \"string\",\n    \"inquiry_template_id\": \"string\"\n  },\n  \"e_sign\": {\n    \"agreement_accepted\": true,\n    \"agreement_accepted_date\": \"1999-05-17T18:40:46.444Z\"\n  },\n  \"underwriting\": {\n    \"result\": \"string\",\n    \"data\": \"string\"\n  },\n  \"product\": {\n    \"product_id\": \"string\",\n    \"product_configuration\": {}\n  },\n  \"previous_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"current_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"metadata\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "51814a8e-234c-4e82-a243-7ea21b80148b",
+          "name": "Accept Terms",
+          "request": {
+            "name": "Accept Terms",
+            "description": {
+              "content": "View used to start the \"Accept Terms\" step on an existing Onboarding",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "onboarding",
+                ":external_id",
+                "accept-terms",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"agreement_accepted\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5c1108cb-17e1-44a7-842e-8058d23989f8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "onboarding",
+                    ":external_id",
+                    "accept-terms",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agreement_accepted\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"cce60cdd-fa82-9c0a-1794-5a759d50703b\",\n  \"status\": \"string\",\n  \"consumer\": {\n    \"id\": \"733a37cd-3029-ccff-823a-7cfad5a87a18\",\n    \"pcid\": \"string\",\n    \"mla_status\": true,\n    \"phone_number\": \"string\",\n    \"date_of_birth\": \"string\",\n    \"tax_id_type\": \"string\",\n    \"address_line1\": \"string\",\n    \"address_line2\": \"string\",\n    \"address_city\": \"string\",\n    \"address_state\": \"string\",\n    \"address_zip\": \"string\",\n    \"external_id\": \"66ca961a-2b04-d301-218e-b054395f4b37\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"KiZR@OpX.ejyt\",\n    \"is_active\": false,\n    \"kyc_status\": \"string\",\n    \"tax_identifier\": \"string\",\n    \"credit_lines\": \"string\"\n  },\n  \"kyc\": {\n    \"inquiry_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"fallback_inquiry_id\": \"string\",\n    \"inquiry_template_id\": \"string\"\n  },\n  \"e_sign\": {\n    \"agreement_accepted\": true,\n    \"agreement_accepted_date\": \"1999-05-17T18:40:46.444Z\"\n  },\n  \"underwriting\": {\n    \"result\": \"string\",\n    \"data\": \"string\"\n  },\n  \"product\": {\n    \"product_id\": \"string\",\n    \"product_configuration\": {}\n  },\n  \"previous_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"current_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"metadata\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dafffbc2-5506-4222-89c2-2e0ccf490bc3",
+          "name": "Bloom Enablement Request",
+          "request": {
+            "name": "Bloom Enablement Request",
+            "description": {
+              "content": "View used to start the \"Onboard a consumer on Bloom Enablement\" step on an existing Onboarding",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "onboarding",
+                ":external_id",
+                "bloom-enablement",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2680f8bb-e069-40e4-a60c-fdda49c4e95e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "onboarding",
+                    ":external_id",
+                    "bloom-enablement",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"cce60cdd-fa82-9c0a-1794-5a759d50703b\",\n  \"status\": \"string\",\n  \"consumer\": {\n    \"id\": \"733a37cd-3029-ccff-823a-7cfad5a87a18\",\n    \"pcid\": \"string\",\n    \"mla_status\": true,\n    \"phone_number\": \"string\",\n    \"date_of_birth\": \"string\",\n    \"tax_id_type\": \"string\",\n    \"address_line1\": \"string\",\n    \"address_line2\": \"string\",\n    \"address_city\": \"string\",\n    \"address_state\": \"string\",\n    \"address_zip\": \"string\",\n    \"external_id\": \"66ca961a-2b04-d301-218e-b054395f4b37\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"KiZR@OpX.ejyt\",\n    \"is_active\": false,\n    \"kyc_status\": \"string\",\n    \"tax_identifier\": \"string\",\n    \"credit_lines\": \"string\"\n  },\n  \"kyc\": {\n    \"inquiry_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"fallback_inquiry_id\": \"string\",\n    \"inquiry_template_id\": \"string\"\n  },\n  \"e_sign\": {\n    \"agreement_accepted\": true,\n    \"agreement_accepted_date\": \"1999-05-17T18:40:46.444Z\"\n  },\n  \"underwriting\": {\n    \"result\": \"string\",\n    \"data\": \"string\"\n  },\n  \"product\": {\n    \"product_id\": \"string\",\n    \"product_configuration\": {}\n  },\n  \"previous_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"current_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"metadata\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "442c96b3-fca2-4593-ab41-84aebfc62237",
+          "name": "Link Bank Account",
+          "request": {
+            "name": "Link Bank Account",
+            "description": {
+              "content": "View used to start the \"Link Bank Account\" step on an existing Onboarding",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "onboarding",
+                ":external_id",
+                "link-bank-account",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"plaid_link_token\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4a0258f4-001c-4646-85a6-545c09dd321d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "onboarding",
+                    ":external_id",
+                    "link-bank-account",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"plaid_link_token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"cce60cdd-fa82-9c0a-1794-5a759d50703b\",\n  \"status\": \"string\",\n  \"consumer\": {\n    \"id\": \"733a37cd-3029-ccff-823a-7cfad5a87a18\",\n    \"pcid\": \"string\",\n    \"mla_status\": true,\n    \"phone_number\": \"string\",\n    \"date_of_birth\": \"string\",\n    \"tax_id_type\": \"string\",\n    \"address_line1\": \"string\",\n    \"address_line2\": \"string\",\n    \"address_city\": \"string\",\n    \"address_state\": \"string\",\n    \"address_zip\": \"string\",\n    \"external_id\": \"66ca961a-2b04-d301-218e-b054395f4b37\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"KiZR@OpX.ejyt\",\n    \"is_active\": false,\n    \"kyc_status\": \"string\",\n    \"tax_identifier\": \"string\",\n    \"credit_lines\": \"string\"\n  },\n  \"kyc\": {\n    \"inquiry_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"fallback_inquiry_id\": \"string\",\n    \"inquiry_template_id\": \"string\"\n  },\n  \"e_sign\": {\n    \"agreement_accepted\": true,\n    \"agreement_accepted_date\": \"1999-05-17T18:40:46.444Z\"\n  },\n  \"underwriting\": {\n    \"result\": \"string\",\n    \"data\": \"string\"\n  },\n  \"product\": {\n    \"product_id\": \"string\",\n    \"product_configuration\": {}\n  },\n  \"previous_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"current_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"metadata\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f820587a-4ac8-459c-b68f-ff4516f365ea",
+          "name": "Add Bill Details",
+          "request": {
+            "name": "Add Bill Details",
+            "description": {
+              "content": "View used to show Bill Details step on an existing Onboarding",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "onboarding",
+                ":external_id",
+                "bill-details",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<uuid>\",\n  \"status\": \"<string>\",\n  \"consumer\": {\n    \"id\": \"<uuid>\",\n    \"pcid\": \"<string>\",\n    \"mla_status\": \"<boolean>\",\n    \"phone_number\": \"<string>\",\n    \"date_of_birth\": \"<string>\",\n    \"tax_id_type\": \"<string>\",\n    \"address_line1\": \"<string>\",\n    \"address_line2\": \"<string>\",\n    \"address_city\": \"<string>\",\n    \"address_state\": \"<string>\",\n    \"address_zip\": \"<string>\",\n    \"external_id\": \"<uuid>\",\n    \"first_name\": \"<string,null>\",\n    \"last_name\": \"<string,null>\",\n    \"email\": \"<string,null-email>\",\n    \"is_active\": \"<boolean>\",\n    \"kyc_status\": \"<string>\",\n    \"tax_identifier\": \"<string,null>\",\n    \"credit_lines\": \"<string,null>\"\n  },\n  \"kyc\": {\n    \"inquiry_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"fallback_inquiry_id\": \"<string>\",\n    \"inquiry_template_id\": \"<string>\"\n  },\n  \"e_sign\": {\n    \"agreement_accepted\": \"<boolean>\",\n    \"agreement_accepted_date\": \"<string,null-date-time>\"\n  },\n  \"underwriting\": {\n    \"result\": \"<string>\",\n    \"data\": \"<string>\"\n  },\n  \"product\": {\n    \"product_id\": \"<string>\",\n    \"product_configuration\": {}\n  },\n  \"previous_steps\": [\n    {\n      \"slug\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"slug\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"current_steps\": [\n    {\n      \"slug\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"slug\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"metadata\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fd8dbbf7-8279-4a7c-a781-3867417db247",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "onboarding",
+                    ":external_id",
+                    "bill-details",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<uuid>\",\n  \"status\": \"<string>\",\n  \"consumer\": {\n    \"id\": \"d0a693d3-c47b-381d-7add-7f3bdb79af23\",\n    \"pcid\": \"string\",\n    \"mla_status\": true,\n    \"phone_number\": \"string\",\n    \"date_of_birth\": \"string\",\n    \"tax_id_type\": \"string\",\n    \"address_line1\": \"string\",\n    \"address_line2\": \"string\",\n    \"address_city\": \"string\",\n    \"address_state\": \"string\",\n    \"address_zip\": \"string\",\n    \"external_id\": \"fef70412-1e3e-3f5f-e8b9-d14b260f70a7\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"BA6wSKNlO@LcBFuRbrfkxgXXTgiDd.kw\",\n    \"is_active\": false,\n    \"kyc_status\": \"string\",\n    \"tax_identifier\": \"string\",\n    \"credit_lines\": \"string\"\n  },\n  \"kyc\": {\n    \"inquiry_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"fallback_inquiry_id\": \"string\",\n    \"inquiry_template_id\": \"string\"\n  },\n  \"e_sign\": {\n    \"agreement_accepted\": true,\n    \"agreement_accepted_date\": \"1947-03-10T04:12:31.476Z\"\n  },\n  \"underwriting\": {\n    \"result\": \"string\",\n    \"data\": \"string\"\n  },\n  \"product\": {\n    \"product_id\": \"string\",\n    \"product_configuration\": {}\n  },\n  \"previous_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"current_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"metadata\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"cce60cdd-fa82-9c0a-1794-5a759d50703b\",\n  \"status\": \"string\",\n  \"consumer\": {\n    \"id\": \"733a37cd-3029-ccff-823a-7cfad5a87a18\",\n    \"pcid\": \"string\",\n    \"mla_status\": true,\n    \"phone_number\": \"string\",\n    \"date_of_birth\": \"string\",\n    \"tax_id_type\": \"string\",\n    \"address_line1\": \"string\",\n    \"address_line2\": \"string\",\n    \"address_city\": \"string\",\n    \"address_state\": \"string\",\n    \"address_zip\": \"string\",\n    \"external_id\": \"66ca961a-2b04-d301-218e-b054395f4b37\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"KiZR@OpX.ejyt\",\n    \"is_active\": false,\n    \"kyc_status\": \"string\",\n    \"tax_identifier\": \"string\",\n    \"credit_lines\": \"string\"\n  },\n  \"kyc\": {\n    \"inquiry_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"fallback_inquiry_id\": \"string\",\n    \"inquiry_template_id\": \"string\"\n  },\n  \"e_sign\": {\n    \"agreement_accepted\": true,\n    \"agreement_accepted_date\": \"1999-05-17T18:40:46.444Z\"\n  },\n  \"underwriting\": {\n    \"result\": \"string\",\n    \"data\": \"string\"\n  },\n  \"product\": {\n    \"product_id\": \"string\",\n    \"product_configuration\": {}\n  },\n  \"previous_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"current_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"metadata\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32f852b8-ab9f-44f5-8bb5-2f80ce8bf803",
+          "name": "Perform Underwriting",
+          "request": {
+            "name": "Perform Underwriting",
+            "description": {
+              "content": "View perform the Underwriting on an existing Onboarding",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "onboarding",
+                ":external_id",
+                "perform-underwriting",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"result\": \"<string>\",\n  \"data\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "21543628-904c-4278-a668-ad50643a6c31",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "onboarding",
+                    ":external_id",
+                    "perform-underwriting",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"result\": \"fail\",\n  \"data\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"cce60cdd-fa82-9c0a-1794-5a759d50703b\",\n  \"status\": \"string\",\n  \"consumer\": {\n    \"id\": \"733a37cd-3029-ccff-823a-7cfad5a87a18\",\n    \"pcid\": \"string\",\n    \"mla_status\": true,\n    \"phone_number\": \"string\",\n    \"date_of_birth\": \"string\",\n    \"tax_id_type\": \"string\",\n    \"address_line1\": \"string\",\n    \"address_line2\": \"string\",\n    \"address_city\": \"string\",\n    \"address_state\": \"string\",\n    \"address_zip\": \"string\",\n    \"external_id\": \"66ca961a-2b04-d301-218e-b054395f4b37\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"KiZR@OpX.ejyt\",\n    \"is_active\": false,\n    \"kyc_status\": \"string\",\n    \"tax_identifier\": \"string\",\n    \"credit_lines\": \"string\"\n  },\n  \"kyc\": {\n    \"inquiry_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"fallback_inquiry_id\": \"string\",\n    \"inquiry_template_id\": \"string\"\n  },\n  \"e_sign\": {\n    \"agreement_accepted\": true,\n    \"agreement_accepted_date\": \"1999-05-17T18:40:46.444Z\"\n  },\n  \"underwriting\": {\n    \"result\": \"string\",\n    \"data\": \"string\"\n  },\n  \"product\": {\n    \"product_id\": \"string\",\n    \"product_configuration\": {}\n  },\n  \"previous_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"current_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"metadata\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cee5000a-e071-461c-8ad6-f2b7546671f4",
+          "name": "Select Product",
+          "request": {
+            "name": "Select Product",
+            "description": {
+              "content": "Select the Product for an existing Onboarding",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "onboarding",
+                ":external_id",
+                "select-product",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product_id\": \"<string>\",\n  \"product_configuration\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3a60d5e3-9187-4916-ba8f-d41ec2d953eb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "onboarding",
+                    ":external_id",
+                    "select-product",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"product_id\": \"<string>\",\n  \"product_configuration\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"cce60cdd-fa82-9c0a-1794-5a759d50703b\",\n  \"status\": \"string\",\n  \"consumer\": {\n    \"id\": \"733a37cd-3029-ccff-823a-7cfad5a87a18\",\n    \"pcid\": \"string\",\n    \"mla_status\": true,\n    \"phone_number\": \"string\",\n    \"date_of_birth\": \"string\",\n    \"tax_id_type\": \"string\",\n    \"address_line1\": \"string\",\n    \"address_line2\": \"string\",\n    \"address_city\": \"string\",\n    \"address_state\": \"string\",\n    \"address_zip\": \"string\",\n    \"external_id\": \"66ca961a-2b04-d301-218e-b054395f4b37\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"KiZR@OpX.ejyt\",\n    \"is_active\": false,\n    \"kyc_status\": \"string\",\n    \"tax_identifier\": \"string\",\n    \"credit_lines\": \"string\"\n  },\n  \"kyc\": {\n    \"inquiry_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"fallback_inquiry_id\": \"string\",\n    \"inquiry_template_id\": \"string\"\n  },\n  \"e_sign\": {\n    \"agreement_accepted\": true,\n    \"agreement_accepted_date\": \"1999-05-17T18:40:46.444Z\"\n  },\n  \"underwriting\": {\n    \"result\": \"string\",\n    \"data\": \"string\"\n  },\n  \"product\": {\n    \"product_id\": \"string\",\n    \"product_configuration\": {}\n  },\n  \"previous_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"current_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"metadata\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5bd482dc-b6d6-4f48-9cfd-773c4c6e6bdb",
+          "name": "Submit Loan Request",
+          "request": {
+            "name": "Submit Loan Request",
+            "description": {
+              "content": "Submit a loan request for an existing Onboarding",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "onboarding",
+                ":external_id",
+                "submit-loan",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fc4bebb5-055f-4ab0-a728-e7b644f4fa06",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "onboarding",
+                    ":external_id",
+                    "submit-loan",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"cce60cdd-fa82-9c0a-1794-5a759d50703b\",\n  \"status\": \"string\",\n  \"consumer\": {\n    \"id\": \"733a37cd-3029-ccff-823a-7cfad5a87a18\",\n    \"pcid\": \"string\",\n    \"mla_status\": true,\n    \"phone_number\": \"string\",\n    \"date_of_birth\": \"string\",\n    \"tax_id_type\": \"string\",\n    \"address_line1\": \"string\",\n    \"address_line2\": \"string\",\n    \"address_city\": \"string\",\n    \"address_state\": \"string\",\n    \"address_zip\": \"string\",\n    \"external_id\": \"66ca961a-2b04-d301-218e-b054395f4b37\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"KiZR@OpX.ejyt\",\n    \"is_active\": false,\n    \"kyc_status\": \"string\",\n    \"tax_identifier\": \"string\",\n    \"credit_lines\": \"string\"\n  },\n  \"kyc\": {\n    \"inquiry_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"fallback_inquiry_id\": \"string\",\n    \"inquiry_template_id\": \"string\"\n  },\n  \"e_sign\": {\n    \"agreement_accepted\": true,\n    \"agreement_accepted_date\": \"1999-05-17T18:40:46.444Z\"\n  },\n  \"underwriting\": {\n    \"result\": \"string\",\n    \"data\": \"string\"\n  },\n  \"product\": {\n    \"product_id\": \"string\",\n    \"product_configuration\": {}\n  },\n  \"previous_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"current_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"metadata\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78b66dc0-5120-4c0f-a7ee-4b988bb1e214",
+          "name": "Add Onboarding Metadata",
+          "request": {
+            "name": "Add Onboarding Metadata",
+            "description": {
+              "content": "1) Validate the request and get the Metadata from it\n2) Get the onboarding process\n3) Create/Update the onboarding metadata\n4) Return the onboarding data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "onboarding",
+                ":external_id",
+                "metadata",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"metadata\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0fe86ed3-1620-4bdc-ba64-4a2ed8f97f38",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "onboarding",
+                    ":external_id",
+                    "metadata",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadata\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"cce60cdd-fa82-9c0a-1794-5a759d50703b\",\n  \"status\": \"string\",\n  \"consumer\": {\n    \"id\": \"733a37cd-3029-ccff-823a-7cfad5a87a18\",\n    \"pcid\": \"string\",\n    \"mla_status\": true,\n    \"phone_number\": \"string\",\n    \"date_of_birth\": \"string\",\n    \"tax_id_type\": \"string\",\n    \"address_line1\": \"string\",\n    \"address_line2\": \"string\",\n    \"address_city\": \"string\",\n    \"address_state\": \"string\",\n    \"address_zip\": \"string\",\n    \"external_id\": \"66ca961a-2b04-d301-218e-b054395f4b37\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"KiZR@OpX.ejyt\",\n    \"is_active\": false,\n    \"kyc_status\": \"string\",\n    \"tax_identifier\": \"string\",\n    \"credit_lines\": \"string\"\n  },\n  \"kyc\": {\n    \"inquiry_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"fallback_inquiry_id\": \"string\",\n    \"inquiry_template_id\": \"string\"\n  },\n  \"e_sign\": {\n    \"agreement_accepted\": true,\n    \"agreement_accepted_date\": \"1999-05-17T18:40:46.444Z\"\n  },\n  \"underwriting\": {\n    \"result\": \"string\",\n    \"data\": \"string\"\n  },\n  \"product\": {\n    \"product_id\": \"string\",\n    \"product_configuration\": {}\n  },\n  \"previous_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"current_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"metadata\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "680b318d-521f-420a-859a-823a28e0e98b",
+          "name": "Update Onboarding Metadata",
+          "request": {
+            "name": "Update Onboarding Metadata",
+            "description": {
+              "content": "1) Validate the request and get the Metadata from it\n2) Get the onboarding process\n3) Create/Update the onboarding metadata\n4) Return the onboarding data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "onboarding",
+                ":external_id",
+                "metadata",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"metadata\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "040ec2ce-5f39-47c1-9e1b-ad11c1dae6c8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "onboarding",
+                    ":external_id",
+                    "metadata",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadata\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"cce60cdd-fa82-9c0a-1794-5a759d50703b\",\n  \"status\": \"string\",\n  \"consumer\": {\n    \"id\": \"733a37cd-3029-ccff-823a-7cfad5a87a18\",\n    \"pcid\": \"string\",\n    \"mla_status\": true,\n    \"phone_number\": \"string\",\n    \"date_of_birth\": \"string\",\n    \"tax_id_type\": \"string\",\n    \"address_line1\": \"string\",\n    \"address_line2\": \"string\",\n    \"address_city\": \"string\",\n    \"address_state\": \"string\",\n    \"address_zip\": \"string\",\n    \"external_id\": \"66ca961a-2b04-d301-218e-b054395f4b37\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"KiZR@OpX.ejyt\",\n    \"is_active\": false,\n    \"kyc_status\": \"string\",\n    \"tax_identifier\": \"string\",\n    \"credit_lines\": \"string\"\n  },\n  \"kyc\": {\n    \"inquiry_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"fallback_inquiry_id\": \"string\",\n    \"inquiry_template_id\": \"string\"\n  },\n  \"e_sign\": {\n    \"agreement_accepted\": true,\n    \"agreement_accepted_date\": \"1999-05-17T18:40:46.444Z\"\n  },\n  \"underwriting\": {\n    \"result\": \"string\",\n    \"data\": \"string\"\n  },\n  \"product\": {\n    \"product_id\": \"string\",\n    \"product_configuration\": {}\n  },\n  \"previous_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"current_steps\": [\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"slug\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"metadata\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://host.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3fdfa33e-792a-4172-828a-8c7203f8da2a",
+    "name": "API Reference accounts onboarding API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

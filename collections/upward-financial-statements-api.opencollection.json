@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference accounts statements API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "statements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Statement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/consumers/:consumer_id/statements/:pdf_filename/download/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consumer_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pdf_filename",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a pdf in b64encode"
+        },
+        {
+          "info": {
+            "name": "List Statements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/consumers/:consumer_id/statements/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consumer_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              }
+            ]
+          },
+          "docs": "Get a list with all PDF Statements generated for a consumer"
+        },
+        {
+          "info": {
+            "name": "Email Statement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/consumers/:consumer_id/statements/:pdf_filename/email/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consumer_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pdf_filename",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Send a PDF statement by email"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

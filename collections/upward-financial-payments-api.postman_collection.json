@@ -1,0 +1,2083 @@
+{
+  "item": [
+    {
+      "id": "ec7b54b9-3d59-41f8-81e6-a283802a8973",
+      "name": "payments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ead905c8-5878-447e-b573-591c95884cc9",
+          "name": "Create Create ACH Request",
+          "request": {
+            "name": "Create Create ACH Request",
+            "description": {
+              "content": "Create an ACH request to move funds into or out of a DDA inside of CRB",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "ach",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"consumer_id\": \"<string>\",\n  \"originating_account_id\": \"<string>\",\n  \"receiving_account_id\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d05c45cf-e721-4cc5-951f-b6a1dd6a0455",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "ach",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"consumer_id\": \"<string>\",\n  \"originating_account_id\": \"<string>\",\n  \"receiving_account_id\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4e6d7b59-f2cb-4bcf-71af-71ade67bddda\",\n  \"amount\": 2557.012662084419,\n  \"originating_account_id\": \"string\",\n  \"receiving_account_id\": \"string\",\n  \"ach_direction\": \"string\",\n  \"status\": \"string\",\n  \"consumer_id\": \"string\",\n  \"description\": \"string\",\n  \"memo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ebf8e28-f16f-4dac-b959-eeb172bc3937",
+          "name": "List ACH Responses",
+          "request": {
+            "name": "List ACH Responses",
+            "description": {
+              "content": "Get the ach payment information",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "ach",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "A search term."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61b75943-3310-4cba-aa28-bc334cfeaadf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "ach",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 9232,\n  \"results\": [\n    {\n      \"id\": \"57a9c77f-f2f3-7f65-f55d-6f362a9301ba\",\n      \"amount\": 9334.498352925431,\n      \"originating_account_id\": \"string\",\n      \"receiving_account_id\": \"string\",\n      \"ach_direction\": \"string\",\n      \"status\": \"string\",\n      \"consumer_id\": \"string\",\n      \"description\": \"string\",\n      \"memo\": \"string\"\n    },\n    {\n      \"id\": \"8138d3f6-66a9-720e-6f40-d7d38b859c38\",\n      \"amount\": 8081.8092352407275,\n      \"originating_account_id\": \"string\",\n      \"receiving_account_id\": \"string\",\n      \"ach_direction\": \"string\",\n      \"status\": \"string\",\n      \"consumer_id\": \"string\",\n      \"description\": \"string\",\n      \"memo\": \"string\"\n    }\n  ],\n  \"next\": \"https://tBVUBzpcoQoZvxch.wjtfm.kzs,hF4pl\",\n  \"previous\": \"http://HWFUEEBzumaN.hyrIHd,.8cj,Gvq-FzAPef61cKcnA0fslXSUR5iNqScFDDx-Bip4x6D639cnlOnTp4FS3jDv-Zv\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f6f12d64-eed2-4c35-b811-994f160df5c9",
+          "name": "Retrieve ACH Response",
+          "request": {
+            "name": "Retrieve ACH Response",
+            "description": {
+              "content": "Get the ach payment information",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "ach",
+                ":external_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c3e0bc07-9ef3-4219-adf3-86ec48217e52",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "ach",
+                    ":external_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4e6d7b59-f2cb-4bcf-71af-71ade67bddda\",\n  \"amount\": 2557.012662084419,\n  \"originating_account_id\": \"string\",\n  \"receiving_account_id\": \"string\",\n  \"ach_direction\": \"string\",\n  \"status\": \"string\",\n  \"consumer_id\": \"string\",\n  \"description\": \"string\",\n  \"memo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac98eaf6-4fd4-49cb-a4f3-bd4f7410cd3a",
+          "name": "Cancel ACH Payment",
+          "request": {
+            "name": "Cancel ACH Payment",
+            "description": {
+              "content": "Cancel the ACH payment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "ach",
+                ":external_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a6b17896-36d0-4c42-8e25-8981b8e5f5d6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "ach",
+                    ":external_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1cd9994c-27e7-436a-8b92-64f603e62e46",
+          "name": "Create Transfer",
+          "request": {
+            "name": "Create Transfer",
+            "description": {
+              "content": "Xpay transfer between CRB users",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "transfer",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"originating_account_id\": \"<uuid>\",\n  \"receiving_account_id\": \"<uuid>\",\n  \"amount\": \"<double>\",\n  \"memo\": \"card.fund_account | card.advance | card.advance.payback\",\n  \"description\": \"<string>\",\n  \"status\": \"posted\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a2559437-d0ab-4916-95ca-6d69ebe3e302",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "transfer",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"originating_account_id\": \"<uuid>\",\n  \"receiving_account_id\": \"<uuid>\",\n  \"amount\": \"<double>\",\n  \"memo\": \"card.fund_account | card.advance | card.advance.payback\",\n  \"description\": \"<string>\",\n  \"status\": \"posted\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"e932540d-a0b6-33ad-28f0-a815d7f97631\",\n  \"amount\": 6266.911228754063,\n  \"originating_account_id\": \"string\",\n  \"receiving_account_id\": \"string\",\n  \"status\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "580e53db-3950-44a6-96f3-0be9a128f28f",
+          "name": "Get All Transfers",
+          "request": {
+            "name": "Get All Transfers",
+            "description": {
+              "content": "Get transfer information",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "transfer",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9435bb1b-c49f-4a3c-8424-ee2f571541f6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "transfer",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 9765,\n  \"results\": [\n    {\n      \"id\": \"eb1a9547-f4fc-7c0a-5242-d61dc9250fc8\",\n      \"amount\": 4787.53219431883,\n      \"originating_account_id\": \"string\",\n      \"receiving_account_id\": \"string\",\n      \"status\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"id\": \"745399a4-ff2d-aa8a-29ef-eb12bec97f1d\",\n      \"amount\": 300.9246295208001,\n      \"originating_account_id\": \"string\",\n      \"receiving_account_id\": \"string\",\n      \"status\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"next\": \"http://kMNQMtpfIjvGfX.ztFzTTuQcuDRCwUDadN4ASraUD3asza4RTGPLxFum.-0\",\n  \"previous\": \"http://nllUrziSQnbAyMGCHcfR.xyvtpQ\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b64d323a-6ffe-42dc-9cd7-4f8445c1baa2",
+          "name": "Get Transfer",
+          "request": {
+            "name": "Get Transfer",
+            "description": {
+              "content": "Get transfer information",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "transfer",
+                ":external_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "A search term."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ddcc472-0e01-4ee6-bd86-aef3bbb42408",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "transfer",
+                    ":external_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"5380609b-c88b-6489-7bdc-765ed94d94d8\",\n  \"amount\": 6855.832513757825,\n  \"originating_account_id\": \"string\",\n  \"receiving_account_id\": \"string\",\n  \"status\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1478e06d-fe93-43d7-803e-867348fcef0d",
+          "name": "Create Create Instant Payment Request",
+          "request": {
+            "name": "Create Create Instant Payment Request",
+            "description": {
+              "content": "Create an Instant Payment request to move funds from an DDA to an external bank account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "instant",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"consumer_id\": \"<string>\",\n  \"originating_account_id\": \"<string>\",\n  \"receiving_account_id\": \"<string>\",\n  \"amount\": \"<decimal>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0357cb80-2c53-4c2e-b793-52d853700d59",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "instant",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"consumer_id\": \"<string>\",\n  \"originating_account_id\": \"<string>\",\n  \"receiving_account_id\": \"<string>\",\n  \"amount\": \"<decimal>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"62d37610-51b5-9afe-0ba0-91f9bf4d91fe\",\n  \"amount\": \"string\",\n  \"originating_account_id\": \"string\",\n  \"receiving_account_id\": \"string\",\n  \"instant_payment_direction\": \"string\",\n  \"consumer_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8722697c-dff8-4b7b-87f5-54aedfad0251",
+          "name": "List Get Instant Payment Responses",
+          "request": {
+            "name": "List Get Instant Payment Responses",
+            "description": {
+              "content": "Get the instant payment information",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "instant",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d37a4963-a697-4cf6-ac9e-fae630b7ae17",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "instant",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 1331,\n  \"results\": [\n    {\n      \"id\": \"aa1e78bc-e2e5-f971-32fe-6b517b93e15b\",\n      \"amount\": \"string\",\n      \"originating_account_id\": \"string\",\n      \"receiving_account_id\": \"string\",\n      \"instant_payment_direction\": \"string\",\n      \"consumer_id\": \"string\"\n    },\n    {\n      \"id\": \"899cf371-c857-2963-5c3f-133988edafec\",\n      \"amount\": \"string\",\n      \"originating_account_id\": \"string\",\n      \"receiving_account_id\": \"string\",\n      \"instant_payment_direction\": \"string\",\n      \"consumer_id\": \"string\"\n    }\n  ],\n  \"next\": \"http://mtbfBwFphyjbBthFGzANzebBOZuaON.wtgkaYDGKn2ZvWV8N7cf5OtSAo9Az5h2ackcm,k488fY\",\n  \"previous\": \"http://eAYhoFFZYVzChZy.tmnxYTwAhIrkOCPiEQMlMPljalr-PI5MZgGGR6qkm2fFHbF5IECSu6xSkINElV\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "802b9d63-1e3a-4014-aaf8-668bda0ceb98",
+          "name": "Retrieve Get Instant Payment Response",
+          "request": {
+            "name": "Retrieve Get Instant Payment Response",
+            "description": {
+              "content": "Get the instant payment information",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "instant",
+                ":external_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "external_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "22f278da-95f9-461a-88ca-b940a0ab6ae8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "instant",
+                    ":external_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "external_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"62d37610-51b5-9afe-0ba0-91f9bf4d91fe\",\n  \"amount\": \"string\",\n  \"originating_account_id\": \"string\",\n  \"receiving_account_id\": \"string\",\n  \"instant_payment_direction\": \"string\",\n  \"consumer_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4dcd98c4-9171-4ab5-9410-aba997299e16",
+          "name": "Create AFT Payment Request",
+          "request": {
+            "name": "Create AFT Payment Request",
+            "description": {
+              "content": "Create an AFT (Account Funding Transaction) request to pull funds from a consumer's external payment card",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "aft",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"consumer_id\": \"<string>\",\n  \"external_payment_card_id\": \"<uuid>\",\n  \"amount\": \"<double>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "53819c99-eb5e-4df1-b36c-4720b5f4ef0e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "aft",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"consumer_id\": \"<string>\",\n  \"external_payment_card_id\": \"<uuid>\",\n  \"amount\": \"<double>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"97693dc7-0ce3-d980-4614-0c3aa695ae63\",\n  \"amount\": 7993.8407779813515,\n  \"direction\": \"string\",\n  \"status\": \"string\",\n  \"consumer_id\": \"string\",\n  \"external_payment_card_id\": \"24d4be3d-9e91-2140-b65d-a59ae0167661\",\n  \"fee_amount\": 3615.7787418459106\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35fd1474-db75-4843-afa4-7a0a591c839d",
+          "name": "List AFT Payment Requests",
+          "request": {
+            "name": "List AFT Payment Requests",
+            "description": {
+              "content": "Get a paginated list of AFT payment requests",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "aft",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "373ecdef-d36c-4403-9634-7734ea7d0c81",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "aft",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 5116,\n  \"results\": [\n    {\n      \"id\": \"cd0b50d2-e7f0-2593-8f1e-1032a41b6a5d\",\n      \"amount\": 3388.932163566473,\n      \"direction\": \"string\",\n      \"status\": \"string\",\n      \"consumer_id\": \"string\",\n      \"external_payment_card_id\": \"a5badecf-7ece-0c8f-01b3-b88e3a50ac6f\",\n      \"fee_amount\": 5969.316654797321\n    },\n    {\n      \"id\": \"932072b6-8095-f1bf-edaa-b5e94fd8833e\",\n      \"amount\": 167.47270633994614,\n      \"direction\": \"string\",\n      \"status\": \"string\",\n      \"consumer_id\": \"string\",\n      \"external_payment_card_id\": \"c7336a50-2ed7-1d3a-acd2-cd3c43f9ca53\",\n      \"fee_amount\": 7397.942034511509\n    }\n  ],\n  \"next\": \"http://cHSwXGvBa.zzpljThkesd.8Gu6LbFUY\",\n  \"previous\": \"https://ZllWBADOmJJJQUcHmGZnRPKdjV.frZ.R1x3aYelE+7mD+iLV6le7dGH06hS4wV-lMQic5aKm7dpf33g1SjoT7wzp-+iHhwFtq+Spl\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e05998b5-983b-42a1-8287-7b50a36f8882",
+          "name": "Retrieve AFT Payment Request",
+          "request": {
+            "name": "Retrieve AFT Payment Request",
+            "description": {
+              "content": "Get the AFT payment information",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "aft",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "622ce450-5c8a-4cc7-a2cc-652160b6e7e4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "aft",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"97693dc7-0ce3-d980-4614-0c3aa695ae63\",\n  \"amount\": 7993.8407779813515,\n  \"direction\": \"string\",\n  \"status\": \"string\",\n  \"consumer_id\": \"string\",\n  \"external_payment_card_id\": \"24d4be3d-9e91-2140-b65d-a59ae0167661\",\n  \"fee_amount\": 3615.7787418459106\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6016d138-2323-4f4b-b336-2583cd6fe635",
+          "name": "Create OCT Payment Request",
+          "request": {
+            "name": "Create OCT Payment Request",
+            "description": {
+              "content": "Create an OCT (Original Credit Transaction) request to push funds directly to a consumer's payment card",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "oct",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"consumer_id\": \"<string>\",\n  \"external_payment_card_id\": \"<uuid>\",\n  \"amount\": \"<double>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "30f00be9-1ea9-4c3c-a7e5-d65f6ea40677",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "oct",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"consumer_id\": \"<string>\",\n  \"external_payment_card_id\": \"<uuid>\",\n  \"amount\": \"<double>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ff80b037-009a-c263-2265-f15860558f26\",\n  \"amount\": 6028.920493116181,\n  \"direction\": \"string\",\n  \"status\": \"string\",\n  \"consumer_id\": \"string\",\n  \"external_payment_card_id\": \"71bfc668-33c1-8557-9c45-3c3a9141ac3a\",\n  \"fee_amount\": 3465.627546787453\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "15c09333-1586-43b5-962d-ce9f48717137",
+          "name": "List OCT Payment Requests",
+          "request": {
+            "name": "List OCT Payment Requests",
+            "description": {
+              "content": "Get a paginated list of OCT payment requests",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "oct",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7fd62d19-959b-4042-956e-79c9a31f4d5e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "oct",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 9808,\n  \"results\": [\n    {\n      \"id\": \"850eca10-5b2c-7d8a-96fe-d28547ca20f9\",\n      \"amount\": 8180.215980420144,\n      \"direction\": \"string\",\n      \"status\": \"string\",\n      \"consumer_id\": \"string\",\n      \"external_payment_card_id\": \"9c001b2e-f5a8-f80f-0d2f-ec1b2443eac8\",\n      \"fee_amount\": 8423.477198177456\n    },\n    {\n      \"id\": \"c83b92fb-8f1a-2672-07e0-c018890f03a4\",\n      \"amount\": 2885.2417760059434,\n      \"direction\": \"string\",\n      \"status\": \"string\",\n      \"consumer_id\": \"string\",\n      \"external_payment_card_id\": \"1f40fa74-47e0-70f5-ec02-cfe20dd82f14\",\n      \"fee_amount\": 191.9597843517662\n    }\n  ],\n  \"next\": \"http://TkwZjiCirykWDSglAw.eztTBFG2rbASWWSjFEhBisRGekC,Q4,U4nEjBeckEAzREZ8NsvYj8q\",\n  \"previous\": \"https://vXJTCOOyVzniFljzi.sxrLbGgmfga5tySO63MzxJVGz4jFIyU03Kkgf5Fs+K0acCUink6\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb15240f-76a0-4f86-a36a-f92aafd8e1d0",
+          "name": "Retrieve OCT Payment Request",
+          "request": {
+            "name": "Retrieve OCT Payment Request",
+            "description": {
+              "content": "Get the OCT payment information",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "oct",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "33f69f0b-a469-4257-ba6d-c103ea47cf3f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "oct",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ff80b037-009a-c263-2265-f15860558f26\",\n  \"amount\": 6028.920493116181,\n  \"direction\": \"string\",\n  \"status\": \"string\",\n  \"consumer_id\": \"string\",\n  \"external_payment_card_id\": \"71bfc668-33c1-8557-9c45-3c3a9141ac3a\",\n  \"fee_amount\": 3465.627546787453\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d8586585-2361-45fe-a791-7df907d2da0e",
+          "name": "Create Peer To Peer Payment Request",
+          "request": {
+            "name": "Create Peer To Peer Payment Request",
+            "description": {
+              "content": "Initiate a peer-to-peer transfer between two consumers on the authenticated partner's network. Both accounts must be active secured-card accounts. Returns `pending_review` instead of an error when the sender exceeds the daily velocity limit (2 transfers per 24 hours).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "p2p",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"originating_account_id\": \"<uuid>\",\n  \"receiving_account_id\": \"<uuid>\",\n  \"amount\": \"<double>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6ceb93d7-6cc9-4d3f-bf35-3267ae01d713",
+              "name": "Payment created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "p2p",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"originating_account_id\": \"<uuid>\",\n  \"receiving_account_id\": \"<uuid>\",\n  \"amount\": \"<double>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a741579c-7735-8e3a-c69e-40aa399cbcb4\",\n  \"originating_account_id\": \"string\",\n  \"receiving_account_id\": \"string\",\n  \"amount\": 4717.225909099518,\n  \"status\": \"posted\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3956f518-a6d9-4d3d-97b4-c6ff758a04d7",
+              "name": "Validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "p2p",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"originating_account_id\": \"<uuid>\",\n  \"receiving_account_id\": \"<uuid>\",\n  \"amount\": \"<double>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": \"not_found\",\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e92d55a5-9037-43a4-97eb-f13304d96bfa",
+          "name": "List Peer To Peer Payment Responses",
+          "request": {
+            "name": "List Peer To Peer Payment Responses",
+            "description": {
+              "content": "Returns a paginated list of all P2P payments across every consumer on the authenticated partner's network.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "p2p",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "26586232-8357-4c03-961f-fe1461cf9cb5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "p2p",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 5260,\n  \"results\": [\n    {\n      \"id\": \"e8e3018f-0976-7a30-919a-2bf57daac1dc\",\n      \"originating_account_id\": \"string\",\n      \"receiving_account_id\": \"string\",\n      \"amount\": 2630.133652349359,\n      \"status\": \"canceled\",\n      \"description\": \"string\"\n    },\n    {\n      \"id\": \"bfc3830a-8585-8b96-c76d-2450ce23ac33\",\n      \"originating_account_id\": \"string\",\n      \"receiving_account_id\": \"string\",\n      \"amount\": 1217.0136105733254,\n      \"status\": \"posted\",\n      \"description\": \"string\"\n    }\n  ],\n  \"next\": \"http://rvUhlbS.zzbd02Z8D,FPqP-VJXzMJ+wG3\",\n  \"previous\": \"https://fLBolFIelbpDmlgt.uektwx.HTDiPaCEXCSslvFG5B7r8pquAppJKrjsgHsRlRGqcixvAbrWuhteZAciKhgKO\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7be03f8-321f-4754-95ec-6dcfe2ba80ed",
+          "name": "Retrieve Peer To Peer Payment Response",
+          "request": {
+            "name": "Retrieve Peer To Peer Payment Response",
+            "description": {
+              "content": "Retrieve a single P2P payment by its ID. Returns 404 for payments that do not belong to the authenticated partner.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payments",
+                "p2p",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The unique ID of the P2P payment (returned at creation time)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "86343a60-731f-4b67-af89-5ac2ea30efe8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "p2p",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique ID of the P2P payment (returned at creation time)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"43940fec-ee79-d217-2fd3-78273a044aac\",\n  \"originating_account_id\": \"string\",\n  \"receiving_account_id\": \"string\",\n  \"amount\": 5437.679478721176,\n  \"status\": \"error\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "35cd4671-5e72-47c6-b9a1-30a24f7bfeed",
+              "name": "Payment not found or does not belong to this partner",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payments",
+                    "p2p",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The unique ID of the P2P payment (returned at creation time)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://host.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4279f6be-e6b9-4f2b-8047-bde22968c6de",
+    "name": "API Reference accounts payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference accounts auth API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "auth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Upwardli Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/auth/token/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upwardli Token View"
+        },
+        {
+          "info": {
+            "name": "Create Upwardli Token Exchange",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://host.com/auth/token/exchange/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upwardli Token Exchange View"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

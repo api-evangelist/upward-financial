@@ -1,0 +1,602 @@
+{
+  "item": [
+    {
+      "id": "7ed0e2b8-3d31-45ca-bc15-4c78995d6bc7",
+      "name": "rewards",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c0b1bea4-c4b0-4afd-b059-c5ea2dae9be4",
+          "name": "List Rewards Configurations",
+          "request": {
+            "name": "List Rewards Configurations",
+            "description": {
+              "content": "Returns the cashback rewards configurations available for the given payment card. Each configuration whose `is_active` is `true` can be enrolled in. Use `is_enrolled` to tell whether the cardholder is already enrolled in that configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payment-cards",
+                ":payment_card_id",
+                "rewards",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "payment_card_id",
+                  "description": "(Required) External ID of the payment card."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2ea9663f-8439-4432-b4c6-138d56fb11aa",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payment-cards",
+                    ":payment_card_id",
+                    "rewards",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_card_id",
+                      "description": "(Required) External ID of the payment card."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 3771,\n  \"results\": [\n    {\n      \"id\": \"fe427573-7a74-1327-82cb-2db430162daa\",\n      \"configuration_name\": \"string\",\n      \"is_active\": true,\n      \"provider\": \"kard\",\n      \"created_at\": \"2009-05-09T23:32:16.673Z\",\n      \"is_enrolled\": false\n    },\n    {\n      \"id\": \"1c642877-1038-26dc-f043-50aa2a3c2c45\",\n      \"configuration_name\": \"string\",\n      \"is_active\": false,\n      \"provider\": \"kard\",\n      \"created_at\": \"2006-12-04T07:39:19.430Z\",\n      \"is_enrolled\": false\n    }\n  ],\n  \"next\": \"https://RlcfMZSNsLVcqjM.oqobF97IIhqEN\",\n  \"previous\": \"http://UMpkgkIZIuvEOabsAHvosxY.erpagIv3dLj1eSVQgUeOdA1QENEZlYhl,MvyqyVQ2gVxbokkBnS9TdO2SFu,WafP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d5af107-2395-4247-95b8-9d0ac56e1640",
+          "name": "List Rewards Enrollments",
+          "request": {
+            "name": "List Rewards Enrollments",
+            "description": {
+              "content": "Returns the cashback rewards enrollments for the given payment card. An enrollment with `is_active: true` means the cardholder is currently earning rewards; use its `program_id` to fetch the available offers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payment-cards",
+                ":payment_card_id",
+                "rewards",
+                "enrollments",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "A search term."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "payment_card_id",
+                  "description": "(Required) External ID of the payment card."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9be2636b-6823-4b85-a960-14328652d52b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payment-cards",
+                    ":payment_card_id",
+                    "rewards",
+                    "enrollments",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_card_id",
+                      "description": "(Required) External ID of the payment card."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 1097,\n  \"results\": [\n    {\n      \"id\": \"2ff30b72-dc01-e96a-fa56-83f8a41f733e\",\n      \"program_id\": \"7b9634ab-1ce6-e240-2a23-8175e90e8bf8\",\n      \"configuration_name\": \"string\",\n      \"is_active\": true,\n      \"created_at\": \"1989-05-23T13:35:52.256Z\"\n    },\n    {\n      \"id\": \"143460cc-6e81-bde2-b5e8-e4903420e817\",\n      \"program_id\": \"39223a19-e682-20a9-1e3e-5d00e4eddd0a\",\n      \"configuration_name\": \"string\",\n      \"is_active\": true,\n      \"created_at\": \"1987-05-25T19:27:00.443Z\"\n    }\n  ],\n  \"next\": \"https://Wm.gguctoEP3vG-VeMjLpgN-.kiVtd9BVB-7kKA2Nt7HE-5VCiWmI2DVw,zYBQTBH-HBV61mSKKrXw7TLyjPPlfX\",\n  \"previous\": \"http://q.wvdaJt\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "81a57bc5-5a0c-46ae-9b17-d071fe45d4ae",
+          "name": "Create Rewards Enrollment",
+          "request": {
+            "name": "Create Rewards Enrollment",
+            "description": {
+              "content": "Enrolls the payment card in the given rewards configuration. The configuration must be active (see List Rewards Configurations). No request body is required. Returns the created enrollment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payment-cards",
+                ":payment_card_id",
+                "rewards",
+                ":rewards_configuration_id",
+                "enrollments",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "payment_card_id",
+                  "description": "(Required) External ID of the payment card."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rewards_configuration_id",
+                  "description": "(Required) ID of the rewards configuration to enroll in."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e434cef-de46-48f2-aae3-7970d1716d8f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payment-cards",
+                    ":payment_card_id",
+                    "rewards",
+                    ":rewards_configuration_id",
+                    "enrollments",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_card_id",
+                      "description": "(Required) External ID of the payment card."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rewards_configuration_id",
+                      "description": "(Required) ID of the rewards configuration to enroll in."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"69f52d6e-a0a5-5ae2-986f-d5b707fbf5c6\",\n  \"program_id\": \"5c50c2b2-17a7-f289-82b7-5b59b800ebb2\",\n  \"configuration_name\": \"string\",\n  \"is_active\": false,\n  \"created_at\": \"1993-05-26T18:07:38.334Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3840ec7b-2fda-4a9a-b7fa-3ee7c50955d0",
+          "name": "List Rewards Offers",
+          "request": {
+            "name": "List Rewards Offers",
+            "description": {
+              "content": "Returns the cashback offers available to an enrolled payment card for the given rewards program. Pass the `program_id` from the card's active enrollment. Optionally provide `latitude`/`longitude` (and `radius`) to surface location-based in-store offers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "payment-cards",
+                ":payment_card_id",
+                "rewards",
+                ":program_id",
+                "offers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "latitude",
+                  "value": "<double>",
+                  "description": "Latitude used to surface nearby in-store offers."
+                },
+                {
+                  "disabled": false,
+                  "key": "longitude",
+                  "value": "<double>",
+                  "description": "Longitude used to surface nearby in-store offers."
+                },
+                {
+                  "disabled": false,
+                  "key": "radius",
+                  "value": "<double>",
+                  "description": "Search radius, in miles, around the provided coordinates."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "A search term."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "payment_card_id",
+                  "description": "(Required) External ID of the payment card."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "program_id",
+                  "description": "(Required) Rewards program ID from the card's active enrollment."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7798bd0a-2eec-42b3-a291-0cbdce88eed4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "payment-cards",
+                    ":payment_card_id",
+                    "rewards",
+                    ":program_id",
+                    "offers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "payment_card_id",
+                      "description": "(Required) External ID of the payment card."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "program_id",
+                      "description": "(Required) Rewards program ID from the card's active enrollment."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Bearer authentication",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 3178,\n  \"results\": [\n    {\n      \"type\": \"string\",\n      \"id\": \"string\",\n      \"relationships\": {\n        \"category\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"attributes\": {\n        \"terms\": \"string\",\n        \"name\": \"string\",\n        \"purchaseChannel\": [\n          \"string\",\n          \"string\"\n        ],\n        \"userReward\": {\n          \"type\": \"string\",\n          \"value\": 8538.504378906613\n        },\n        \"assets\": [\n          {\n            \"url\": \"string\",\n            \"alt\": \"string\",\n            \"type\": \"string\"\n          },\n          {\n            \"url\": \"string\",\n            \"alt\": \"string\",\n            \"type\": \"string\"\n          }\n        ],\n        \"startDate\": \"string\",\n        \"expirationDate\": \"string\",\n        \"minTransactionAmount\": {\n          \"type\": \"string\",\n          \"value\": 764\n        },\n        \"maxRewardAmount\": {\n          \"type\": \"string\",\n          \"value\": 1779\n        },\n        \"websiteUrl\": \"string\",\n        \"isTargeted\": false,\n        \"description\": \"string\"\n      },\n      \"address\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"zipCode\": \"string\"\n      },\n      \"coordinates\": {\n        \"latitude\": 186.8073344731369,\n        \"longitude\": 6149.503168501794\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"id\": \"string\",\n      \"relationships\": {\n        \"category\": {\n          \"data\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"attributes\": {\n        \"terms\": \"string\",\n        \"name\": \"string\",\n        \"purchaseChannel\": [\n          \"string\",\n          \"string\"\n        ],\n        \"userReward\": {\n          \"type\": \"string\",\n          \"value\": 6269.847297706491\n        },\n        \"assets\": [\n          {\n            \"url\": \"string\",\n            \"alt\": \"string\",\n            \"type\": \"string\"\n          },\n          {\n            \"url\": \"string\",\n            \"alt\": \"string\",\n            \"type\": \"string\"\n          }\n        ],\n        \"startDate\": \"string\",\n        \"expirationDate\": \"string\",\n        \"minTransactionAmount\": {\n          \"type\": \"string\",\n          \"value\": 7629\n        },\n        \"maxRewardAmount\": {\n          \"type\": \"string\",\n          \"value\": 2616\n        },\n        \"websiteUrl\": \"string\",\n        \"isTargeted\": true,\n        \"description\": \"string\"\n      },\n      \"address\": {\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"zipCode\": \"string\"\n      },\n      \"coordinates\": {\n        \"latitude\": 7465.9480180638875,\n        \"longitude\": 5911.110279059234\n      }\n    }\n  ],\n  \"next\": \"https://EYk.bpcMCMslE94FWvQ2c+9khkr7WVl-D0xUCkYSfm14xEqdFQ-qhHc31R\",\n  \"previous\": \"https://gPxEVjOPZxHGuomyZ.gjpiCL7IJV0+XkAu6Beg\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://host.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ec16b3c9-32e1-4c1b-9af1-f1863ab2e038",
+    "name": "API Reference accounts rewards API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

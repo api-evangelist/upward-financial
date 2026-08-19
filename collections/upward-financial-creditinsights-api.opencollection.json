@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Reference accounts creditInsights API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "creditInsights",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Credit Insights Overview",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://host.com/v2/credit-insights/:consumer_id/summary/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consumer_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get credit insights overview"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
