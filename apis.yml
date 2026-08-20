@@ -40,6 +40,17 @@ created: '2026-07-17'
 modified: '2026-07-21'
 tags:
 - Company
+- Fintech
+- Credit
+- Credit Building
+- Payments
+- Cards
+- Embedded Finance
+- Bill Pay
+- Banking
+- KYC
+tags_raw:
+- Company
 - FinTech
 - Credit
 - Credit Building
@@ -56,6 +67,8 @@ apis:
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
   tags:
+  - Account
+  tags_raw:
   - accounts
   properties:
   - type: OpenAPI
@@ -70,6 +83,8 @@ apis:
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
   tags:
+  - Authentication
+  tags_raw:
   - auth
   properties:
   - type: OpenAPI
@@ -84,6 +99,8 @@ apis:
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
   tags:
+  - Bill Payments
+  tags_raw:
   - billPayments
   properties:
   - type: OpenAPI
@@ -97,7 +114,8 @@ apis:
   description: The billReporting API from Upward Financial — 9 operation(s) for billreporting.
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
-  tags:
+  tags: []
+  tags_raw:
   - billReporting
   properties:
   - type: OpenAPI
@@ -111,7 +129,8 @@ apis:
   description: The billSwitch API from Upward Financial — 2 operation(s) for billswitch.
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
-  tags:
+  tags: []
+  tags_raw:
   - billSwitch
   properties:
   - type: OpenAPI
@@ -140,6 +159,8 @@ apis:
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
   tags:
+  - Consumers
+  tags_raw:
   - consumers
   properties:
   - type: OpenAPI
@@ -153,7 +174,8 @@ apis:
   description: The creditInsights API from Upward Financial — 1 operation(s) for creditinsights.
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
-  tags:
+  tags: []
+  tags_raw:
   - creditInsights
   properties:
   - type: OpenAPI
@@ -168,6 +190,8 @@ apis:
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
   tags:
+  - Onboarding
+  tags_raw:
   - onboarding
   properties:
   - type: OpenAPI
@@ -182,6 +206,8 @@ apis:
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
   tags:
+  - Partners
+  tags_raw:
   - partners
   properties:
   - type: OpenAPI
@@ -196,6 +222,8 @@ apis:
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
   tags:
+  - Payment Cards
+  tags_raw:
   - paymentCards
   properties:
   - type: OpenAPI
@@ -210,6 +238,8 @@ apis:
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
   tags:
+  - Payments
+  tags_raw:
   - payments
   properties:
   - type: OpenAPI
@@ -224,6 +254,8 @@ apis:
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
   tags:
+  - Plaid
+  tags_raw:
   - plaid
   properties:
   - type: OpenAPI
@@ -238,6 +270,8 @@ apis:
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
   tags:
+  - Rewards
+  tags_raw:
   - rewards
   properties:
   - type: OpenAPI
@@ -252,6 +286,8 @@ apis:
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
   tags:
+  - Simulations
+  tags_raw:
   - simulations
   properties:
   - type: OpenAPI
@@ -266,6 +302,8 @@ apis:
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
   tags:
+  - Statements
+  tags_raw:
   - statements
   properties:
   - type: OpenAPI
@@ -280,6 +318,8 @@ apis:
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
   tags:
+  - Webhook
+  tags_raw:
   - webhooks
   properties:
   - type: OpenAPI
