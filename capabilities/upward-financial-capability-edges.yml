@@ -1,0 +1,71 @@
+slug: upward-financial
+provider: Upward Financial
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 6
+edges:
+- tag: payments
+  spec_file: upward-financial-payments-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.85
+  evidence: POST /v2/payments/ach/ 'Create Create ACH Request'; POST /v2/payments/instant/ 'Create Instant
+    Payment Request'; POST /v2/payments/aft/ 'Create AFT Payment Request'
+  reason: Operations capture, submit, retrieve and cancel money-movement instructions across ACH, instant,
+    AFT/OCT and P2P rails — payment initiation within Payments & Card Management. Sub-capability chosen
+    as initiation since the surface is instruction creation/status rather than clearing internals.
+- tag: onboarding
+  spec_file: upward-financial-onboarding-api-openapi.yml
+  capability_id: BC-1300.10
+  capability_id_l1: BC-1300
+  capability_name: Customer Onboarding Management
+  confidence: 0.8
+  evidence: POST /v2/onboarding/{external_id}/verify-identity/  verify-identity; POST /v2/onboarding/{external_id}/accept-terms/
+  reason: End-to-end account opening flow with identity verification, terms acceptance, bank linking,
+    underwriting and loan submission — customer onboarding for a credit product.
+- tag: paymentCards
+  spec_file: upward-financial-paymentcards-api-openapi.yml
+  capability_id: BC-1340.60
+  capability_id_l1: BC-1340
+  capability_name: Card Issuance Management
+  confidence: 0.8
+  evidence: POST /v2/payment-cards/{payment_card_id}/emboss  payment-card-emboss; POST /v2/payment-cards/{payment_card_id}/replace-lost-stolen
+  reason: Card embossing/shipping, freeze/unfreeze, reissue, lost-stolen replacement and closure are card
+    issuance and lifecycle operations.
+- tag: billPayments
+  spec_file: upward-financial-billpayments-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.75
+  evidence: POST /v2/bill-pay/bills/{external_id}/payments/  create-bill-payment  Create Bill Payment
+  reason: Bill creation and payment initiation against bills is payment instruction capture and execution
+    — payment initiation management.
+- tag: cbaas
+  spec_file: upward-financial-cbaas-api-openapi.yml
+  capability_id: BC-1320.30
+  capability_id_l1: BC-1320
+  capability_name: Loan Servicing Management
+  confidence: 0.7
+  evidence: POST /v2/credit-lines/{credit_line_id}/transactions/{transaction_id}/clear/  clear-transaction
+  reason: Holds, clears, closes, cancels and reverses transactions on credit lines — servicing operations
+    on lending accounts.
+- tag: consumers
+  spec_file: upward-financial-consumers-api-openapi.yml
+  capability_id: BC-1300.40
+  capability_id_l1: BC-1300
+  capability_name: Customer Information Management
+  confidence: 0.7
+  evidence: POST /v2/consumers/  create-new-consumer  Create New Consumer; GET /v2/consumers/{consumer_id}/addresses/
+  reason: Maintains consumer master records, addresses and linked accounts/cards for a banking platform
+    — customer information management.
