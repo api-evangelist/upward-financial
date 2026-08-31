@@ -110,8 +110,7 @@ apis:
   description: The billPayments API from Upward Financial — 4 operation(s) for billpayments.
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
-  tags:
-  - Bill Payments
+  tags: []
   tags_raw:
   - billPayments
   properties:
@@ -171,7 +170,7 @@ apis:
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
   tags:
-  - Consumers
+  - consumers
   tags_raw:
   - consumers
   properties:
@@ -233,8 +232,7 @@ apis:
   description: The paymentCards API from Upward Financial — 10 operation(s) for paymentcards.
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
-  tags:
-  - Payment Cards
+  tags: []
   tags_raw:
   - paymentCards
   properties:
@@ -266,7 +264,7 @@ apis:
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
   tags:
-  - Plaid
+  - plaid
   tags_raw:
   - plaid
   properties:
@@ -298,7 +296,7 @@ apis:
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
   tags:
-  - Simulations
+  - simulations
   tags_raw:
   - simulations
   properties:
