@@ -105,22 +105,6 @@ apis:
     url: https://developers.upwardli.com/get-started/introduction
   - type: APIReference
     url: https://developers.upwardli.com/api-access/reference
-- aid: upward-financial:upward-financial-billpayments-api
-  name: Upward Financial billPayments API
-  description: The billPayments API from Upward Financial — 4 operation(s) for billpayments.
-  humanURL: https://developers.upwardli.com/
-  baseURL: https://api.upwardli.com/v2
-  tags:
-  - Bill Payments
-  tags_raw:
-  - billPayments
-  properties:
-  - type: OpenAPI
-    url: openapi/upward-financial-billpayments-api-openapi.yml
-  - type: Documentation
-    url: https://developers.upwardli.com/get-started/introduction
-  - type: APIReference
-    url: https://developers.upwardli.com/api-access/reference
 - aid: upward-financial:upward-financial-billreporting-api
   name: Upward Financial billReporting API
   description: The billReporting API from Upward Financial — 9 operation(s) for billreporting.
@@ -228,22 +212,6 @@ apis:
     url: https://developers.upwardli.com/get-started/introduction
   - type: APIReference
     url: https://developers.upwardli.com/api-access/reference
-- aid: upward-financial:upward-financial-paymentcards-api
-  name: Upward Financial paymentCards API
-  description: The paymentCards API from Upward Financial — 10 operation(s) for paymentcards.
-  humanURL: https://developers.upwardli.com/
-  baseURL: https://api.upwardli.com/v2
-  tags:
-  - Payment Cards
-  tags_raw:
-  - paymentCards
-  properties:
-  - type: OpenAPI
-    url: openapi/upward-financial-paymentcards-api-openapi.yml
-  - type: Documentation
-    url: https://developers.upwardli.com/get-started/introduction
-  - type: APIReference
-    url: https://developers.upwardli.com/api-access/reference
 - aid: upward-financial:upward-financial-payments-api
   name: Upward Financial payments API
   description: The payments API from Upward Financial — 12 operation(s) for payments.
@@ -336,6 +304,34 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/upward-financial-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://developers.upwardli.com/get-started/introduction
+  - type: APIReference
+    url: https://developers.upwardli.com/api-access/reference
+- aid: upward-financial:upward-financial-bill-payments-api
+  name: Upward Financial Bill Payments API
+  description: The Bill Payments API from Upward Financial — 4 operation(s) for bill payments.
+  humanURL: https://developers.upwardli.com/
+  baseURL: https://api.upwardli.com/v2
+  tags:
+  - Bill Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/upward-financial-bill-payments-api-openapi.yml
+  - type: Documentation
+    url: https://developers.upwardli.com/get-started/introduction
+  - type: APIReference
+    url: https://developers.upwardli.com/api-access/reference
+- aid: upward-financial:upward-financial-payment-cards-api
+  name: Upward Financial Payment Cards API
+  description: The Payment Cards API from Upward Financial — 10 operation(s) for payment cards.
+  humanURL: https://developers.upwardli.com/
+  baseURL: https://api.upwardli.com/v2
+  tags:
+  - Payment Cards
+  properties:
+  - type: OpenAPI
+    url: openapi/upward-financial-payment-cards-api-openapi.yml
   - type: Documentation
     url: https://developers.upwardli.com/get-started/introduction
   - type: APIReference
