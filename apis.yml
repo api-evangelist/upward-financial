@@ -266,7 +266,7 @@ apis:
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
   tags:
-  - Simulations
+  - Simulation
   tags_raw:
   - simulations
   properties:
