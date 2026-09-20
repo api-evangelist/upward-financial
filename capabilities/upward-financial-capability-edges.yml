@@ -34,7 +34,8 @@ edges:
   reason: End-to-end account opening flow with identity verification, terms acceptance, bank linking,
     underwriting and loan submission — customer onboarding for a credit product.
 - tag: paymentCards
-  spec_file: upward-financial-paymentcards-api-openapi.yml
+  spec_file: upward-financial-payment-cards-api-openapi.yml
+  reanchored_from: upward-financial-paymentcards-api-openapi.yml
   capability_id: BC-1340.60
   capability_id_l1: BC-1340
   capability_name: Card Issuance Management
@@ -43,7 +44,8 @@ edges:
   reason: Card embossing/shipping, freeze/unfreeze, reissue, lost-stolen replacement and closure are card
     issuance and lifecycle operations.
 - tag: billPayments
-  spec_file: upward-financial-billpayments-api-openapi.yml
+  spec_file: upward-financial-bill-payments-api-openapi.yml
+  reanchored_from: upward-financial-billpayments-api-openapi.yml
   capability_id: BC-1340.10
   capability_id_l1: BC-1340
   capability_name: Payment Initiation Management
