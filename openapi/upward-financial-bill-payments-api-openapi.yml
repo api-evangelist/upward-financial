@@ -1,12 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Reference accounts billPayments API
+  title: Reference Bill Payments API
   version: 1.0.0
 servers:
 - url: https://host.com
   description: Default
 tags:
-- name: billPayments
+- name: Bill Payments
 paths:
   /v2/bill-pay/bills/{external_id}/:
     get:
@@ -14,7 +14,7 @@ paths:
       summary: Get Bill
       description: Get a specific Bill by ID.
       tags:
-      - billPayments
+      - Bill Payments
       parameters:
       - name: external_id
         in: path
@@ -41,7 +41,7 @@ paths:
       summary: List Bill Payments View Sets
       description: List all bill payments for a specific bill
       tags:
-      - billPayments
+      - Bill Payments
       parameters:
       - name: page
         in: query
@@ -73,13 +73,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Bill Payments_listBillPaymentsViewSets_Response_200'
+                $ref: '#/components/schemas/Bill_Payments_listBillPaymentsViewSets_Response_200'
     post:
       operationId: create-bill
       summary: Create Bill
       description: Create a new Bill.
       tags:
-      - billPayments
+      - Bill Payments
       parameters:
       - name: Authorization
         in: header
@@ -105,7 +105,7 @@ paths:
       summary: Get Bill Payment
       description: Get a specific Bill Payment by ID.
       tags:
-      - billPayments
+      - Bill Payments
       parameters:
       - name: external_id
         in: path
@@ -138,7 +138,7 @@ paths:
       summary: Get All Bill Payments
       description: List all bill payments for a specific bill
       tags:
-      - billPayments
+      - Bill Payments
       parameters:
       - name: external_id
         in: path
@@ -176,13 +176,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Bill Payments_getAllBillPayments_Response_200'
+                $ref: '#/components/schemas/Bill_Payments_getAllBillPayments_Response_200'
     post:
       operationId: create-bill-payment
       summary: Create Bill Payment
       description: Create a new Bill Payment for a specific bill.
       tags:
-      - billPayments
+      - Bill Payments
       parameters:
       - name: external_id
         in: path
@@ -210,35 +210,45 @@ paths:
               $ref: '#/components/schemas/BillPaymentRequest'
 components:
   schemas:
-    Bill:
+    BillPaymentRequest:
+      type: object
+      properties:
+        amount:
+          type: string
+          format: decimal
+        description:
+          type: string
+      required:
+      - amount
+      - description
+      title: BillPaymentRequest
+    BillPaymentResponse:
       type: object
       properties:
         id:
           type: string
           format: uuid
-        consumer_id:
+        amount:
           type: string
-          format: uuid
-        sending_account_id:
+          format: decimal
+        description:
+          type:
+          - string
+          - 'null'
+        process_date:
           type: string
-          format: uuid
-        name:
-          type: string
-        receiver_name:
-          type: string
-        account_number:
-          type: string
-        account_routing_number:
-          type: string
+          format: date
+        payment_rail:
+          type:
+          - string
+          - 'null'
+        status:
+          $ref: '#/components/schemas/BillPaymentResponseStatus'
       required:
       - id
-      - consumer_id
-      - sending_account_id
-      - name
-      - receiver_name
-      - account_number
-      - account_routing_number
-      title: Bill
+      - amount
+      - process_date
+      title: BillPaymentResponse
     CreateBill:
       type: object
       properties:
@@ -264,19 +274,7 @@ components:
       - account_number
       - account_routing_number
       title: CreateBill
-    BillPaymentRequest:
-      type: object
-      properties:
-        amount:
-          type: string
-          format: decimal
-        description:
-          type: string
-      required:
-      - amount
-      - description
-      title: BillPaymentRequest
-    Bill Payments_listBillPaymentsViewSets_Response_200:
+    Bill_Payments_listBillPaymentsViewSets_Response_200:
       type: object
       properties:
         count:
@@ -307,34 +305,7 @@ components:
       - completed
       - errored
       title: BillPaymentResponseStatus
-    BillPaymentResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        amount:
-          type: string
-          format: decimal
-        description:
-          type:
-          - string
-          - 'null'
-        process_date:
-          type: string
-          format: date
-        payment_rail:
-          type:
-          - string
-          - 'null'
-        status:
-          $ref: '#/components/schemas/BillPaymentResponseStatus'
-      required:
-      - id
-      - amount
-      - process_date
-      title: BillPaymentResponse
-    Bill Payments_getAllBillPayments_Response_200:
+    Bill_Payments_getAllBillPayments_Response_200:
       type: object
       properties:
         count:
@@ -357,6 +328,35 @@ components:
       - count
       - results
       title: Bill Payments_getAllBillPayments_Response_200
+    Bill:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        consumer_id:
+          type: string
+          format: uuid
+        sending_account_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        receiver_name:
+          type: string
+        account_number:
+          type: string
+        account_routing_number:
+          type: string
+      required:
+      - id
+      - consumer_id
+      - sending_account_id
+      - name
+      - receiver_name
+      - account_number
+      - account_routing_number
+      title: Bill
   securitySchemes:
     bearerAuth:
       type: http

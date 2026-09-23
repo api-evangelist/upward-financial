@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Reference accounts billSwitch API
+  title: Reference Bill Switch API
   version: 1.0.0
 servers:
 - url: https://host.com
@@ -74,18 +74,18 @@ paths:
               $ref: '#/components/schemas/DepositSwitchResponse'
 components:
   schemas:
-    DepositSwitchResponse:
-      type: object
-      properties:
-        public_token:
-          type: string
-      title: DepositSwitchResponse
     BillSwitchToken:
       type: object
       properties:
         public_token:
           type: string
       title: BillSwitchToken
+    DepositSwitchResponse:
+      type: object
+      properties:
+        public_token:
+          type: string
+      title: DepositSwitchResponse
   securitySchemes:
     bearerAuth:
       type: http

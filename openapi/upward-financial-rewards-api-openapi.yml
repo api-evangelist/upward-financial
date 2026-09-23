@@ -1,12 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Reference accounts rewards API
+  title: Reference Rewards API
   version: 1.0.0
 servers:
 - url: https://host.com
   description: Default
 tags:
-- name: rewards
+- name: Rewards
 paths:
   /v2/payment-cards/{payment_card_id}/rewards/:
     get:
@@ -14,7 +14,7 @@ paths:
       summary: List Rewards Configurations
       description: Returns the cashback rewards configurations available for the given payment card. Each configuration whose `is_active` is `true` can be enrolled in. Use `is_enrolled` to tell whether the cardholder is already enrolled in that configuration.
       tags:
-      - rewards
+      - Rewards
       parameters:
       - name: payment_card_id
         in: path
@@ -53,7 +53,7 @@ paths:
       summary: List Rewards Enrollments
       description: 'Returns the cashback rewards enrollments for the given payment card. An enrollment with `is_active: true` means the cardholder is currently earning rewards; use its `program_id` to fetch the available offers.'
       tags:
-      - rewards
+      - Rewards
       parameters:
       - name: payment_card_id
         in: path
@@ -98,7 +98,7 @@ paths:
       summary: Create Rewards Enrollment
       description: Enrolls the payment card in the given rewards configuration. The configuration must be active (see List Rewards Configurations). No request body is required. Returns the created enrollment.
       tags:
-      - rewards
+      - Rewards
       parameters:
       - name: payment_card_id
         in: path
@@ -131,7 +131,7 @@ paths:
       summary: List Rewards Offers
       description: Returns the cashback offers available to an enrolled payment card for the given rewards program. Pass the `program_id` from the card's active enrollment. Optionally provide `latitude`/`longitude` (and `radius`) to surface location-based in-store offers.
       tags:
-      - rewards
+      - Rewards
       parameters:
       - name: payment_card_id
         in: path
@@ -211,40 +211,28 @@ paths:
                 $ref: '#/components/schemas/Rewards_listRewardsOffers_Response_200'
 components:
   schemas:
-    KardOffer:
+    KardOfferAttributesMinTransactionAmount:
       type: object
       properties:
         type:
           type: string
-        id:
-          type: string
-        relationships:
-          $ref: '#/components/schemas/KardOfferRelationships'
-        attributes:
-          $ref: '#/components/schemas/KardOfferAttributes'
-        address:
-          oneOf:
-          - $ref: '#/components/schemas/KardOfferAddress'
-          - type: 'null'
-        coordinates:
-          oneOf:
-          - $ref: '#/components/schemas/KardOfferCoordinates'
-          - type: 'null'
-      title: KardOffer
-    KardOfferCoordinates:
+        value:
+          type: integer
+      title: KardOfferAttributesMinTransactionAmount
+    KardOfferRelationships:
       type: object
       properties:
-        latitude:
-          type:
-          - number
-          - 'null'
-          format: double
-        longitude:
-          type:
-          - number
-          - 'null'
-          format: double
-      title: KardOfferCoordinates
+        category:
+          $ref: '#/components/schemas/KardOfferRelationshipsCategory'
+      title: KardOfferRelationships
+    KardOfferAttributesMaxRewardAmount:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: integer
+      title: KardOfferAttributesMaxRewardAmount
     KardOfferAttributes:
       type: object
       properties:
@@ -277,60 +265,64 @@ components:
         description:
           type: string
       title: KardOfferAttributes
-    PaymentCardRewardsEnrollment:
+    KardOfferAttributesAssetsItems:
+      type: object
+      properties:
+        url:
+          type: string
+        alt:
+          type: string
+        type:
+          type: string
+      title: KardOfferAttributesAssetsItems
+    KardOfferRelationshipsCategoryDataItems:
       type: object
       properties:
         id:
           type: string
-          format: uuid
-        program_id:
+        type:
           type: string
-          format: uuid
-        configuration_name:
-          type: string
-        is_active:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
       required:
       - id
-      - program_id
-      - configuration_name
-      - is_active
-      - created_at
-      title: PaymentCardRewardsEnrollment
-    RewardsConfigurationV2:
+      - type
+      title: KardOfferRelationshipsCategoryDataItems
+    Rewards_listRewardsEnrollments_Response_200:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-        configuration_name:
-          type: string
-        is_active:
-          type: boolean
-        provider:
-          $ref: '#/components/schemas/RewardsConfigurationV2Provider'
-        created_at:
-          type: string
-          format: date-time
-        is_enrolled:
-          type: boolean
-          default: false
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentCardRewardsEnrollment'
       required:
-      - id
-      - configuration_name
-      - is_active
-      - provider
-      - created_at
-      title: RewardsConfigurationV2
-    KardOfferRelationships:
+      - count
+      - results
+      title: Rewards_listRewardsEnrollments_Response_200
+    KardOfferCoordinates:
       type: object
       properties:
-        category:
-          $ref: '#/components/schemas/KardOfferRelationshipsCategory'
-      title: KardOfferRelationships
+        latitude:
+          type:
+          - number
+          - 'null'
+          format: double
+        longitude:
+          type:
+          - number
+          - 'null'
+          format: double
+      title: KardOfferCoordinates
     Rewards_listRewardsOffers_Response_200:
       type: object
       properties:
@@ -354,24 +346,34 @@ components:
       - count
       - results
       title: Rewards_listRewardsOffers_Response_200
-    KardOfferAttributesMinTransactionAmount:
+    KardOfferRelationshipsCategory:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/KardOfferRelationshipsCategoryDataItems'
+      title: KardOfferRelationshipsCategory
+    KardOffer:
       type: object
       properties:
         type:
           type: string
-        value:
-          type: integer
-      title: KardOfferAttributesMinTransactionAmount
-    KardOfferAttributesAssetsItems:
-      type: object
-      properties:
-        url:
+        id:
           type: string
-        alt:
-          type: string
-        type:
-          type: string
-      title: KardOfferAttributesAssetsItems
+        relationships:
+          $ref: '#/components/schemas/KardOfferRelationships'
+        attributes:
+          $ref: '#/components/schemas/KardOfferAttributes'
+        address:
+          oneOf:
+          - $ref: '#/components/schemas/KardOfferAddress'
+          - type: 'null'
+        coordinates:
+          oneOf:
+          - $ref: '#/components/schemas/KardOfferCoordinates'
+          - type: 'null'
+      title: KardOffer
     KardOfferAddress:
       type: object
       properties:
@@ -415,53 +417,59 @@ components:
       - count
       - results
       title: Rewards_listRewardsConfigurations_Response_200
-    KardOfferRelationshipsCategory:
+    RewardsConfigurationV2:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/KardOfferRelationshipsCategoryDataItems'
-      title: KardOfferRelationshipsCategory
-    Rewards_listRewardsEnrollments_Response_200:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/PaymentCardRewardsEnrollment'
+        id:
+          type: string
+          format: uuid
+        configuration_name:
+          type: string
+        is_active:
+          type: boolean
+        provider:
+          $ref: '#/components/schemas/RewardsConfigurationV2Provider'
+        created_at:
+          type: string
+          format: date-time
+        is_enrolled:
+          type: boolean
+          default: false
       required:
-      - count
-      - results
-      title: Rewards_listRewardsEnrollments_Response_200
+      - id
+      - configuration_name
+      - is_active
+      - provider
+      - created_at
+      title: RewardsConfigurationV2
     RewardsConfigurationV2Provider:
       type: string
       enum:
       - kard
       title: RewardsConfigurationV2Provider
-    KardOfferRelationshipsCategoryDataItems:
+    PaymentCardRewardsEnrollment:
       type: object
       properties:
         id:
           type: string
-        type:
+          format: uuid
+        program_id:
           type: string
+          format: uuid
+        configuration_name:
+          type: string
+        is_active:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
       required:
       - id
-      - type
-      title: KardOfferRelationshipsCategoryDataItems
+      - program_id
+      - configuration_name
+      - is_active
+      - created_at
+      title: PaymentCardRewardsEnrollment
     KardOfferAttributesUserReward:
       type: object
       properties:
@@ -471,14 +479,6 @@ components:
           type: number
           format: double
       title: KardOfferAttributesUserReward
-    KardOfferAttributesMaxRewardAmount:
-      type: object
-      properties:
-        type:
-          type: string
-        value:
-          type: integer
-      title: KardOfferAttributesMaxRewardAmount
   securitySchemes:
     bearerAuth:
       type: http

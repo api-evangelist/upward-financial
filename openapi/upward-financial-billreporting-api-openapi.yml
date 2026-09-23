@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Reference accounts billReporting API
+  title: Reference Bill Reporting API
   version: 1.0.0
 servers:
 - url: https://host.com
@@ -204,7 +204,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Bill Reporting_getAllBillReportings_Response_200'
+                $ref: '#/components/schemas/Bill_Reporting_getAllBillReportings_Response_200'
   /v2/bill-reporting/{external_id}/consumers/{consumer_id}/bill-reporting/:
     get:
       operationId: get-consumer-bill-reporting
@@ -366,39 +366,6 @@ paths:
               $ref: '#/components/schemas/ReportedBillCreate'
 components:
   schemas:
-    BillReportingBillsReportedItemsCategory:
-      type: string
-      enum:
-      - rent
-      - utility
-      - telco
-      - other
-      title: BillReportingBillsReportedItemsCategory
-    ReportedBill:
-      type: object
-      properties:
-        external_id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        category:
-          $ref: '#/components/schemas/ReportedBillCategory'
-        account:
-          type: string
-        primary_residence:
-          type: boolean
-        attestation_signed:
-          type: boolean
-        attestation_date:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      required:
-      - name
-      - category
-      title: ReportedBill
     BillReporting:
       type: object
       properties:
@@ -412,6 +379,84 @@ components:
       required:
       - bills_reported
       title: BillReporting
+    BillReportingBillsReportedItemsCategory:
+      type: string
+      enum:
+      - rent
+      - utility
+      - telco
+      - other
+      title: BillReportingBillsReportedItemsCategory
+    Bill_Reporting_getAllBillReportings_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/BillReporting'
+      required:
+      - count
+      - results
+      title: Bill Reporting_getAllBillReportings_Response_200
+    OpenTradelinesTradelinesItems:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        merchant:
+          type: string
+        category:
+          type: string
+        status:
+          type: string
+        is_eligible:
+          type: boolean
+        payment_frequency:
+          type: string
+        service_address:
+          type: string
+        service_phone:
+          type: string
+        lease_start_date:
+          type: string
+        utility_types:
+          type: string
+        service_address_type:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        transaction_count:
+          type: integer
+        amount:
+          type: number
+          format: double
+      required:
+      - id
+      - merchant
+      - category
+      - status
+      - is_eligible
+      - payment_frequency
+      - created_at
+      - updated_at
+      title: OpenTradelinesTradelinesItems
     OpenTradelineInput:
       type: object
       properties:
@@ -437,11 +482,16 @@ components:
       required:
       - tradeline_id
       title: OpenTradelineInput
-    DetailedTradelineTransactions:
+    OpenTradelines:
       type: object
-      properties: {}
-      description: List of transactions associated with the tradeline
-      title: DetailedTradelineTransactions
+      properties:
+        tradelines:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpenTradelinesTradelinesItems'
+      required:
+      - tradelines
+      title: OpenTradelines
     OpenTradelineInputUtilityTypesItems:
       type: string
       enum:
@@ -450,6 +500,53 @@ components:
       - GAS
       - ADDITIONAL
       title: OpenTradelineInputUtilityTypesItems
+    BillDetails:
+      type: object
+      properties:
+        tradelines:
+          type: array
+          items:
+            $ref: '#/components/schemas/BillDetailsTradelinesItems'
+      required:
+      - tradelines
+      title: BillDetails
+    ReportedBillCreate:
+      type: object
+      properties:
+        name:
+          type: string
+        category:
+          $ref: '#/components/schemas/ReportedBillCreateCategory'
+        account:
+          type: string
+        primary_residence:
+          type: boolean
+        attestation_signed:
+          type: boolean
+        attestation_date:
+          type: string
+          format: date-time
+      required:
+      - name
+      - category
+      - account
+      - primary_residence
+      - attestation_signed
+      - attestation_date
+      title: ReportedBillCreate
+    DetailedTradelineTransactions:
+      type: object
+      properties: {}
+      description: List of transactions associated with the tradeline
+      title: DetailedTradelineTransactions
+    ReportedBillCreateCategory:
+      type: string
+      enum:
+      - rent
+      - utility
+      - telco
+      - other
+      title: ReportedBillCreateCategory
     ReportedBillCategory:
       type: string
       enum:
@@ -509,16 +606,31 @@ components:
       - created_at
       - updated_at
       title: DetailedTradeline
-    OpenTradelines:
+    ReportedBill:
       type: object
       properties:
-        tradelines:
-          type: array
-          items:
-            $ref: '#/components/schemas/OpenTradelinesTradelinesItems'
+        external_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        category:
+          $ref: '#/components/schemas/ReportedBillCategory'
+        account:
+          type: string
+        primary_residence:
+          type: boolean
+        attestation_signed:
+          type: boolean
+        attestation_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
       required:
-      - tradelines
-      title: OpenTradelines
+      - name
+      - category
+      title: ReportedBill
     BillDetailsTradelinesItems:
       type: object
       properties:
@@ -566,23 +678,6 @@ components:
       - created_at
       - updated_at
       title: BillDetailsTradelinesItems
-    CloseTradeline:
-      type: object
-      properties:
-        tradeline_id:
-          type: string
-          format: uuid
-      required:
-      - tradeline_id
-      title: CloseTradeline
-    ReportedBillCreateCategory:
-      type: string
-      enum:
-      - rent
-      - utility
-      - telco
-      - other
-      title: ReportedBillCreateCategory
     BillReportingBillsReportedItems:
       type: object
       properties:
@@ -608,110 +703,15 @@ components:
       - name
       - category
       title: BillReportingBillsReportedItems
-    Bill Reporting_getAllBillReportings_Response_200:
+    CloseTradeline:
       type: object
       properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/BillReporting'
-      required:
-      - count
-      - results
-      title: Bill Reporting_getAllBillReportings_Response_200
-    ReportedBillCreate:
-      type: object
-      properties:
-        name:
-          type: string
-        category:
-          $ref: '#/components/schemas/ReportedBillCreateCategory'
-        account:
-          type: string
-        primary_residence:
-          type: boolean
-        attestation_signed:
-          type: boolean
-        attestation_date:
-          type: string
-          format: date-time
-      required:
-      - name
-      - category
-      - account
-      - primary_residence
-      - attestation_signed
-      - attestation_date
-      title: ReportedBillCreate
-    OpenTradelinesTradelinesItems:
-      type: object
-      properties:
-        id:
+        tradeline_id:
           type: string
           format: uuid
-        merchant:
-          type: string
-        category:
-          type: string
-        status:
-          type: string
-        is_eligible:
-          type: boolean
-        payment_frequency:
-          type: string
-        service_address:
-          type: string
-        service_phone:
-          type: string
-        lease_start_date:
-          type: string
-        utility_types:
-          type: string
-        service_address_type:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-        transaction_count:
-          type: integer
-        amount:
-          type: number
-          format: double
       required:
-      - id
-      - merchant
-      - category
-      - status
-      - is_eligible
-      - payment_frequency
-      - created_at
-      - updated_at
-      title: OpenTradelinesTradelinesItems
-    BillDetails:
-      type: object
-      properties:
-        tradelines:
-          type: array
-          items:
-            $ref: '#/components/schemas/BillDetailsTradelinesItems'
-      required:
-      - tradelines
-      title: BillDetails
+      - tradeline_id
+      title: CloseTradeline
   securitySchemes:
     bearerAuth:
       type: http

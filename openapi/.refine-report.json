@@ -1,23 +1,7 @@
 {
   "provider": "upward-financial",
   "sources": [
-    "upward-financial-accounts-api-openapi.yml",
-    "upward-financial-auth-api-openapi.yml",
-    "upward-financial-billpayments-api-openapi.yml",
-    "upward-financial-billreporting-api-openapi.yml",
-    "upward-financial-billswitch-api-openapi.yml",
-    "upward-financial-cbaas-api-openapi.yml",
-    "upward-financial-consumers-api-openapi.yml",
-    "upward-financial-creditinsights-api-openapi.yml",
-    "upward-financial-onboarding-api-openapi.yml",
-    "upward-financial-partners-api-openapi.yml",
-    "upward-financial-paymentcards-api-openapi.yml",
-    "upward-financial-payments-api-openapi.yml",
-    "upward-financial-plaid-api-openapi.yml",
-    "upward-financial-rewards-api-openapi.yml",
-    "upward-financial-simulations-api-openapi.yml",
-    "upward-financial-statements-api-openapi.yml",
-    "upward-financial-webhooks-api-openapi.yml"
+    "_original/upward-financial-openapi.json"
   ],
   "outputs": [
     "upward-financial-accounts-api-openapi.yml",
@@ -38,9 +22,51 @@
     "upward-financial-statements-api-openapi.yml",
     "upward-financial-webhooks-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 2 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "upward-financial-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0; renamed 6 component key(s) illegal in 3.x (e.g. Bill Payments_getAllBillPayments_Response_200)",
+    "upward-financial-openapi.json: declared missing tag: accounts",
+    "upward-financial-openapi.json: declared missing tag: auth",
+    "upward-financial-openapi.json: declared missing tag: billPayments",
+    "upward-financial-openapi.json: declared missing tag: billReporting",
+    "upward-financial-openapi.json: declared missing tag: billSwitch",
+    "upward-financial-openapi.json: declared missing tag: cbaas",
+    "upward-financial-openapi.json: declared missing tag: consumers",
+    "upward-financial-openapi.json: declared missing tag: creditInsights",
+    "upward-financial-openapi.json: declared missing tag: onboarding",
+    "upward-financial-openapi.json: declared missing tag: partners",
+    "upward-financial-openapi.json: declared missing tag: paymentCards",
+    "upward-financial-openapi.json: declared missing tag: payments",
+    "upward-financial-openapi.json: declared missing tag: plaid",
+    "upward-financial-openapi.json: declared missing tag: rewards",
+    "upward-financial-openapi.json: declared missing tag: simulations",
+    "upward-financial-openapi.json: declared missing tag: statements",
+    "upward-financial-openapi.json: declared missing tag: webhooks",
+    "superseded outputs removed: upward-financial-bill-payments-api-openapi.yml, upward-financial-payment-cards-api-openapi.yml",
+    "apis.yml register: written (+2 apis, 17 total)"
+  ],
+  "skipped": [
+    "upward-financial-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "upward-financial-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "upward-financial-bill-payments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "upward-financial-billreporting-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "upward-financial-billswitch-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "upward-financial-cbaas-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "upward-financial-consumers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "upward-financial-creditinsights-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "upward-financial-onboarding-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "upward-financial-partners-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "upward-financial-payment-cards-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "upward-financial-payments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "upward-financial-plaid-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "upward-financial-rewards-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "upward-financial-simulations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "upward-financial-statements-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "upward-financial-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

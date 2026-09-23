@@ -1,12 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Reference accounts partners API
+  title: Reference Partners API
   version: 1.0.0
 servers:
 - url: https://host.com
   description: Default
 tags:
-- name: partners
+- name: Partners
 paths:
   /v2/partners/:
     get:
@@ -14,7 +14,7 @@ paths:
       summary: List Partner Details
       description: Return partner details
       tags:
-      - partners
+      - Partners
       parameters:
       - name: Authorization
         in: header
@@ -37,7 +37,7 @@ paths:
       summary: Partner Get Partner Bank Accounts
       description: ''
       tags:
-      - partners
+      - Partners
       parameters:
       - name: partner_id
         in: path
@@ -64,7 +64,7 @@ paths:
       summary: Bank Account Details Partner Bank Accounts
       description: ''
       tags:
-      - partners
+      - Partners
       parameters:
       - name: partner_id
         in: path
@@ -97,7 +97,7 @@ paths:
       summary: List Sub Ledger Requests
       description: List the subledgers information
       tags:
-      - partners
+      - Partners
       parameters:
       - name: partner_id
         in: path
@@ -147,7 +147,7 @@ paths:
       summary: Create Sub Ledger Request
       description: Create a Subledger Account from Partner FBO
       tags:
-      - partners
+      - Partners
       parameters:
       - name: partner_id
         in: path
@@ -185,7 +185,7 @@ paths:
       summary: List Partner Products
       description: Get Partner Product List
       tags:
-      - partners
+      - Partners
       parameters:
       - name: partner_id
         in: path
@@ -225,91 +225,6 @@ paths:
                 $ref: '#/components/schemas/Partners_listPartnerProducts_Response_200'
 components:
   schemas:
-    PartnerProductDescriptionFeaturesItems:
-      type: object
-      properties:
-        header:
-          type: string
-        body:
-          type: string
-      required:
-      - header
-      - body
-      title: PartnerProductDescriptionFeaturesItems
-    Partners_listPartnerProducts_Response_200:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/PartnerProduct'
-      required:
-      - count
-      - results
-      title: Partners_listPartnerProducts_Response_200
-    PartnerProductOptionsItems:
-      type: object
-      properties:
-        id:
-          type: integer
-        cost:
-          type: number
-          format: double
-        detail:
-          type:
-          - string
-          - 'null'
-        stripe_price_id:
-          type:
-          - string
-          - 'null'
-        stripe_session_token:
-          type:
-          - string
-          - 'null'
-      title: PartnerProductOptionsItems
-    PartnerProductProductType:
-      type: string
-      enum:
-      - product
-      - subscription
-      - service
-      title: PartnerProductProductType
-    Partners_listSubLedgerRequests_Response_200:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SubLedgerResponse'
-      required:
-      - count
-      - results
-      title: Partners_listSubLedgerRequests_Response_200
     PartnerBankAccountBulkBulkV2:
       type: object
       properties:
@@ -335,6 +250,14 @@ components:
       - account_type
       - is_primary
       title: PartnerBankAccountBulkBulkV2
+    SubLedgerRequest:
+      type: object
+      properties:
+        account_name:
+          type: string
+      required:
+      - account_name
+      title: SubLedgerRequest
     PartnerBankAccountBulkV2:
       type: object
       properties:
@@ -367,6 +290,13 @@ components:
       - account_type
       - is_primary
       title: PartnerBankAccountBulkV2
+    PartnerProductCategory:
+      type: string
+      enum:
+      - credit_services
+      - coaching
+      - gift_cards
+      title: PartnerProductCategory
     PartnerProduct:
       type: object
       properties:
@@ -426,6 +356,110 @@ components:
       - description
       - options
       title: PartnerProduct
+    PartnerProductOptionsItems:
+      type: object
+      properties:
+        id:
+          type: integer
+        cost:
+          type: number
+          format: double
+        detail:
+          type:
+          - string
+          - 'null'
+        stripe_price_id:
+          type:
+          - string
+          - 'null'
+        stripe_session_token:
+          type:
+          - string
+          - 'null'
+      title: PartnerProductOptionsItems
+    Partners_listPartnerProducts_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartnerProduct'
+      required:
+      - count
+      - results
+      title: Partners_listPartnerProducts_Response_200
+    Partners_listSubLedgerRequests_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubLedgerResponse'
+      required:
+      - count
+      - results
+      title: Partners_listSubLedgerRequests_Response_200
+    PartnerProductDescriptionFeaturesItems:
+      type: object
+      properties:
+        header:
+          type: string
+        body:
+          type: string
+      required:
+      - header
+      - body
+      title: PartnerProductDescriptionFeaturesItems
+    PartnerProductDescription:
+      type: object
+      properties:
+        full_name:
+          type: string
+        cost_description:
+          type:
+          - string
+          - 'null'
+        features:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerProductDescriptionFeaturesItems'
+      required:
+      - full_name
+      - features
+      title: PartnerProductDescription
+    PartnerProductProductType:
+      type: string
+      enum:
+      - product
+      - subscription
+      - service
+      title: PartnerProductProductType
     SubLedgerResponse:
       type: object
       properties:
@@ -455,40 +489,6 @@ components:
       - account_routing_number
       - is_primary
       title: SubLedgerResponse
-    PartnerProductDescription:
-      type: object
-      properties:
-        full_name:
-          type: string
-        cost_description:
-          type:
-          - string
-          - 'null'
-        features:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerProductDescriptionFeaturesItems'
-      required:
-      - full_name
-      - features
-      title: PartnerProductDescription
-    PartnerProductCategory:
-      type: string
-      enum:
-      - credit_services
-      - coaching
-      - gift_cards
-      title: PartnerProductCategory
-    SubLedgerRequest:
-      type: object
-      properties:
-        account_name:
-          type: string
-      required:
-      - account_name
-      title: SubLedgerRequest
   securitySchemes:
     bearerAuth:
       type: http

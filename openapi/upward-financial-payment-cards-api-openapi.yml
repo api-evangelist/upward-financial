@@ -1,12 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Reference accounts paymentCards API
+  title: Reference Payment Cards API
   version: 1.0.0
 servers:
 - url: https://host.com
   description: Default
 tags:
-- name: paymentCards
+- name: Payment Cards
 paths:
   /v2/payment-cards/{payment_card_id}/transactions/:
     get:
@@ -14,7 +14,7 @@ paths:
       summary: List Payment Card Transactions
       description: ''
       tags:
-      - paymentCards
+      - Payment Cards
       parameters:
       - name: payment_card_id
         in: path
@@ -52,14 +52,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Payment Cards_listPaymentCardTransactions_Response_200'
+                $ref: '#/components/schemas/Payment_Cards_listPaymentCardTransactions_Response_200'
   /v2/payment-cards/{payment_card_id}/transactions/{transaction_id}:
     get:
       operationId: retrieve-payment-card-transaction
       summary: Retrieve Payment Card Transaction
       description: ''
       tags:
-      - paymentCards
+      - Payment Cards
       parameters:
       - name: payment_card_id
         in: path
@@ -91,14 +91,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Payment Cards_retrievePaymentCardTransaction_Response_200'
+                $ref: '#/components/schemas/Payment_Cards_retrievePaymentCardTransaction_Response_200'
   /v2/payment-cards/{payment_card_id}/emboss:
     get:
       operationId: get-payment-card-emboss
       summary: Get Payment Card Emboss
       description: ''
       tags:
-      - paymentCards
+      - Payment Cards
       parameters:
       - name: payment_card_id
         in: path
@@ -124,7 +124,7 @@ paths:
       summary: Payment Card Emboss
       description: ''
       tags:
-      - paymentCards
+      - Payment Cards
       parameters:
       - name: payment_card_id
         in: path
@@ -156,7 +156,7 @@ paths:
       summary: Get Payment Card
       description: ''
       tags:
-      - paymentCards
+      - Payment Cards
       parameters:
       - name: payment_card_id
         in: path
@@ -183,7 +183,7 @@ paths:
       summary: Freeze Payment Card
       description: freeze/unfreeze a payment card
       tags:
-      - paymentCards
+      - Payment Cards
       parameters:
       - name: payment_card_id
         in: path
@@ -215,7 +215,7 @@ paths:
       summary: Unfreeze Card
       description: unfreeze a payment card
       tags:
-      - paymentCards
+      - Payment Cards
       parameters:
       - name: payment_card_id
         in: path
@@ -247,7 +247,7 @@ paths:
       summary: Replace Lost Stolen Card Request
       description: Replace a lost or stolen card
       tags:
-      - paymentCards
+      - Payment Cards
       parameters:
       - name: payment_card_id
         in: path
@@ -279,7 +279,7 @@ paths:
       summary: Trigger Reissue Card
       description: Reissue a card, which means to send it to the embosser again
       tags:
-      - paymentCards
+      - Payment Cards
       parameters:
       - name: payment_card_id
         in: path
@@ -311,7 +311,7 @@ paths:
       summary: Close Card Account
       description: ''
       tags:
-      - paymentCards
+      - Payment Cards
       parameters:
       - name: payment_card_id
         in: path
@@ -343,7 +343,7 @@ paths:
       summary: Set Autopay Status
       description: ''
       tags:
-      - paymentCards
+      - Payment Cards
       parameters:
       - name: payment_card_id
         in: path
@@ -371,23 +371,21 @@ paths:
               $ref: '#/components/schemas/SetAutopayRequest'
 components:
   schemas:
-    CloseAccountResponse:
+    EmbossShipping:
+      type: string
+      enum:
+      - standard
+      - express
+      default: standard
+      title: EmbossShipping
+    SetAutopayResponse:
       type: object
       properties:
-        close_account_id:
-          type: string
-          format: uuid
-      required:
-      - close_account_id
-      title: CloseAccountResponse
-    SetAutopayRequest:
-      type: object
-      properties:
-        enabled:
+        autopay_enabled:
           type: boolean
       required:
-      - enabled
-      title: SetAutopayRequest
+      - autopay_enabled
+      title: SetAutopayResponse
     ReissueCardResponse:
       type: object
       properties:
@@ -396,16 +394,53 @@ components:
       required:
       - card_status
       title: ReissueCardResponse
-    PaymentCardStatus:
-      type: string
-      enum:
-      - in_progress
-      - active
-      - frozen
-      - closed
-      - canceled
-      - in_default
-      title: PaymentCardStatus
+    Payment_Cards_listPaymentCardTransactions_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/V2PaymentCardsPaymentCardIdTransactionsGetResponsesContentApplicationJsonSchemaResultsItems'
+      required:
+      - count
+      - results
+      title: Payment Cards_listPaymentCardTransactions_Response_200
+    LostStolenCardResponse:
+      type: object
+      properties:
+        card_status:
+          type: string
+      required:
+      - card_status
+      title: LostStolenCardResponse
+    LostStolenCardRequest:
+      type: object
+      properties:
+        card_status:
+          type: string
+      required:
+      - card_status
+      title: LostStolenCardRequest
+    SetAutopayRequest:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+      required:
+      - enabled
+      title: SetAutopayRequest
     Emboss:
       type: object
       properties:
@@ -418,7 +453,57 @@ components:
       required:
       - operation
       title: Emboss
-    Payment Cards_retrievePaymentCardTransaction_Response_200:
+    FreezePaymentCardRequest:
+      type: object
+      properties:
+        end_date:
+          type: string
+          format: date-time
+      required:
+      - end_date
+      title: FreezePaymentCardRequest
+    PaymentCardStatus:
+      type: string
+      enum:
+      - in_progress
+      - active
+      - frozen
+      - closed
+      - canceled
+      - in_default
+      title: PaymentCardStatus
+    PaymentCard:
+      type: object
+      properties:
+        id:
+          type: string
+        consumer_id:
+          type: string
+        card_config_id:
+          type: string
+        status:
+          $ref: '#/components/schemas/PaymentCardStatus'
+        emboss_hold:
+          type: boolean
+        available_balance:
+          type: string
+        account_number:
+          type: string
+        routing_number:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        autopay_enabled:
+          type: boolean
+        outstanding_balance:
+          type: string
+        pin_lock:
+          type: boolean
+        display_name:
+          type: string
+      title: PaymentCard
+    Payment_Cards_retrievePaymentCardTransaction_Response_200:
       type: object
       properties:
         id:
@@ -464,43 +549,29 @@ components:
       - transaction_type
       - related_transaction_id
       title: Payment Cards_retrievePaymentCardTransaction_Response_200
+    FreezeUnfreezePaymentCardResponse:
+      type: object
+      properties:
+        account_status:
+          type: string
+      required:
+      - account_status
+      title: FreezeUnfreezePaymentCardResponse
+    CloseAccountResponse:
+      type: object
+      properties:
+        close_account_id:
+          type: string
+          format: uuid
+      required:
+      - close_account_id
+      title: CloseAccountResponse
     EmbossOperation:
       type: string
       enum:
       - hold
       - unhold
       title: EmbossOperation
-    PaymentCard:
-      type: object
-      properties:
-        id:
-          type: string
-        consumer_id:
-          type: string
-        card_config_id:
-          type: string
-        status:
-          $ref: '#/components/schemas/PaymentCardStatus'
-        emboss_hold:
-          type: boolean
-        available_balance:
-          type: string
-        account_number:
-          type: string
-        routing_number:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        autopay_enabled:
-          type: boolean
-        outstanding_balance:
-          type: string
-        pin_lock:
-          type: boolean
-        display_name:
-          type: string
-      title: PaymentCard
     V2PaymentCardsPaymentCardIdTransactionsGetResponsesContentApplicationJsonSchemaResultsItems:
       type: object
       properties:
@@ -547,77 +618,6 @@ components:
       - transaction_type
       - related_transaction_id
       title: V2PaymentCardsPaymentCardIdTransactionsGetResponsesContentApplicationJsonSchemaResultsItems
-    LostStolenCardResponse:
-      type: object
-      properties:
-        card_status:
-          type: string
-      required:
-      - card_status
-      title: LostStolenCardResponse
-    SetAutopayResponse:
-      type: object
-      properties:
-        autopay_enabled:
-          type: boolean
-      required:
-      - autopay_enabled
-      title: SetAutopayResponse
-    FreezePaymentCardRequest:
-      type: object
-      properties:
-        end_date:
-          type: string
-          format: date-time
-      required:
-      - end_date
-      title: FreezePaymentCardRequest
-    LostStolenCardRequest:
-      type: object
-      properties:
-        card_status:
-          type: string
-      required:
-      - card_status
-      title: LostStolenCardRequest
-    Payment Cards_listPaymentCardTransactions_Response_200:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/V2PaymentCardsPaymentCardIdTransactionsGetResponsesContentApplicationJsonSchemaResultsItems'
-      required:
-      - count
-      - results
-      title: Payment Cards_listPaymentCardTransactions_Response_200
-    EmbossShipping:
-      type: string
-      enum:
-      - standard
-      - express
-      default: standard
-      title: EmbossShipping
-    FreezeUnfreezePaymentCardResponse:
-      type: object
-      properties:
-        account_status:
-          type: string
-      required:
-      - account_status
-      title: FreezeUnfreezePaymentCardResponse
   securitySchemes:
     bearerAuth:
       type: http

@@ -1,12 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Reference accounts plaid API
+  title: Reference Plaid API
   version: 1.0.0
 servers:
 - url: https://host.com
   description: Default
 tags:
-- name: plaid
+- name: Plaid
 paths:
   /v2/consumers/{consumer_id}/accounts/plaid-link-token:
     post:
@@ -16,7 +16,7 @@ paths:
 
         POST /v2/consumers/{consumer_id}/accounts/plaid-link-token'
       tags:
-      - plaid
+      - Plaid
       parameters:
       - name: consumer_id
         in: path
@@ -48,7 +48,7 @@ paths:
       summary: Verify Bank Account
       description: Verify bank account using Plaid microdeposits
       tags:
-      - plaid
+      - Plaid
       parameters:
       - name: account_external_id
         in: path
@@ -84,6 +84,14 @@ components:
       required:
       - plaid_link_token
       title: LinkBankAccount
+    CreatePlaidLinkToken:
+      type: object
+      properties:
+        is_mobile_app:
+          type: boolean
+      required:
+      - is_mobile_app
+      title: CreatePlaidLinkToken
     Plaid_createConsumerPlaidLinkToken_Response_200:
       type: object
       properties:
@@ -99,14 +107,6 @@ components:
       - expiration
       - hosted_link_url
       title: Plaid_createConsumerPlaidLinkToken_Response_200
-    CreatePlaidLinkToken:
-      type: object
-      properties:
-        is_mobile_app:
-          type: boolean
-      required:
-      - is_mobile_app
-      title: CreatePlaidLinkToken
   securitySchemes:
     bearerAuth:
       type: http

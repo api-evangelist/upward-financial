@@ -1,12 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Reference accounts auth API
+  title: Reference Auth API
   version: 1.0.0
 servers:
 - url: https://host.com
   description: Default
 tags:
-- name: auth
+- name: Auth
 paths:
   /auth/token/:
     post:
@@ -14,7 +14,7 @@ paths:
       summary: Create Upwardli Token
       description: Upwardli Token View
       tags:
-      - auth
+      - Auth
       parameters:
       - name: Authorization
         in: header
@@ -40,7 +40,7 @@ paths:
       summary: Create Upwardli Token Exchange
       description: Upwardli Token Exchange View
       tags:
-      - auth
+      - Auth
       parameters:
       - name: Authorization
         in: header
@@ -96,6 +96,23 @@ components:
       - client_secret
       - scope
       title: CreateUpwardliToken
+    CreateUpwardliTokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        expires_in:
+          type: integer
+        token_type:
+          type: string
+        scope:
+          type: string
+      required:
+      - access_token
+      - expires_in
+      - token_type
+      - scope
+      title: CreateUpwardliTokenResponse
     CreateUpwardliTokenExchange:
       type: object
       properties:
@@ -116,23 +133,6 @@ components:
       - audience
       - scope
       title: CreateUpwardliTokenExchange
-    CreateUpwardliTokenResponse:
-      type: object
-      properties:
-        access_token:
-          type: string
-        expires_in:
-          type: integer
-        token_type:
-          type: string
-        scope:
-          type: string
-      required:
-      - access_token
-      - expires_in
-      - token_type
-      - scope
-      title: CreateUpwardliTokenResponse
   securitySchemes:
     bearerAuth:
       type: http
