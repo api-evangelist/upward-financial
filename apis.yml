@@ -74,7 +74,7 @@ tags_raw:
 - KYC
 apis:
 - aid: upward-financial:upward-financial-accounts-api
-  name: Upward Financial accounts API
+  name: Upward Financial Accounts API
   description: The accounts API from Upward Financial — 2 operation(s) for accounts.
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
@@ -90,7 +90,7 @@ apis:
   - type: APIReference
     url: https://developers.upwardli.com/api-access/reference
 - aid: upward-financial:upward-financial-auth-api
-  name: Upward Financial auth API
+  name: Upward Financial Auth API
   description: The auth API from Upward Financial — 2 operation(s) for auth.
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
@@ -106,7 +106,7 @@ apis:
   - type: APIReference
     url: https://developers.upwardli.com/api-access/reference
 - aid: upward-financial:upward-financial-billreporting-api
-  name: Upward Financial billReporting API
+  name: Upward Financial Bill Reporting API
   description: The billReporting API from Upward Financial — 9 operation(s) for billreporting.
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
@@ -121,7 +121,7 @@ apis:
   - type: APIReference
     url: https://developers.upwardli.com/api-access/reference
 - aid: upward-financial:upward-financial-billswitch-api
-  name: Upward Financial billSwitch API
+  name: Upward Financial Bill Switch API
   description: The billSwitch API from Upward Financial — 2 operation(s) for billswitch.
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
@@ -136,7 +136,7 @@ apis:
   - type: APIReference
     url: https://developers.upwardli.com/api-access/reference
 - aid: upward-financial:upward-financial-cbaas-api
-  name: Upward Financial cbaas API
+  name: Upward Financial Cbaas API
   description: The cbaas API from Upward Financial — 5 operation(s) for cbaas.
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
@@ -150,7 +150,7 @@ apis:
   - type: APIReference
     url: https://developers.upwardli.com/api-access/reference
 - aid: upward-financial:upward-financial-consumers-api
-  name: Upward Financial consumers API
+  name: Upward Financial Consumers API
   description: The consumers API from Upward Financial — 13 operation(s) for consumers.
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
@@ -166,7 +166,7 @@ apis:
   - type: APIReference
     url: https://developers.upwardli.com/api-access/reference
 - aid: upward-financial:upward-financial-creditinsights-api
-  name: Upward Financial creditInsights API
+  name: Upward Financial Credit Insights API
   description: The creditInsights API from Upward Financial — 1 operation(s) for creditinsights.
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
@@ -181,7 +181,7 @@ apis:
   - type: APIReference
     url: https://developers.upwardli.com/api-access/reference
 - aid: upward-financial:upward-financial-onboarding-api
-  name: Upward Financial onboarding API
+  name: Upward Financial Onboarding API
   description: The onboarding API from Upward Financial — 11 operation(s) for onboarding.
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
@@ -197,7 +197,7 @@ apis:
   - type: APIReference
     url: https://developers.upwardli.com/api-access/reference
 - aid: upward-financial:upward-financial-partners-api
-  name: Upward Financial partners API
+  name: Upward Financial Partners API
   description: The partners API from Upward Financial — 5 operation(s) for partners.
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
@@ -213,7 +213,7 @@ apis:
   - type: APIReference
     url: https://developers.upwardli.com/api-access/reference
 - aid: upward-financial:upward-financial-payments-api
-  name: Upward Financial payments API
+  name: Upward Financial Payments API
   description: The payments API from Upward Financial — 12 operation(s) for payments.
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
@@ -229,7 +229,7 @@ apis:
   - type: APIReference
     url: https://developers.upwardli.com/api-access/reference
 - aid: upward-financial:upward-financial-plaid-api
-  name: Upward Financial plaid API
+  name: Upward Financial Plaid API
   description: The plaid API from Upward Financial — 2 operation(s) for plaid.
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
@@ -245,7 +245,7 @@ apis:
   - type: APIReference
     url: https://developers.upwardli.com/api-access/reference
 - aid: upward-financial:upward-financial-rewards-api
-  name: Upward Financial rewards API
+  name: Upward Financial Rewards API
   description: The rewards API from Upward Financial — 4 operation(s) for rewards.
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
@@ -261,7 +261,7 @@ apis:
   - type: APIReference
     url: https://developers.upwardli.com/api-access/reference
 - aid: upward-financial:upward-financial-simulations-api
-  name: Upward Financial simulations API
+  name: Upward Financial Simulations API
   description: The simulations API from Upward Financial — 3 operation(s) for simulations.
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
@@ -277,7 +277,7 @@ apis:
   - type: APIReference
     url: https://developers.upwardli.com/api-access/reference
 - aid: upward-financial:upward-financial-statements-api
-  name: Upward Financial statements API
+  name: Upward Financial Statements API
   description: The statements API from Upward Financial — 3 operation(s) for statements.
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2
@@ -293,7 +293,7 @@ apis:
   - type: APIReference
     url: https://developers.upwardli.com/api-access/reference
 - aid: upward-financial:upward-financial-webhooks-api
-  name: Upward Financial webhooks API
+  name: Upward Financial Webhooks API
   description: The webhooks API from Upward Financial — 3 operation(s) for webhooks.
   humanURL: https://developers.upwardli.com/
   baseURL: https://api.upwardli.com/v2

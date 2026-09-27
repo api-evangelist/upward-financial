@@ -96,23 +96,6 @@ components:
       - client_secret
       - scope
       title: CreateUpwardliToken
-    CreateUpwardliTokenResponse:
-      type: object
-      properties:
-        access_token:
-          type: string
-        expires_in:
-          type: integer
-        token_type:
-          type: string
-        scope:
-          type: string
-      required:
-      - access_token
-      - expires_in
-      - token_type
-      - scope
-      title: CreateUpwardliTokenResponse
     CreateUpwardliTokenExchange:
       type: object
       properties:
@@ -133,6 +116,23 @@ components:
       - audience
       - scope
       title: CreateUpwardliTokenExchange
+    CreateUpwardliTokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        expires_in:
+          type: integer
+        token_type:
+          type: string
+        scope:
+          type: string
+      required:
+      - access_token
+      - expires_in
+      - token_type
+      - scope
+      title: CreateUpwardliTokenResponse
   securitySchemes:
     bearerAuth:
       type: http

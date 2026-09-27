@@ -573,6 +573,17 @@ paths:
                 description: Any type
 components:
   schemas:
+    CreateP2PPaymentResponseStatus:
+      type: string
+      enum:
+      - pending
+      - posted
+      - pending_review
+      - error
+      description: 'Current payment status. `pending_review` means the payment is held for compliance review (velocity limit exceeded) and will be processed once approved.
+
+        '
+      title: CreateP2PPaymentResponseStatus
     CreateTransferRequestStatus:
       type: string
       enum:
@@ -584,6 +595,151 @@ components:
       - returned
       default: posted
       title: CreateTransferRequestStatus
+    CreateTransferResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        amount:
+          type: number
+          format: double
+        originating_account_id:
+          type: string
+        receiving_account_id:
+          type: string
+        status:
+          type: string
+        description:
+          type: string
+      required:
+      - id
+      - amount
+      - originating_account_id
+      - receiving_account_id
+      - status
+      title: CreateTransferResponse
+    CreateAFTRequest:
+      type: object
+      properties:
+        consumer_id:
+          type: string
+          description: Unique identifier of the consumer initiating the transfer.
+        external_payment_card_id:
+          type: string
+          format: uuid
+          description: External ID of the payment card to pull funds from.
+        amount:
+          type: number
+          format: double
+          description: Amount to pull in USD.
+        description:
+          type: string
+          description: Optional description for the transaction.
+      required:
+      - consumer_id
+      - external_payment_card_id
+      - amount
+      description: Request body for creating an AFT (Account Funding Transaction) — pulls funds from a consumer's external payment card.
+      title: CreateAFTRequest
+    Payments_listAFTPaymentRequests_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetAFTResponse'
+      required:
+      - count
+      - results
+      title: Payments_listAFTPaymentRequests_Response_200
+    GetP2PPaymentResponseStatus:
+      type: string
+      enum:
+      - pending
+      - posted
+      - pending_review
+      - error
+      - canceled
+      - returned
+      description: Current payment status.
+      title: GetP2PPaymentResponseStatus
+    V2PaymentsP2PPostResponsesContentApplicationJsonSchemaErrorCode:
+      type: string
+      enum:
+      - feature_unavailable
+      - invalid_amount
+      - invalid_account_types
+      - invalid_account_pair
+      - not_found
+      - insufficient_funds
+      - invalid_account
+      title: V2PaymentsP2PPostResponsesContentApplicationJsonSchemaErrorCode
+    Payments_Cancel_ACH_Payment_Response_204:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: Payments_Cancel ACH Payment_Response_204
+    CreateTransferRequest:
+      type: object
+      properties:
+        originating_account_id:
+          type: string
+          format: uuid
+        receiving_account_id:
+          type: string
+          format: uuid
+        amount:
+          type: number
+          format: double
+        description:
+          type: string
+        status:
+          $ref: '#/components/schemas/CreateTransferRequestStatus'
+        memo:
+          type: string
+          default: card.fund_account | card.advance | card.advance.payback
+      required:
+      - originating_account_id
+      - receiving_account_id
+      - amount
+      - memo
+      title: CreateTransferRequest
+    Payments_listPeerToPeerPaymentResponses_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetP2PPaymentResponse'
+      required:
+      - count
+      - results
+      title: Payments_listPeerToPeerPaymentResponses_Response_200
     GetOCTResponse:
       type: object
       properties:
@@ -619,31 +775,152 @@ components:
       - status
       description: OCT payment details.
       title: GetOCTResponse
-    CreateTransferRequest:
+    CreateOCTRequest:
       type: object
       properties:
-        originating_account_id:
+        consumer_id:
+          type: string
+          description: Unique identifier of the consumer receiving the transfer.
+        external_payment_card_id:
           type: string
           format: uuid
+          description: External ID of the payment card to credit funds to.
+        amount:
+          type: number
+          format: double
+          description: Amount to push in USD.
+        description:
+          type: string
+          description: Optional description for the transaction.
+      required:
+      - consumer_id
+      - external_payment_card_id
+      - amount
+      description: Request body for creating an OCT (Original Credit Transaction) — pushes funds to a consumer's external payment card.
+      title: CreateOCTRequest
+    Payments_listOCTPaymentRequests_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetOCTResponse'
+      required:
+      - count
+      - results
+      title: Payments_listOCTPaymentRequests_Response_200
+    CreateInstantPaymentRequest:
+      type: object
+      properties:
+        consumer_id:
+          type: string
+        originating_account_id:
+          type: string
         receiving_account_id:
+          type: string
+        description:
+          type: string
+        amount:
+          type: string
+          format: decimal
+      required:
+      - consumer_id
+      - originating_account_id
+      - receiving_account_id
+      - amount
+      title: CreateInstantPaymentRequest
+    Payments_listACHResponses_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ACHResponse'
+      required:
+      - count
+      - results
+      title: Payments_listACHResponses_Response_200
+    GetTransferResponse:
+      type: object
+      properties:
+        id:
           type: string
           format: uuid
         amount:
           type: number
           format: double
-        description:
+        originating_account_id:
+          type: string
+        receiving_account_id:
           type: string
         status:
-          $ref: '#/components/schemas/CreateTransferRequestStatus'
-        memo:
           type: string
-          default: card.fund_account | card.advance | card.advance.payback
+        description:
+          type: string
       required:
+      - id
+      - amount
+      - originating_account_id
+      - receiving_account_id
+      - status
+      title: GetTransferResponse
+    CreateP2PPaymentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for this P2P payment. Use it to poll status or retrieve details.
+        originating_account_id:
+          type: string
+          description: External ID of the sending account.
+        receiving_account_id:
+          type: string
+          description: External ID of the receiving account.
+        amount:
+          type: number
+          format: double
+          description: Transfer amount in USD.
+        status:
+          $ref: '#/components/schemas/CreateP2PPaymentResponseStatus'
+          description: 'Current payment status. `pending_review` means the payment is held for compliance review (velocity limit exceeded) and will be processed once approved.
+
+            '
+        description:
+          type: string
+          description: Memo provided at creation time.
+      required:
+      - id
       - originating_account_id
       - receiving_account_id
       - amount
-      - memo
-      title: CreateTransferRequest
+      - status
+      description: Response returned when a P2P payment is created.
+      title: CreateP2PPaymentResponse
     CreateP2PPaymentRequest:
       type: object
       properties:
@@ -668,17 +945,108 @@ components:
       - amount
       description: Request body for creating a P2P payment between two consumers.
       title: CreateP2PPaymentRequest
-    GetP2PPaymentResponseStatus:
-      type: string
-      enum:
-      - pending
-      - posted
-      - pending_review
-      - error
-      - canceled
-      - returned
-      description: Current payment status.
-      title: GetP2PPaymentResponseStatus
+    CreatePeerToPeerPaymentRequestRequestUnprocessableEntityError:
+      type: object
+      properties:
+        error:
+          type: string
+        error_code:
+          $ref: '#/components/schemas/V2PaymentsP2PPostResponsesContentApplicationJsonSchemaErrorCode'
+        messages:
+          type: array
+          items:
+            type: string
+      title: CreatePeerToPeerPaymentRequestRequestUnprocessableEntityError
+    GetInstantPaymentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        consumer_id:
+          type: string
+        amount:
+          type: string
+          format: decimal
+        originating_account_id:
+          type: string
+        receiving_account_id:
+          type: string
+        instant_payment_direction:
+          type: string
+      required:
+      - id
+      - amount
+      - originating_account_id
+      - receiving_account_id
+      - instant_payment_direction
+      title: GetInstantPaymentResponse
+    CreateACHRequest:
+      type: object
+      properties:
+        consumer_id:
+          type: string
+        originating_account_id:
+          type: string
+        receiving_account_id:
+          type: string
+        description:
+          type: string
+        amount:
+          type: number
+          format: double
+      required:
+      - consumer_id
+      - originating_account_id
+      - receiving_account_id
+      - amount
+      title: CreateACHRequest
+    Payments_listGetInstantPaymentResponses_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetInstantPaymentResponse'
+      required:
+      - count
+      - results
+      title: Payments_listGetInstantPaymentResponses_Response_200
+    Payments_getAllTransfers_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetTransferResponse'
+      required:
+      - count
+      - results
+      title: Payments_getAllTransfers_Response_200
     GetAFTResponse:
       type: object
       properties:
@@ -714,74 +1082,6 @@ components:
       - status
       description: AFT payment details.
       title: GetAFTResponse
-    Payments_listACHResponses_Response_200:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ACHResponse'
-      required:
-      - count
-      - results
-      title: Payments_listACHResponses_Response_200
-    V2PaymentsP2PPostResponsesContentApplicationJsonSchemaErrorCode:
-      type: string
-      enum:
-      - feature_unavailable
-      - invalid_amount
-      - invalid_account_types
-      - invalid_account_pair
-      - not_found
-      - insufficient_funds
-      - invalid_account
-      title: V2PaymentsP2PPostResponsesContentApplicationJsonSchemaErrorCode
-    CreateAFTRequest:
-      type: object
-      properties:
-        consumer_id:
-          type: string
-          description: Unique identifier of the consumer initiating the transfer.
-        external_payment_card_id:
-          type: string
-          format: uuid
-          description: External ID of the payment card to pull funds from.
-        amount:
-          type: number
-          format: double
-          description: Amount to pull in USD.
-        description:
-          type: string
-          description: Optional description for the transaction.
-      required:
-      - consumer_id
-      - external_payment_card_id
-      - amount
-      description: Request body for creating an AFT (Account Funding Transaction) — pulls funds from a consumer's external payment card.
-      title: CreateAFTRequest
-    CreateP2PPaymentResponseStatus:
-      type: string
-      enum:
-      - pending
-      - posted
-      - pending_review
-      - error
-      description: 'Current payment status. `pending_review` means the payment is held for compliance review (velocity limit exceeded) and will be processed once approved.
-
-        '
-      title: CreateP2PPaymentResponseStatus
     ACHResponse:
       type: object
       properties:
@@ -813,213 +1113,6 @@ components:
       - ach_direction
       - status
       title: ACHResponse
-    CreateACHRequest:
-      type: object
-      properties:
-        consumer_id:
-          type: string
-        originating_account_id:
-          type: string
-        receiving_account_id:
-          type: string
-        description:
-          type: string
-        amount:
-          type: number
-          format: double
-      required:
-      - consumer_id
-      - originating_account_id
-      - receiving_account_id
-      - amount
-      title: CreateACHRequest
-    GetInstantPaymentResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        consumer_id:
-          type: string
-        amount:
-          type: string
-          format: decimal
-        originating_account_id:
-          type: string
-        receiving_account_id:
-          type: string
-        instant_payment_direction:
-          type: string
-      required:
-      - id
-      - amount
-      - originating_account_id
-      - receiving_account_id
-      - instant_payment_direction
-      title: GetInstantPaymentResponse
-    Payments_listGetInstantPaymentResponses_Response_200:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/GetInstantPaymentResponse'
-      required:
-      - count
-      - results
-      title: Payments_listGetInstantPaymentResponses_Response_200
-    CreateInstantPaymentRequest:
-      type: object
-      properties:
-        consumer_id:
-          type: string
-        originating_account_id:
-          type: string
-        receiving_account_id:
-          type: string
-        description:
-          type: string
-        amount:
-          type: string
-          format: decimal
-      required:
-      - consumer_id
-      - originating_account_id
-      - receiving_account_id
-      - amount
-      title: CreateInstantPaymentRequest
-    Payments_listPeerToPeerPaymentResponses_Response_200:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/GetP2PPaymentResponse'
-      required:
-      - count
-      - results
-      title: Payments_listPeerToPeerPaymentResponses_Response_200
-    CreateP2PPaymentResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Unique identifier for this P2P payment. Use it to poll status or retrieve details.
-        originating_account_id:
-          type: string
-          description: External ID of the sending account.
-        receiving_account_id:
-          type: string
-          description: External ID of the receiving account.
-        amount:
-          type: number
-          format: double
-          description: Transfer amount in USD.
-        status:
-          $ref: '#/components/schemas/CreateP2PPaymentResponseStatus'
-          description: 'Current payment status. `pending_review` means the payment is held for compliance review (velocity limit exceeded) and will be processed once approved.
-
-            '
-        description:
-          type: string
-          description: Memo provided at creation time.
-      required:
-      - id
-      - originating_account_id
-      - receiving_account_id
-      - amount
-      - status
-      description: Response returned when a P2P payment is created.
-      title: CreateP2PPaymentResponse
-    GetTransferResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        amount:
-          type: number
-          format: double
-        originating_account_id:
-          type: string
-        receiving_account_id:
-          type: string
-        status:
-          type: string
-        description:
-          type: string
-      required:
-      - id
-      - amount
-      - originating_account_id
-      - receiving_account_id
-      - status
-      title: GetTransferResponse
-    CreatePeerToPeerPaymentRequestRequestUnprocessableEntityError:
-      type: object
-      properties:
-        error:
-          type: string
-        error_code:
-          $ref: '#/components/schemas/V2PaymentsP2PPostResponsesContentApplicationJsonSchemaErrorCode'
-        messages:
-          type: array
-          items:
-            type: string
-      title: CreatePeerToPeerPaymentRequestRequestUnprocessableEntityError
-    CreateOCTRequest:
-      type: object
-      properties:
-        consumer_id:
-          type: string
-          description: Unique identifier of the consumer receiving the transfer.
-        external_payment_card_id:
-          type: string
-          format: uuid
-          description: External ID of the payment card to credit funds to.
-        amount:
-          type: number
-          format: double
-          description: Amount to push in USD.
-        description:
-          type: string
-          description: Optional description for the transaction.
-      required:
-      - consumer_id
-      - external_payment_card_id
-      - amount
-      description: Request body for creating an OCT (Original Credit Transaction) — pushes funds to a consumer's external payment card.
-      title: CreateOCTRequest
-    Payments_Cancel_ACH_Payment_Response_204:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: Payments_Cancel ACH Payment_Response_204
     GetP2PPaymentResponse:
       type: object
       properties:
@@ -1051,99 +1144,6 @@ components:
       - status
       description: P2P payment details returned by retrieve and list endpoints.
       title: GetP2PPaymentResponse
-    CreateTransferResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        amount:
-          type: number
-          format: double
-        originating_account_id:
-          type: string
-        receiving_account_id:
-          type: string
-        status:
-          type: string
-        description:
-          type: string
-      required:
-      - id
-      - amount
-      - originating_account_id
-      - receiving_account_id
-      - status
-      title: CreateTransferResponse
-    Payments_getAllTransfers_Response_200:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/GetTransferResponse'
-      required:
-      - count
-      - results
-      title: Payments_getAllTransfers_Response_200
-    Payments_listAFTPaymentRequests_Response_200:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/GetAFTResponse'
-      required:
-      - count
-      - results
-      title: Payments_listAFTPaymentRequests_Response_200
-    Payments_listOCTPaymentRequests_Response_200:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/GetOCTResponse'
-      required:
-      - count
-      - results
-      title: Payments_listOCTPaymentRequests_Response_200
   securitySchemes:
     bearerAuth:
       type: http

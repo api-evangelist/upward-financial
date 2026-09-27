@@ -165,37 +165,6 @@ components:
       - webhook_name
       - endpoint
       title: RegisterWebhook
-    V2WebhooksIdEventsGetResponsesContentApplicationJsonSchemaErrorsItems:
-      type: object
-      properties:
-        message:
-          type: string
-        detail:
-          type: string
-      title: V2WebhooksIdEventsGetResponsesContentApplicationJsonSchemaErrorsItems
-    WebhookEvents:
-      type: object
-      properties:
-        id:
-          type: string
-        partner_id:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        event_name:
-          type: string
-        resources:
-          type: string
-        last_attempted_at:
-          type: string
-          format: date-time
-      required:
-      - id
-      - created_at
-      - event_name
-      - last_attempted_at
-      title: WebhookEvents
     WebhookRegistration:
       type: object
       properties:
@@ -222,6 +191,37 @@ components:
       - failures
       - last_failure
       title: WebhookRegistration
+    WebhookEvents:
+      type: object
+      properties:
+        id:
+          type: string
+        partner_id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        event_name:
+          type: string
+        resources:
+          type: string
+        last_attempted_at:
+          type: string
+          format: date-time
+      required:
+      - id
+      - created_at
+      - event_name
+      - last_attempted_at
+      title: WebhookEvents
+    V2WebhooksIdEventsGetResponsesContentApplicationJsonSchemaErrorsItems:
+      type: object
+      properties:
+        message:
+          type: string
+        detail:
+          type: string
+      title: V2WebhooksIdEventsGetResponsesContentApplicationJsonSchemaErrorsItems
     Webhooks_deleteWebhookRegistration_Response_204:
       type: object
       properties: {}

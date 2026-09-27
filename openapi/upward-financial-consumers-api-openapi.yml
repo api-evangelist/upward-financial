@@ -748,7 +748,16 @@ components:
           - 'null'
           format: double
       title: Address
-    Consumers_listConsumerDisputes_Response_200:
+    CreateUserInvitation:
+      type: object
+      properties:
+        expiration_date:
+          type: string
+          format: date-time
+      required:
+      - expiration_date
+      title: CreateUserInvitation
+    Consumers_listConsumerACHPayments_Response_200:
       type: object
       properties:
         count:
@@ -766,11 +775,11 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/ConsumerDispute'
+            description: Any type
       required:
       - count
       - results
-      title: Consumers_listConsumerDisputes_Response_200
+      title: Consumers_listConsumerACHPayments_Response_200
     Consumers_listConsumerPaymentCards_Response_200:
       type: object
       properties:
@@ -794,89 +803,6 @@ components:
       - count
       - results
       title: Consumers_listConsumerPaymentCards_Response_200
-    Consumers_listConsumers_Response_200:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            description: Any type
-      required:
-      - count
-      - results
-      title: Consumers_listConsumers_Response_200
-    UpdateConsumer:
-      type: object
-      properties:
-        pcid:
-          type: string
-        first_name:
-          type: string
-        last_name:
-          type: string
-        email:
-          type: string
-          format: email
-        phone_number:
-          type: string
-        date_of_birth:
-          type: string
-          format: date
-        address_line1:
-          type: string
-        address_line2:
-          type: string
-        address_city:
-          type: string
-        address_state:
-          type: string
-        address_zip:
-          type: string
-      title: UpdateConsumer
-    Consumers_listConsumerInvites_Response_200:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/GetUserInvitation'
-      required:
-      - count
-      - results
-      title: Consumers_listConsumerInvites_Response_200
-    CreateUserInvitation:
-      type: object
-      properties:
-        expiration_date:
-          type: string
-          format: date-time
-      required:
-      - expiration_date
-      title: CreateUserInvitation
     AddressCountry:
       type: string
       enum:
@@ -1128,6 +1054,369 @@ components:
       - ZM
       - ZW
       title: AddressCountry
+    ConsumerDisputeStatus:
+      type: string
+      enum:
+      - in_review
+      - submitted
+      - closed
+      - user_canceled
+      title: ConsumerDisputeStatus
+    Consumers_getConsumerBankAccounts_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/BankAccountV2'
+      required:
+      - count
+      - results
+      title: Consumers_getConsumerBankAccounts_Response_200
+    Consumers_ListConsumerAddressesV2_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+      required:
+      - count
+      - results
+      title: Consumers_ListConsumerAddressesV2_Response_200
+    AccountCancellation:
+      type: object
+      properties:
+        cancellation_reason:
+          type:
+          - string
+          - 'null'
+        details:
+          type:
+          - string
+          - 'null'
+      title: AccountCancellation
+    GetTransferResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        amount:
+          type: number
+          format: double
+        originating_account_id:
+          type: string
+        receiving_account_id:
+          type: string
+        status:
+          type: string
+        description:
+          type: string
+      required:
+      - id
+      - amount
+      - originating_account_id
+      - receiving_account_id
+      - status
+      title: GetTransferResponse
+    Consumers_listTransferResponses_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetTransferResponse'
+      required:
+      - count
+      - results
+      title: Consumers_listTransferResponses_Response_200
+    ConsumerDispute:
+      type: object
+      properties:
+        pk:
+          type: integer
+        reason:
+          type: string
+        details:
+          type:
+          - string
+          - 'null'
+        status:
+          $ref: '#/components/schemas/ConsumerDisputeStatus'
+        created_at:
+          type: string
+          format: date-time
+      required:
+      - reason
+      title: ConsumerDispute
+    Consumers_listConsumers_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            description: Any type
+      required:
+      - count
+      - results
+      title: Consumers_listConsumers_Response_200
+    UpdateConsumer:
+      type: object
+      properties:
+        pcid:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+          format: email
+        phone_number:
+          type: string
+        date_of_birth:
+          type: string
+          format: date
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_city:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+      title: UpdateConsumer
+    AddressType:
+      type: string
+      enum:
+      - BILLING
+      - SHIPPING
+      title: AddressType
+    Consumers_listConsumerInvites_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetUserInvitation'
+      required:
+      - count
+      - results
+      title: Consumers_listConsumerInvites_Response_200
+    NewConsumer:
+      type: object
+      properties:
+        pcid:
+          type: string
+        email:
+          type: string
+          format: email
+        external_id:
+          type: string
+          format: uuid
+        first_name:
+          type: string
+        last_name:
+          type: string
+        phone_number:
+          type: string
+        date_of_birth:
+          type: string
+          format: date
+        tax_identifier:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        address_city:
+          type: string
+        address_state:
+          type: string
+        address_zip:
+          type: string
+      required:
+      - pcid
+      - email
+      title: NewConsumer
+    AddressState:
+      type: string
+      enum:
+      - AL
+      - AK
+      - AZ
+      - AR
+      - CA
+      - CO
+      - CT
+      - DC
+      - DE
+      - FL
+      - GA
+      - HI
+      - ID
+      - IL
+      - IN
+      - IA
+      - KS
+      - KY
+      - LA
+      - ME
+      - MD
+      - MA
+      - MI
+      - MN
+      - MS
+      - MO
+      - MT
+      - NE
+      - NV
+      - NH
+      - NJ
+      - NM
+      - NY
+      - NC
+      - ND
+      - OH
+      - OK
+      - OR
+      - PA
+      - RI
+      - SC
+      - SD
+      - TN
+      - TX
+      - UT
+      - VT
+      - VA
+      - WA
+      - WV
+      - WI
+      - WY
+      title: AddressState
+    Consumers_DeleteAddressV2_Response_204:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: Consumers_DeleteAddressV2_Response_204
+    Consumers_listConsumerDisputes_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConsumerDispute'
+      required:
+      - count
+      - results
+      title: Consumers_listConsumerDisputes_Response_200
+    BankAccountV2:
+      type: object
+      properties:
+        id:
+          type: string
+        consumer_id:
+          type: string
+        bank_name:
+          type:
+          - string
+          - 'null'
+        balance:
+          type: string
+        account_name:
+          type: string
+        account_type:
+          type: string
+        account_number:
+          type: string
+        account_routing_number:
+          type: string
+        is_primary:
+          type: boolean
+        is_active:
+          type: boolean
+          default: true
+      required:
+      - bank_name
+      - account_name
+      - account_type
+      - is_primary
+      title: BankAccountV2
     GetConsumer:
       type: object
       properties:
@@ -1195,34 +1484,6 @@ components:
       - address_state
       - address_zip
       title: GetConsumer
-    Consumers_listConsumerACHPayments_Response_200:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            description: Any type
-      required:
-      - count
-      - results
-      title: Consumers_listConsumerACHPayments_Response_200
-    Consumers_DeleteAddressV2_Response_204:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: Consumers_DeleteAddressV2_Response_204
     GetUserInvitation:
       type: object
       properties:
@@ -1248,267 +1509,6 @@ components:
       - id
       - consumer_id
       title: GetUserInvitation
-    GetTransferResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        amount:
-          type: number
-          format: double
-        originating_account_id:
-          type: string
-        receiving_account_id:
-          type: string
-        status:
-          type: string
-        description:
-          type: string
-      required:
-      - id
-      - amount
-      - originating_account_id
-      - receiving_account_id
-      - status
-      title: GetTransferResponse
-    Consumers_getConsumerBankAccounts_Response_200:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/BankAccountV2'
-      required:
-      - count
-      - results
-      title: Consumers_getConsumerBankAccounts_Response_200
-    ConsumerDispute:
-      type: object
-      properties:
-        pk:
-          type: integer
-        reason:
-          type: string
-        details:
-          type:
-          - string
-          - 'null'
-        status:
-          $ref: '#/components/schemas/ConsumerDisputeStatus'
-        created_at:
-          type: string
-          format: date-time
-      required:
-      - reason
-      title: ConsumerDispute
-    AddressState:
-      type: string
-      enum:
-      - AL
-      - AK
-      - AZ
-      - AR
-      - CA
-      - CO
-      - CT
-      - DC
-      - DE
-      - FL
-      - GA
-      - HI
-      - ID
-      - IL
-      - IN
-      - IA
-      - KS
-      - KY
-      - LA
-      - ME
-      - MD
-      - MA
-      - MI
-      - MN
-      - MS
-      - MO
-      - MT
-      - NE
-      - NV
-      - NH
-      - NJ
-      - NM
-      - NY
-      - NC
-      - ND
-      - OH
-      - OK
-      - OR
-      - PA
-      - RI
-      - SC
-      - SD
-      - TN
-      - TX
-      - UT
-      - VT
-      - VA
-      - WA
-      - WV
-      - WI
-      - WY
-      title: AddressState
-    BankAccountV2:
-      type: object
-      properties:
-        id:
-          type: string
-        consumer_id:
-          type: string
-        bank_name:
-          type:
-          - string
-          - 'null'
-        balance:
-          type: string
-        account_name:
-          type: string
-        account_type:
-          type: string
-        account_number:
-          type: string
-        account_routing_number:
-          type: string
-        is_primary:
-          type: boolean
-        is_active:
-          type: boolean
-          default: true
-      required:
-      - bank_name
-      - account_name
-      - account_type
-      - is_primary
-      title: BankAccountV2
-    Consumers_listTransferResponses_Response_200:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/GetTransferResponse'
-      required:
-      - count
-      - results
-      title: Consumers_listTransferResponses_Response_200
-    AccountCancellation:
-      type: object
-      properties:
-        cancellation_reason:
-          type:
-          - string
-          - 'null'
-        details:
-          type:
-          - string
-          - 'null'
-      title: AccountCancellation
-    ConsumerDisputeStatus:
-      type: string
-      enum:
-      - in_review
-      - submitted
-      - closed
-      - user_canceled
-      title: ConsumerDisputeStatus
-    NewConsumer:
-      type: object
-      properties:
-        pcid:
-          type: string
-        email:
-          type: string
-          format: email
-        external_id:
-          type: string
-          format: uuid
-        first_name:
-          type: string
-        last_name:
-          type: string
-        phone_number:
-          type: string
-        date_of_birth:
-          type: string
-          format: date
-        tax_identifier:
-          type: string
-        address_line1:
-          type: string
-        address_line2:
-          type: string
-        address_city:
-          type: string
-        address_state:
-          type: string
-        address_zip:
-          type: string
-      required:
-      - pcid
-      - email
-      title: NewConsumer
-    AddressType:
-      type: string
-      enum:
-      - BILLING
-      - SHIPPING
-      title: AddressType
-    Consumers_ListConsumerAddressesV2_Response_200:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Address'
-      required:
-      - count
-      - results
-      title: Consumers_ListConsumerAddressesV2_Response_200
   securitySchemes:
     bearerAuth:
       type: http
