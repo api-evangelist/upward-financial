@@ -121,13 +121,6 @@ paths:
                 $ref: '#/components/schemas/StatementEmailResponse'
 components:
   schemas:
-    StatementEmailResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          default: The statement has been sent to your email.
-      title: StatementEmailResponse
     StatementResponseDownload:
       type: object
       properties:
@@ -162,6 +155,13 @@ components:
       - count
       - results
       title: Statements_listStatements_Response_200
+    StatementEmailResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          default: The statement has been sent to your email.
+      title: StatementEmailResponse
     Statement:
       type: object
       properties:

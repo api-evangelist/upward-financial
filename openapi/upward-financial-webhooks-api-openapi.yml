@@ -154,17 +154,34 @@ paths:
                 $ref: '#/components/schemas/Webhooks_deleteWebhookRegistration_Response_204'
 components:
   schemas:
-    RegisterWebhook:
+    WebhookEvents:
       type: object
       properties:
-        webhook_name:
+        id:
           type: string
-        endpoint:
+        partner_id:
           type: string
+        created_at:
+          type: string
+          format: date-time
+        event_name:
+          type: string
+        resources:
+          type: string
+        last_attempted_at:
+          type: string
+          format: date-time
       required:
-      - webhook_name
-      - endpoint
-      title: RegisterWebhook
+      - id
+      - created_at
+      - event_name
+      - last_attempted_at
+      title: WebhookEvents
+    Webhooks_deleteWebhookRegistration_Response_204:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: Webhooks_deleteWebhookRegistration_Response_204
     WebhookRegistration:
       type: object
       properties:
@@ -191,29 +208,6 @@ components:
       - failures
       - last_failure
       title: WebhookRegistration
-    WebhookEvents:
-      type: object
-      properties:
-        id:
-          type: string
-        partner_id:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        event_name:
-          type: string
-        resources:
-          type: string
-        last_attempted_at:
-          type: string
-          format: date-time
-      required:
-      - id
-      - created_at
-      - event_name
-      - last_attempted_at
-      title: WebhookEvents
     V2WebhooksIdEventsGetResponsesContentApplicationJsonSchemaErrorsItems:
       type: object
       properties:
@@ -222,11 +216,6 @@ components:
         detail:
           type: string
       title: V2WebhooksIdEventsGetResponsesContentApplicationJsonSchemaErrorsItems
-    Webhooks_deleteWebhookRegistration_Response_204:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: Webhooks_deleteWebhookRegistration_Response_204
     RetrieveWebhookHistoryRequestBadRequestError:
       type: object
       properties:
@@ -235,6 +224,17 @@ components:
           items:
             $ref: '#/components/schemas/V2WebhooksIdEventsGetResponsesContentApplicationJsonSchemaErrorsItems'
       title: RetrieveWebhookHistoryRequestBadRequestError
+    RegisterWebhook:
+      type: object
+      properties:
+        webhook_name:
+          type: string
+        endpoint:
+          type: string
+      required:
+      - webhook_name
+      - endpoint
+      title: RegisterWebhook
   securitySchemes:
     bearerAuth:
       type: http

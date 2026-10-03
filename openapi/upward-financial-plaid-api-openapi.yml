@@ -84,14 +84,6 @@ components:
       required:
       - plaid_link_token
       title: LinkBankAccount
-    CreatePlaidLinkToken:
-      type: object
-      properties:
-        is_mobile_app:
-          type: boolean
-      required:
-      - is_mobile_app
-      title: CreatePlaidLinkToken
     Plaid_createConsumerPlaidLinkToken_Response_200:
       type: object
       properties:
@@ -107,6 +99,14 @@ components:
       - expiration
       - hosted_link_url
       title: Plaid_createConsumerPlaidLinkToken_Response_200
+    CreatePlaidLinkToken:
+      type: object
+      properties:
+        is_mobile_app:
+          type: boolean
+      required:
+      - is_mobile_app
+      title: CreatePlaidLinkToken
   securitySchemes:
     bearerAuth:
       type: http

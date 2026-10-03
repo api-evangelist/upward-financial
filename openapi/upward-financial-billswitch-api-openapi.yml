@@ -74,18 +74,18 @@ paths:
               $ref: '#/components/schemas/DepositSwitchResponse'
 components:
   schemas:
-    BillSwitchToken:
-      type: object
-      properties:
-        public_token:
-          type: string
-      title: BillSwitchToken
     DepositSwitchResponse:
       type: object
       properties:
         public_token:
           type: string
       title: DepositSwitchResponse
+    BillSwitchToken:
+      type: object
+      properties:
+        public_token:
+          type: string
+      title: BillSwitchToken
   securitySchemes:
     bearerAuth:
       type: http
