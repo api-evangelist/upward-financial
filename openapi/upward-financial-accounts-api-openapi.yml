@@ -131,52 +131,6 @@ paths:
               $ref: '#/components/schemas/BankAccountUpdateV2'
 components:
   schemas:
-    BankAccountV2:
-      type: object
-      properties:
-        id:
-          type: string
-        consumer_id:
-          type: string
-        bank_name:
-          type:
-          - string
-          - 'null'
-        balance:
-          type: string
-        account_name:
-          type: string
-        account_type:
-          type: string
-        account_number:
-          type: string
-        account_routing_number:
-          type: string
-        is_primary:
-          type: boolean
-        is_active:
-          type: boolean
-          default: true
-      required:
-      - bank_name
-      - account_name
-      - account_type
-      - is_primary
-      title: BankAccountV2
-    BankAccountUpdateV2:
-      type: object
-      properties:
-        routing_number:
-          type: string
-        account_number:
-          type: string
-        bank_name:
-          type: string
-        account_name:
-          type: string
-        is_active:
-          type: boolean
-      title: BankAccountUpdateV2
     Accounts_getAllBankAccounts_Response_200:
       type: object
       properties:
@@ -228,6 +182,52 @@ components:
       - bank_name
       - account_name
       title: BankAccountCreateV2
+    BankAccountV2:
+      type: object
+      properties:
+        id:
+          type: string
+        consumer_id:
+          type: string
+        bank_name:
+          type:
+          - string
+          - 'null'
+        balance:
+          type: string
+        account_name:
+          type: string
+        account_type:
+          type: string
+        account_number:
+          type: string
+        account_routing_number:
+          type: string
+        is_primary:
+          type: boolean
+        is_active:
+          type: boolean
+          default: true
+      required:
+      - bank_name
+      - account_name
+      - account_type
+      - is_primary
+      title: BankAccountV2
+    BankAccountUpdateV2:
+      type: object
+      properties:
+        routing_number:
+          type: string
+        account_number:
+          type: string
+        bank_name:
+          type: string
+        account_name:
+          type: string
+        is_active:
+          type: boolean
+      title: BankAccountUpdateV2
   securitySchemes:
     bearerAuth:
       type: http

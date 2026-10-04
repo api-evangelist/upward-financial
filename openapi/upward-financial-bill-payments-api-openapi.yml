@@ -210,33 +210,60 @@ paths:
               $ref: '#/components/schemas/BillPaymentRequest'
 components:
   schemas:
-    BillPaymentResponse:
+    BillPaymentResponseStatus:
+      type: string
+      enum:
+      - queued
+      - submitted
+      - completed
+      - errored
+      title: BillPaymentResponseStatus
+    Bill_Payments_listBillPaymentsViewSets_Response_200:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-        amount:
-          type: string
-          format: decimal
-        description:
+        count:
+          type: integer
+        next:
           type:
           - string
           - 'null'
-        process_date:
-          type: string
-          format: date
-        payment_rail:
+          format: uri
+        previous:
           type:
           - string
           - 'null'
-        status:
-          $ref: '#/components/schemas/BillPaymentResponseStatus'
+          format: uri
+        results:
+          type: array
+          items:
+            description: Any type
       required:
-      - id
-      - amount
-      - process_date
-      title: BillPaymentResponse
+      - count
+      - results
+      title: Bill Payments_listBillPaymentsViewSets_Response_200
+    Bill_Payments_getAllBillPayments_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/BillPaymentResponse'
+      required:
+      - count
+      - results
+      title: Bill Payments_getAllBillPayments_Response_200
     CreateBill:
       type: object
       properties:
@@ -262,6 +289,18 @@ components:
       - account_number
       - account_routing_number
       title: CreateBill
+    BillPaymentRequest:
+      type: object
+      properties:
+        amount:
+          type: string
+          format: decimal
+        description:
+          type: string
+      required:
+      - amount
+      - description
+      title: BillPaymentRequest
     Bill:
       type: object
       properties:
@@ -291,72 +330,33 @@ components:
       - account_number
       - account_routing_number
       title: Bill
-    Bill_Payments_getAllBillPayments_Response_200:
+    BillPaymentResponse:
       type: object
       properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/BillPaymentResponse'
-      required:
-      - count
-      - results
-      title: Bill Payments_getAllBillPayments_Response_200
-    BillPaymentResponseStatus:
-      type: string
-      enum:
-      - queued
-      - submitted
-      - completed
-      - errored
-      title: BillPaymentResponseStatus
-    BillPaymentRequest:
-      type: object
-      properties:
+        id:
+          type: string
+          format: uuid
         amount:
           type: string
           format: decimal
         description:
+          type:
+          - string
+          - 'null'
+        process_date:
           type: string
+          format: date
+        payment_rail:
+          type:
+          - string
+          - 'null'
+        status:
+          $ref: '#/components/schemas/BillPaymentResponseStatus'
       required:
+      - id
       - amount
-      - description
-      title: BillPaymentRequest
-    Bill_Payments_listBillPaymentsViewSets_Response_200:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            description: Any type
-      required:
-      - count
-      - results
-      title: Bill Payments_listBillPaymentsViewSets_Response_200
+      - process_date
+      title: BillPaymentResponse
   securitySchemes:
     bearerAuth:
       type: http

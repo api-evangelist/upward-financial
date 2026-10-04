@@ -225,123 +225,6 @@ paths:
                 $ref: '#/components/schemas/Partners_listPartnerProducts_Response_200'
 components:
   schemas:
-    PartnerProductProductType:
-      type: string
-      enum:
-      - product
-      - subscription
-      - service
-      title: PartnerProductProductType
-    Partners_listSubLedgerRequests_Response_200:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SubLedgerResponse'
-      required:
-      - count
-      - results
-      title: Partners_listSubLedgerRequests_Response_200
-    Partners_listPartnerProducts_Response_200:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/PartnerProduct'
-      required:
-      - count
-      - results
-      title: Partners_listPartnerProducts_Response_200
-    PartnerProductCategory:
-      type: string
-      enum:
-      - credit_services
-      - coaching
-      - gift_cards
-      title: PartnerProductCategory
-    PartnerProductDescriptionFeaturesItems:
-      type: object
-      properties:
-        header:
-          type: string
-        body:
-          type: string
-      required:
-      - header
-      - body
-      title: PartnerProductDescriptionFeaturesItems
-    PartnerBankAccountBulkBulkV2:
-      type: object
-      properties:
-        id:
-          type: string
-        bank_name:
-          type:
-          - string
-          - 'null'
-        account_name:
-          type: string
-        account_type:
-          type: string
-        account_number:
-          type: string
-        account_routing_number:
-          type: string
-        is_primary:
-          type: boolean
-      required:
-      - bank_name
-      - account_name
-      - account_type
-      - is_primary
-      title: PartnerBankAccountBulkBulkV2
-    PartnerProductOptionsItems:
-      type: object
-      properties:
-        id:
-          type: integer
-        cost:
-          type: number
-          format: double
-        detail:
-          type:
-          - string
-          - 'null'
-        stripe_price_id:
-          type:
-          - string
-          - 'null'
-        stripe_session_token:
-          type:
-          - string
-          - 'null'
-      title: PartnerProductOptionsItems
     SubLedgerRequest:
       type: object
       properties:
@@ -350,86 +233,6 @@ components:
       required:
       - account_name
       title: SubLedgerRequest
-    PartnerBankAccountBulkV2:
-      type: object
-      properties:
-        id:
-          type: string
-        bank_name:
-          type:
-          - string
-          - 'null'
-        available_balance:
-          type: string
-        current_balance:
-          type: string
-        account_name:
-          type: string
-        account_type:
-          type: string
-        account_number:
-          type: string
-        account_routing_number:
-          type: string
-        is_primary:
-          type: boolean
-        is_active:
-          type: boolean
-          default: true
-      required:
-      - bank_name
-      - account_name
-      - account_type
-      - is_primary
-      title: PartnerBankAccountBulkV2
-    PartnerProductDescription:
-      type: object
-      properties:
-        full_name:
-          type: string
-        cost_description:
-          type:
-          - string
-          - 'null'
-        features:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PartnerProductDescriptionFeaturesItems'
-      required:
-      - full_name
-      - features
-      title: PartnerProductDescription
-    SubLedgerResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        bank_name:
-          type:
-          - string
-          - 'null'
-        account_name:
-          type: string
-        account_type:
-          type: string
-        account_number:
-          type: string
-        account_routing_number:
-          type: string
-        is_primary:
-          type: boolean
-      required:
-      - id
-      - bank_name
-      - account_name
-      - account_type
-      - account_number
-      - account_routing_number
-      - is_primary
-      title: SubLedgerResponse
     PartnerProduct:
       type: object
       properties:
@@ -489,6 +292,203 @@ components:
       - description
       - options
       title: PartnerProduct
+    PartnerProductDescriptionFeaturesItems:
+      type: object
+      properties:
+        header:
+          type: string
+        body:
+          type: string
+      required:
+      - header
+      - body
+      title: PartnerProductDescriptionFeaturesItems
+    Partners_listSubLedgerRequests_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubLedgerResponse'
+      required:
+      - count
+      - results
+      title: Partners_listSubLedgerRequests_Response_200
+    SubLedgerResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        bank_name:
+          type:
+          - string
+          - 'null'
+        account_name:
+          type: string
+        account_type:
+          type: string
+        account_number:
+          type: string
+        account_routing_number:
+          type: string
+        is_primary:
+          type: boolean
+      required:
+      - id
+      - bank_name
+      - account_name
+      - account_type
+      - account_number
+      - account_routing_number
+      - is_primary
+      title: SubLedgerResponse
+    PartnerProductDescription:
+      type: object
+      properties:
+        full_name:
+          type: string
+        cost_description:
+          type:
+          - string
+          - 'null'
+        features:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PartnerProductDescriptionFeaturesItems'
+      required:
+      - full_name
+      - features
+      title: PartnerProductDescription
+    PartnerProductOptionsItems:
+      type: object
+      properties:
+        id:
+          type: integer
+        cost:
+          type: number
+          format: double
+        detail:
+          type:
+          - string
+          - 'null'
+        stripe_price_id:
+          type:
+          - string
+          - 'null'
+        stripe_session_token:
+          type:
+          - string
+          - 'null'
+      title: PartnerProductOptionsItems
+    Partners_listPartnerProducts_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartnerProduct'
+      required:
+      - count
+      - results
+      title: Partners_listPartnerProducts_Response_200
+    PartnerBankAccountBulkBulkV2:
+      type: object
+      properties:
+        id:
+          type: string
+        bank_name:
+          type:
+          - string
+          - 'null'
+        account_name:
+          type: string
+        account_type:
+          type: string
+        account_number:
+          type: string
+        account_routing_number:
+          type: string
+        is_primary:
+          type: boolean
+      required:
+      - bank_name
+      - account_name
+      - account_type
+      - is_primary
+      title: PartnerBankAccountBulkBulkV2
+    PartnerBankAccountBulkV2:
+      type: object
+      properties:
+        id:
+          type: string
+        bank_name:
+          type:
+          - string
+          - 'null'
+        available_balance:
+          type: string
+        current_balance:
+          type: string
+        account_name:
+          type: string
+        account_type:
+          type: string
+        account_number:
+          type: string
+        account_routing_number:
+          type: string
+        is_primary:
+          type: boolean
+        is_active:
+          type: boolean
+          default: true
+      required:
+      - bank_name
+      - account_name
+      - account_type
+      - is_primary
+      title: PartnerBankAccountBulkV2
+    PartnerProductCategory:
+      type: string
+      enum:
+      - credit_services
+      - coaching
+      - gift_cards
+      title: PartnerProductCategory
+    PartnerProductProductType:
+      type: string
+      enum:
+      - product
+      - subscription
+      - service
+      title: PartnerProductProductType
   securitySchemes:
     bearerAuth:
       type: http

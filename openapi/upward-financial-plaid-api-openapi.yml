@@ -76,14 +76,14 @@ paths:
               $ref: '#/components/schemas/LinkBankAccount'
 components:
   schemas:
-    LinkBankAccount:
+    CreatePlaidLinkToken:
       type: object
       properties:
-        plaid_link_token:
-          type: string
+        is_mobile_app:
+          type: boolean
       required:
-      - plaid_link_token
-      title: LinkBankAccount
+      - is_mobile_app
+      title: CreatePlaidLinkToken
     Plaid_createConsumerPlaidLinkToken_Response_200:
       type: object
       properties:
@@ -99,14 +99,14 @@ components:
       - expiration
       - hosted_link_url
       title: Plaid_createConsumerPlaidLinkToken_Response_200
-    CreatePlaidLinkToken:
+    LinkBankAccount:
       type: object
       properties:
-        is_mobile_app:
-          type: boolean
+        plaid_link_token:
+          type: string
       required:
-      - is_mobile_app
-      title: CreatePlaidLinkToken
+      - plaid_link_token
+      title: LinkBankAccount
   securitySchemes:
     bearerAuth:
       type: http
