@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/upward-financial/integrations
+- https://n8n.io/integrations/upward-financial/
+- https://composio.dev/toolkits/upward-financial
+- https://monid.ai/tools/upward-financial
+checked:
+- https://composio.dev/toolkits/upward-financial
+- https://monid.ai/tools/upward-financial
+- https://n8n.io/integrations/upward-financial/
+- https://zapier.com/apps/upward-financial/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
