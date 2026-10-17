@@ -484,7 +484,7 @@ paths:
               $ref: '#/components/schemas/OnboardingMetadata'
 components:
   schemas:
-    OnboardResponseCurrentStepsItems:
+    OnboardResponsePreviousStepsItems:
       type: object
       properties:
         slug:
@@ -494,190 +494,7 @@ components:
       required:
       - slug
       - url
-      title: OnboardResponseCurrentStepsItems
-    OnboardResponseProductProductConfiguration:
-      type: object
-      properties: {}
-      title: OnboardResponseProductProductConfiguration
-    SelectProduct:
-      type: object
-      properties:
-        product_id:
-          type: string
-        product_configuration:
-          oneOf:
-          - $ref: '#/components/schemas/SelectProductProductConfiguration'
-          - type: 'null'
-      required:
-      - product_id
-      title: SelectProduct
-    OnboardResponseUnderwriting:
-      type: object
-      properties:
-        result:
-          type: string
-        data:
-          type: string
-        errors:
-          type:
-          - array
-          - 'null'
-          items:
-            description: Any type
-      required:
-      - result
-      - data
-      - errors
-      title: OnboardResponseUnderwriting
-    OnboardResponseProduct:
-      type: object
-      properties:
-        product_id:
-          type: string
-        product_configuration:
-          oneOf:
-          - $ref: '#/components/schemas/OnboardResponseProductProductConfiguration'
-          - type: 'null'
-      required:
-      - product_id
-      - product_configuration
-      title: OnboardResponseProduct
-    OnboardResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        status:
-          type: string
-        consumer:
-          $ref: '#/components/schemas/OnboardResponseConsumer'
-        kyc:
-          $ref: '#/components/schemas/OnboardResponseKyc'
-        e_sign:
-          $ref: '#/components/schemas/OnboardResponseESign'
-        underwriting:
-          $ref: '#/components/schemas/OnboardResponseUnderwriting'
-        product:
-          $ref: '#/components/schemas/OnboardResponseProduct'
-        previous_steps:
-          type: array
-          items:
-            $ref: '#/components/schemas/OnboardResponsePreviousStepsItems'
-        current_steps:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/OnboardResponseCurrentStepsItems'
-        metadata:
-          oneOf:
-          - $ref: '#/components/schemas/OnboardResponseMetadata'
-          - type: 'null'
-      required:
-      - id
-      - status
-      - consumer
-      - kyc
-      - e_sign
-      - underwriting
-      - product
-      - previous_steps
-      - current_steps
-      - metadata
-      title: OnboardResponse
-    SubmitLoanRequest:
-      type: object
-      properties: {}
-      title: SubmitLoanRequest
-    LinkBankAccount:
-      type: object
-      properties:
-        plaid_link_token:
-          type: string
-      required:
-      - plaid_link_token
-      title: LinkBankAccount
-    OnboardResponseKyc:
-      type: object
-      properties:
-        inquiry_ids:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-        fallback_inquiry_id:
-          type: string
-        inquiry_template_id:
-          type: string
-      required:
-      - inquiry_ids
-      - fallback_inquiry_id
-      - inquiry_template_id
-      title: OnboardResponseKyc
-    SelectProductProductConfiguration:
-      type: object
-      properties: {}
-      title: SelectProductProductConfiguration
-    OnboardResponseMetadata:
-      type: object
-      properties: {}
-      title: OnboardResponseMetadata
-    OnboardResponseESign:
-      type: object
-      properties:
-        agreement_accepted:
-          type: boolean
-        agreement_accepted_date:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      required:
-      - agreement_accepted
-      - agreement_accepted_date
-      title: OnboardResponseESign
-    AcceptTerms:
-      type: object
-      properties:
-        agreement_accepted:
-          type: boolean
-      required:
-      - agreement_accepted
-      title: AcceptTerms
-    OnboardingMetadataMetadata:
-      type: object
-      properties: {}
-      title: OnboardingMetadataMetadata
-    Onboarding_getAllOnboardings_Response_200:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/OnboardResponse'
-      required:
-      - count
-      - results
-      title: Onboarding_getAllOnboardings_Response_200
-    Onboarding_cancelOnboarding_Response_204:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: Onboarding_cancelOnboarding_Response_204
+      title: OnboardResponsePreviousStepsItems
     OnboardResponseConsumer:
       type: object
       properties:
@@ -745,6 +562,59 @@ components:
       - address_state
       - address_zip
       title: OnboardResponseConsumer
+    OnboardResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        status:
+          type: string
+        consumer:
+          $ref: '#/components/schemas/OnboardResponseConsumer'
+        kyc:
+          $ref: '#/components/schemas/OnboardResponseKyc'
+        e_sign:
+          $ref: '#/components/schemas/OnboardResponseESign'
+        underwriting:
+          $ref: '#/components/schemas/OnboardResponseUnderwriting'
+        product:
+          $ref: '#/components/schemas/OnboardResponseProduct'
+        previous_steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/OnboardResponsePreviousStepsItems'
+        current_steps:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/OnboardResponseCurrentStepsItems'
+        metadata:
+          oneOf:
+          - $ref: '#/components/schemas/OnboardResponseMetadata'
+          - type: 'null'
+      required:
+      - id
+      - status
+      - consumer
+      - kyc
+      - e_sign
+      - underwriting
+      - product
+      - previous_steps
+      - current_steps
+      - metadata
+      title: OnboardResponse
+    VerifyIdentity:
+      type: object
+      properties:
+        inquiry_id:
+          type:
+          - string
+          - 'null'
+          default: ''
+      title: VerifyIdentity
     OnboardingMetadata:
       type: object
       properties:
@@ -755,7 +625,12 @@ components:
       required:
       - metadata
       title: OnboardingMetadata
-    OnboardResponsePreviousStepsItems:
+    Onboarding_cancelOnboarding_Response_204:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: Onboarding_cancelOnboarding_Response_204
+    OnboardResponseCurrentStepsItems:
       type: object
       properties:
         slug:
@@ -765,37 +640,13 @@ components:
       required:
       - slug
       - url
-      title: OnboardResponsePreviousStepsItems
-    VerifyIdentity:
-      type: object
-      properties:
-        inquiry_id:
-          type:
-          - string
-          - 'null'
-          default: ''
-      title: VerifyIdentity
+      title: OnboardResponseCurrentStepsItems
     PerformUnderwritingResult:
       type: string
       enum:
       - pass
       - fail
       title: PerformUnderwritingResult
-    Onboarding:
-      type: object
-      properties:
-        pcid:
-          type: string
-        onboarding_template_id:
-          type: string
-      required:
-      - pcid
-      - onboarding_template_id
-      title: Onboarding
-    BloomEnablementRequest:
-      type: object
-      properties: {}
-      title: BloomEnablementRequest
     PerformUnderwriting:
       type: object
       properties:
@@ -807,6 +658,155 @@ components:
       - result
       - data
       title: PerformUnderwriting
+    OnboardResponseProductProductConfiguration:
+      type: object
+      properties: {}
+      title: OnboardResponseProductProductConfiguration
+    SubmitLoanRequest:
+      type: object
+      properties: {}
+      title: SubmitLoanRequest
+    OnboardResponseMetadata:
+      type: object
+      properties: {}
+      title: OnboardResponseMetadata
+    SelectProduct:
+      type: object
+      properties:
+        product_id:
+          type: string
+        product_configuration:
+          oneOf:
+          - $ref: '#/components/schemas/SelectProductProductConfiguration'
+          - type: 'null'
+      required:
+      - product_id
+      title: SelectProduct
+    LinkBankAccount:
+      type: object
+      properties:
+        plaid_link_token:
+          type: string
+      required:
+      - plaid_link_token
+      title: LinkBankAccount
+    AcceptTerms:
+      type: object
+      properties:
+        agreement_accepted:
+          type: boolean
+      required:
+      - agreement_accepted
+      title: AcceptTerms
+    Onboarding:
+      type: object
+      properties:
+        pcid:
+          type: string
+        onboarding_template_id:
+          type: string
+      required:
+      - pcid
+      - onboarding_template_id
+      title: Onboarding
+    OnboardResponseUnderwriting:
+      type: object
+      properties:
+        result:
+          type: string
+        data:
+          type: string
+        errors:
+          type:
+          - array
+          - 'null'
+          items:
+            description: Any type
+      required:
+      - result
+      - data
+      - errors
+      title: OnboardResponseUnderwriting
+    Onboarding_getAllOnboardings_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/OnboardResponse'
+      required:
+      - count
+      - results
+      title: Onboarding_getAllOnboardings_Response_200
+    OnboardingMetadataMetadata:
+      type: object
+      properties: {}
+      title: OnboardingMetadataMetadata
+    BloomEnablementRequest:
+      type: object
+      properties: {}
+      title: BloomEnablementRequest
+    OnboardResponseKyc:
+      type: object
+      properties:
+        inquiry_ids:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        fallback_inquiry_id:
+          type: string
+        inquiry_template_id:
+          type: string
+      required:
+      - inquiry_ids
+      - fallback_inquiry_id
+      - inquiry_template_id
+      title: OnboardResponseKyc
+    OnboardResponseProduct:
+      type: object
+      properties:
+        product_id:
+          type: string
+        product_configuration:
+          oneOf:
+          - $ref: '#/components/schemas/OnboardResponseProductProductConfiguration'
+          - type: 'null'
+      required:
+      - product_id
+      - product_configuration
+      title: OnboardResponseProduct
+    SelectProductProductConfiguration:
+      type: object
+      properties: {}
+      title: SelectProductProductConfiguration
+    OnboardResponseESign:
+      type: object
+      properties:
+        agreement_accepted:
+          type: boolean
+        agreement_accepted_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      required:
+      - agreement_accepted
+      - agreement_accepted_date
+      title: OnboardResponseESign
   securitySchemes:
     bearerAuth:
       type: http

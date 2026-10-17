@@ -132,36 +132,6 @@ components:
           type: string
           default: application/pdf
       title: StatementResponseDownload
-    Statements_listStatements_Response_200:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Statement'
-      required:
-      - count
-      - results
-      title: Statements_listStatements_Response_200
-    StatementEmailResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          default: The statement has been sent to your email.
-      title: StatementEmailResponse
     Statement:
       type: object
       properties:
@@ -186,6 +156,36 @@ components:
       - last_modified
       - file_size
       title: Statement
+    StatementEmailResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          default: The statement has been sent to your email.
+      title: StatementEmailResponse
+    Statements_listStatements_Response_200:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Statement'
+      required:
+      - count
+      - results
+      title: Statements_listStatements_Response_200
   securitySchemes:
     bearerAuth:
       type: http

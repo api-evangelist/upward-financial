@@ -37,19 +37,6 @@ paths:
                 $ref: '#/components/schemas/CreditInsightsOverviewV2'
 components:
   schemas:
-    CreditInsightsOverviewV2:
-      type: object
-      properties:
-        credit_score_card:
-          $ref: '#/components/schemas/CreditInsightsOverviewV2CreditScoreCard'
-        credit_score_history:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreditInsightsOverviewV2CreditScoreHistoryItems'
-      required:
-      - credit_score_card
-      - credit_score_history
-      title: CreditInsightsOverviewV2
     CreditInsightsOverviewV2CreditScoreCard:
       type: object
       properties:
@@ -87,16 +74,6 @@ components:
       required:
       - report_date
       title: CreditInsightsOverviewV2CreditScoreCard
-    CreditInsightsOverviewV2CreditScoreHistoryItems:
-      type: object
-      properties:
-        month:
-          type: string
-        score:
-          type: integer
-      required:
-      - score
-      title: CreditInsightsOverviewV2CreditScoreHistoryItems
     CreditInsightsOverviewV2CreditScoreCardCreditReportStatus:
       type: string
       enum:
@@ -109,6 +86,29 @@ components:
       - Error
       - NoCredit
       title: CreditInsightsOverviewV2CreditScoreCardCreditReportStatus
+    CreditInsightsOverviewV2CreditScoreHistoryItems:
+      type: object
+      properties:
+        month:
+          type: string
+        score:
+          type: integer
+      required:
+      - score
+      title: CreditInsightsOverviewV2CreditScoreHistoryItems
+    CreditInsightsOverviewV2:
+      type: object
+      properties:
+        credit_score_card:
+          $ref: '#/components/schemas/CreditInsightsOverviewV2CreditScoreCard'
+        credit_score_history:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditInsightsOverviewV2CreditScoreHistoryItems'
+      required:
+      - credit_score_card
+      - credit_score_history
+      title: CreditInsightsOverviewV2
   securitySchemes:
     bearerAuth:
       type: http

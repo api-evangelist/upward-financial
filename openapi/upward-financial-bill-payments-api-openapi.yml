@@ -264,6 +264,33 @@ components:
       - count
       - results
       title: Bill Payments_getAllBillPayments_Response_200
+    BillPaymentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        amount:
+          type: string
+          format: decimal
+        description:
+          type:
+          - string
+          - 'null'
+        process_date:
+          type: string
+          format: date
+        payment_rail:
+          type:
+          - string
+          - 'null'
+        status:
+          $ref: '#/components/schemas/BillPaymentResponseStatus'
+      required:
+      - id
+      - amount
+      - process_date
+      title: BillPaymentResponse
     CreateBill:
       type: object
       properties:
@@ -330,33 +357,6 @@ components:
       - account_number
       - account_routing_number
       title: Bill
-    BillPaymentResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        amount:
-          type: string
-          format: decimal
-        description:
-          type:
-          - string
-          - 'null'
-        process_date:
-          type: string
-          format: date
-        payment_rail:
-          type:
-          - string
-          - 'null'
-        status:
-          $ref: '#/components/schemas/BillPaymentResponseStatus'
-      required:
-      - id
-      - amount
-      - process_date
-      title: BillPaymentResponse
   securitySchemes:
     bearerAuth:
       type: http

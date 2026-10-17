@@ -154,14 +154,6 @@ paths:
                 $ref: '#/components/schemas/Webhooks_deleteWebhookRegistration_Response_204'
 components:
   schemas:
-    RetrieveWebhookHistoryRequestBadRequestError:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/V2WebhooksIdEventsGetResponsesContentApplicationJsonSchemaErrorsItems'
-      title: RetrieveWebhookHistoryRequestBadRequestError
     WebhookEvents:
       type: object
       properties:
@@ -185,11 +177,38 @@ components:
       - event_name
       - last_attempted_at
       title: WebhookEvents
+    RetrieveWebhookHistoryRequestBadRequestError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/V2WebhooksIdEventsGetResponsesContentApplicationJsonSchemaErrorsItems'
+      title: RetrieveWebhookHistoryRequestBadRequestError
+    RegisterWebhook:
+      type: object
+      properties:
+        webhook_name:
+          type: string
+        endpoint:
+          type: string
+      required:
+      - webhook_name
+      - endpoint
+      title: RegisterWebhook
     Webhooks_deleteWebhookRegistration_Response_204:
       type: object
       properties: {}
       description: Empty response body
       title: Webhooks_deleteWebhookRegistration_Response_204
+    V2WebhooksIdEventsGetResponsesContentApplicationJsonSchemaErrorsItems:
+      type: object
+      properties:
+        message:
+          type: string
+        detail:
+          type: string
+      title: V2WebhooksIdEventsGetResponsesContentApplicationJsonSchemaErrorsItems
     WebhookRegistration:
       type: object
       properties:
@@ -216,25 +235,6 @@ components:
       - failures
       - last_failure
       title: WebhookRegistration
-    RegisterWebhook:
-      type: object
-      properties:
-        webhook_name:
-          type: string
-        endpoint:
-          type: string
-      required:
-      - webhook_name
-      - endpoint
-      title: RegisterWebhook
-    V2WebhooksIdEventsGetResponsesContentApplicationJsonSchemaErrorsItems:
-      type: object
-      properties:
-        message:
-          type: string
-        detail:
-          type: string
-      title: V2WebhooksIdEventsGetResponsesContentApplicationJsonSchemaErrorsItems
   securitySchemes:
     bearerAuth:
       type: http

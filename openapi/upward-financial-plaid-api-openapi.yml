@@ -76,6 +76,14 @@ paths:
               $ref: '#/components/schemas/LinkBankAccount'
 components:
   schemas:
+    LinkBankAccount:
+      type: object
+      properties:
+        plaid_link_token:
+          type: string
+      required:
+      - plaid_link_token
+      title: LinkBankAccount
     CreatePlaidLinkToken:
       type: object
       properties:
@@ -99,14 +107,6 @@ components:
       - expiration
       - hosted_link_url
       title: Plaid_createConsumerPlaidLinkToken_Response_200
-    LinkBankAccount:
-      type: object
-      properties:
-        plaid_link_token:
-          type: string
-      required:
-      - plaid_link_token
-      title: LinkBankAccount
   securitySchemes:
     bearerAuth:
       type: http
